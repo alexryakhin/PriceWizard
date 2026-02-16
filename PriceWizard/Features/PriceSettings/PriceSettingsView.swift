@@ -80,9 +80,7 @@ private struct PricePickerSheet: View {
         }
         .frame(width: 320, height: 220)
         .task {
-            if pricePoints.isEmpty || pricePoints.count == 1 {
-                await loadPricePoints()
-            }
+            if pricePoints.isEmpty { await loadPricePoints() }
         }
     }
 }
@@ -392,6 +390,7 @@ struct PriceSettingsView: View {
             equalizations = []
             return
         }
+        api.clearEqualizationsCache()
         isLoading = true
         errorMessage = nil
         do {
@@ -467,34 +466,40 @@ struct PriceSettingsView: View {
             return
         }
 
-        guard let api = authState.api, let subId = subscription?.id else { return }
+        guard let api = authState.api else { return }
         guard let base = baseUSD, base > 0 else { return }
         let territoryIds = Array(territoryMap.keys)
         guard !territoryIds.isEmpty else { return }
 
         isLoadingCustomTiers = true
-        var result: [String: [PricePointOption]] = [:]
-        let concurrencyLimit = 8
-        for chunkStart in stride(from: 0, to: territoryIds.count, by: concurrencyLimit) {
-            let chunk = Array(territoryIds[chunkStart..<min(chunkStart + concurrencyLimit, territoryIds.count)])
-            await withTaskGroup(of: (String, [PricePointOption]).self) { group in
-                for tid in chunk {
-                    group.addTask {
-                        do {
-                            let points = try await api.getSubscriptionPricePoints(subscriptionId: subId, territoryId: tid, limit: 200)
-                            let opts = points.map { PricePointOption(id: $0.id, customerPrice: $0.attributes.customerPrice ?? "—") }
-                            return (tid, opts)
-                        } catch {
-                            return (tid, [])
-                        }
+
+        // Use equalizations (period-correct) instead of getSubscriptionPricePoints per territory.
+        // The per-territory endpoint returns period-agnostic tiers (e.g. monthly $24.9 max for yearly subs).
+        // Equalizations for each US price point give correct prices for this subscription's period.
+        var pointsByTerritory: [String: [PricePointOption]] = [:]
+        for tid in territoryIds {
+            pointsByTerritory[tid] = []
+        }
+        let baseIndex = usPricePoints.firstIndex(where: { $0.id == selectedBasePricePoint?.id }) ?? 0
+        let rangeStart = max(0, baseIndex - 50)
+        let rangeEnd = min(usPricePoints.count, baseIndex + 51)
+        let pointsToEqualize = Array(usPricePoints[rangeStart..<rangeEnd])
+
+        for pp in pointsToEqualize {
+            do {
+                let (eqPoints, _) = try await api.getPricePointEqualizations(pricePointId: pp.id, limit: 200)
+                for eq in eqPoints {
+                    guard let tid = eq.relationships?.territory?.data?.id else { continue }
+                    let opt = PricePointOption(id: eq.id, customerPrice: eq.attributes.customerPrice ?? "—")
+                    if pointsByTerritory[tid]?.contains(where: { $0.id == opt.id }) == false {
+                        pointsByTerritory[tid, default: []].append(opt)
                     }
                 }
-                for await (tid, opts) in group {
-                    result[tid] = opts
-                }
+            } catch {
+                continue
             }
         }
-        pricePointsByTerritory = result
+        pricePointsByTerritory = pointsByTerritory
 
         var selections: [String: String] = [:]
         for tid in territoryMap.keys {
@@ -504,7 +509,7 @@ struct PriceSettingsView: View {
             let targetUSD = base * index
             let rate = currency == "USD" ? 1.0 : (exchangeRates[currency.uppercased()] ?? 1.0)
             let targetLocal = targetUSD * rate
-            let points = result[tid] ?? []
+            let points = pricePointsByTerritory[tid] ?? []
             let nearest = points.min(by: { isPreferredPrice($0, $1, targetLocal: targetLocal) })
             if let opt = nearest {
                 selections[tid] = opt.id
@@ -515,31 +520,12 @@ struct PriceSettingsView: View {
     }
 
     private func loadPricePointsForTerritory(_ territoryId: String) async {
-        guard pricePointsByTerritory[territoryId] == nil || pricePointsByTerritory[territoryId]?.count == 1 else { return }
-        guard let api = authState.api, let subId = subscription?.id else { return }
-        isLoadingPriceSheet = true
-        do {
-            let points = try await api.getSubscriptionPricePoints(subscriptionId: subId, territoryId: territoryId, limit: 200)
-            let opts = points.map { PricePointOption(id: $0.id, customerPrice: $0.attributes.customerPrice ?? "—") }
-            pricePointsByTerritory[territoryId] = opts
-            if selectedPricePointByTerritory[territoryId] == nil || !opts.contains(where: { $0.id == selectedPricePointByTerritory[territoryId] }) {
-                var d = selectedPricePointByTerritory
-                if usesCustomIndex, let base = baseUSD, base > 0, let info = territoryMap[territoryId] {
-                    let currency = info.currency
-                    let index = territoryIndices[territoryId] ?? 1.0
-                    let targetUSD = base * index
-                    let rate = currency == "USD" ? 1.0 : (exchangeRates[currency.uppercased()] ?? 1.0)
-                    let targetLocal = targetUSD * rate
-                    let nearest = opts.min(by: { isPreferredPrice($0, $1, targetLocal: targetLocal) })
-                    d[territoryId] = nearest?.id
-                } else if let first = opts.first {
-                    d[territoryId] = first.id
-                }
-                selectedPricePointByTerritory = d
-            }
-        } catch {
-            errorMessage = error.localizedDescription
-        }
+        // Do NOT fetch getSubscriptionPricePoints per territory – it returns period-agnostic tiers
+        // (e.g. monthly $24.9 max) even for yearly subscriptions. All period-correct price points
+        // come from equalizations, which are already in pricePointsByTerritory.
+        guard pricePointsByTerritory[territoryId]?.isEmpty == true else { return }
+        // If we have no points for this territory (equalizations failed or territory not covered),
+        // we cannot safely load more – getSubscriptionPricePoints would return wrong period.
         isLoadingPriceSheet = false
     }
 

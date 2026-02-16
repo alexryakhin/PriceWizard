@@ -21,10 +21,14 @@ final class AppStoreConnectAPI {
     private var getToken: () throws -> String
     private let session: URLSession
     private let decoder: JSONDecoder
+    private var equalizationsCache: [String: (pricePoints: [SubscriptionPricePointResource], territories: [TerritoryResource])] = [:]
 
     init(getToken: @escaping () throws -> String) {
         self.getToken = getToken
-        self.session = URLSession.shared
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .returnCacheDataElseLoad
+        config.urlCache = URLCache(memoryCapacity: 20 * 1024 * 1024, diskCapacity: 50 * 1024 * 1024)
+        self.session = URLSession(configuration: config)
         self.decoder = JSONDecoder()
     }
 
@@ -38,6 +42,7 @@ final class AppStoreConnectAPI {
         }
         var request = URLRequest(url: url)
         request.httpMethod = method
+        request.cachePolicy = .returnCacheDataElseLoad
         request.setValue("Bearer \(try getToken())", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = body
@@ -138,14 +143,24 @@ final class AppStoreConnectAPI {
 
     // MARK: - Price Point Equalizations
 
+    /// Clears the equalizations cache. Call when switching subscriptions to avoid stale data.
+    func clearEqualizationsCache() {
+        equalizationsCache.removeAll()
+    }
+
     func getPricePointEqualizations(pricePointId: String, limit: Int = 200) async throws -> (pricePoints: [SubscriptionPricePointResource], territories: [TerritoryResource]) {
+        if let cached = equalizationsCache[pricePointId] {
+            return cached
+        }
         let queryItems = [
             URLQueryItem(name: "limit", value: "\(limit)"),
             URLQueryItem(name: "include", value: "territory")
         ]
         let (data, _) = try await request(path: "v1/subscriptionPricePoints/\(pricePointId)/equalizations", queryItems: queryItems)
         let response = try decoder.decode(EqualizationsResponse.self, from: data)
-        return (response.data, response.included ?? [])
+        let result: (pricePoints: [SubscriptionPricePointResource], territories: [TerritoryResource]) = (response.data, response.included ?? [])
+        equalizationsCache[pricePointId] = result
+        return result
     }
 
     // MARK: - Territories
