@@ -142,10 +142,38 @@ struct PriceSettingsView: View {
         }
     }
 
+    /// Earliest start date among existing prices that is today or in the future (UTC). Nil if none.
+    private var nextScheduledStartDate: Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        let todayStr = formatter.string(from: Date())
+        var earliest: Date?
+        for price in existingPrices {
+            guard let startStr = price.attributes?.startDate else { continue }
+            let trimmed = String(startStr.prefix(10))
+            guard let date = formatter.date(from: trimmed), trimmed >= todayStr else { continue }
+            if earliest == nil || date < earliest! {
+                earliest = date
+            }
+        }
+        return earliest
+    }
+
+    /// True if the selected start date is the same day (UTC) as an existing scheduled price change.
+    private var isStartDateConflictingWithScheduled: Bool {
+        guard let next = nextScheduledStartDate else { return false }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        return formatter.string(from: priceStartDate) == formatter.string(from: next)
+    }
+
     private var canApply: Bool {
         guard selectedBasePricePoint != nil, !isApplying else { return false }
         guard !equalizations.isEmpty else { return false }
         guard !isLoadingCustomTiers else { return false }
+        guard !isStartDateConflictingWithScheduled else { return false }
         return previewRows.allSatisfy { !$0.pricePointId.isEmpty }
     }
 
@@ -269,6 +297,21 @@ struct PriceSettingsView: View {
                     Section("Price Change Options") {
                         Toggle("Preserve current price for existing subscribers", isOn: $preserveCurrentPriceForExisting)
                         DatePicker("Start date", selection: $priceStartDate, displayedComponents: .date)
+                        if let next = nextScheduledStartDate {
+                            let formatted = next.formatted(date: .abbreviated, time: .omitted)
+                            Text("Next scheduled change: \(formatted)")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        } else if !existingPrices.isEmpty {
+                            Text("No future scheduled changes")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        if isStartDateConflictingWithScheduled {
+                            Label("This date is already used by a scheduled price change; choose another date.", systemImage: "exclamationmark.triangle.fill")
+                                .font(.caption)
+                                .foregroundStyle(.orange)
+                        }
                     }
 
                     Section {
