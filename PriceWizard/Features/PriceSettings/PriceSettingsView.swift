@@ -15,6 +15,22 @@ private struct PricePointOption: Identifiable {
     let customerPrice: String
 }
 
+/// Window of US price points around the base (±20) for equalization – avoids ~800 API calls on load.
+private let equalizationWindowHalf = 20
+
+/// Returns US price points within ±50 of the base, or all if base not found. Keeps load fast.
+private func pricePointsForEqualization(
+    usPricePoints: [SubscriptionPricePointResource],
+    basePricePoint: SubscriptionPricePointResource?
+) -> [SubscriptionPricePointResource] {
+    guard let base = basePricePoint, let baseIdx = usPricePoints.firstIndex(where: { $0.id == base.id }) else {
+        return usPricePoints
+    }
+    let lo = max(0, baseIdx - equalizationWindowHalf)
+    let hi = min(usPricePoints.count - 1, baseIdx + equalizationWindowHalf)
+    return Array(usPricePoints[lo...hi])
+}
+
 /// True if the price ends in 9 (e.g. 3.99, 279) – psychological pricing preference.
 private func priceEndsInNine(_ price: String) -> Bool {
     let s = price.replacingOccurrences(of: ",", with: ".").trimmingCharacters(in: .whitespaces)
@@ -101,6 +117,9 @@ struct PriceSettingsView: View {
     @State private var currentPriceByTerritory: [String: String] = [:]
     @State private var isLoading = false
     @State private var isLoadingCustomTiers = false
+    @State private var tierLoadProgress: Double = 0
+    @State private var tierLoadCurrent: Int = 0
+    @State private var tierLoadTotal: Int = 0
     @State private var territoryIdForPriceSheet: String?
     @State private var isLoadingPriceSheet = false
     @State private var isApplying = false
@@ -194,11 +213,22 @@ struct PriceSettingsView: View {
                     if !equalizations.isEmpty {
                         Section("Preview") {
                             if isLoadingCustomTiers {
-                                HStack {
-                                    ProgressView()
+                                VStack(alignment: .leading, spacing: 6) {
+                                    HStack {
+                                        ProgressView(value: tierLoadProgress, total: 1)
+                                            .frame(maxWidth: 200)
+                                        if tierLoadTotal > 0 {
+                                            Text("\(tierLoadCurrent) of \(tierLoadTotal)")
+                                                .font(.caption)
+                                                .foregroundStyle(.secondary)
+                                                .monospacedDigit()
+                                        }
+                                    }
                                     Text("Loading price tiers…")
+                                        .font(.subheadline)
                                         .foregroundStyle(.secondary)
                                 }
+                                .padding(.vertical, 4)
                             }
                             Table(previewRows) {
                                 TableColumn("Territory") { row in
@@ -231,11 +261,6 @@ struct PriceSettingsView: View {
                                 }
                                 TableColumn("New Price (USD)") { row in
                                     Text(row.priceUSD)
-                                }
-                                if usesCustomIndex {
-                                    TableColumn("Index") { row in
-                                        Text(String(format: "%.2f", row.index))
-                                    }
                                 }
                             }
                         }
@@ -413,13 +438,25 @@ struct PriceSettingsView: View {
         errorMessage = nil
         do {
             // Fetch all price points (no territory filter) - API may use USA or US for US
-            let allPoints = try await api.getSubscriptionPricePoints(subscriptionId: subId, territoryId: nil, limit: 800)
-            // Filter for US territory (USD) - match territory id from relationships
-            usPricePoints = allPoints.filter { pp in
+            let allPoints = try await api.getSubscriptionPricePoints(subscriptionId: subId, territoryId: "USA", limit: 800)
+            // Filter for US territory (USD) – match territory id from relationships
+            let usPoints = allPoints.filter { pp in
                 guard let tid = pp.relationships?.territory?.data?.id else { return false }
                 return usTerritoryIds.contains(tid)
             }
-            // If no US points found, use all points (user can still pick a base price)
+            // Filter to .99 (any price) and .49 when price < 50 – reduces 800+ options. Match both "." and "," decimal.
+            let usFiltered99 = usPoints.filter { pp in
+                guard let price = pp.attributes.customerPrice else { return false }
+                let trimmed = price.trimmingCharacters(in: .whitespaces)
+                let normalized = trimmed.replacingOccurrences(of: ",", with: ".")
+                let value = Double(normalized)
+                let is99 = trimmed.hasSuffix(".99") || trimmed.hasSuffix(",99")
+                let is49Under20 = (trimmed.hasSuffix(".49") || trimmed.hasSuffix(",49")) && (value ?? 0) < 20
+                return is99 || is49Under20
+            }
+            // Fall back to all US points if filter yields none (e.g. unusual locale format)
+            usPricePoints = usFiltered99.isEmpty ? usPoints : usFiltered99
+            // If still no US points, use all points so user can still pick a base price
             if usPricePoints.isEmpty && !allPoints.isEmpty {
                 usPricePoints = allPoints
             }
@@ -455,6 +492,20 @@ struct PriceSettingsView: View {
                 let name = TerritoryNames.displayName(for: t.id)
                 return (t.id, TerritoryInfo(id: t.id, currency: t.attributes.currency ?? "—", displayName: name))
             })
+            // Equalizations API often omits the source territory (US). Ensure United States is in the list.
+            if let base = selectedBasePricePoint, !usTerritoryIds.contains(where: { territoryMap[$0] != nil }) {
+                let usId = usTerritoryIds.first!
+                territoryMap[usId] = TerritoryInfo(id: usId, currency: "USD", displayName: TerritoryNames.displayName(for: usId))
+                let usEntry = SubscriptionPricePointResource(
+                    type: "subscriptionPricePoints",
+                    id: base.id,
+                    attributes: base.attributes,
+                    relationships: SubscriptionPricePointResource.SubscriptionPricePointRelationships(
+                        territory: RelationshipData(data: ResourceIdentifier(type: "territories", id: usId))
+                    )
+                )
+                equalizations.insert(usEntry, at: 0)
+            }
             if exchangeRates.isEmpty {
                 exchangeRates = await ExchangeRateService.fetchRatesFromUSD()
             }
@@ -500,22 +551,33 @@ struct PriceSettingsView: View {
 
         guard let base = baseUSD, base > 0 else { return }
         guard selectedBasePricePoint?.id == expectedId else { return }
+        let pointsToEqualize = pricePointsForEqualization(
+            usPricePoints: usPricePoints,
+            basePricePoint: selectedBasePricePoint
+        )
+        tierLoadTotal = pointsToEqualize.count
+        tierLoadCurrent = 0
+        tierLoadProgress = 0
         isLoadingCustomTiers = true
+        defer {
+            isLoadingCustomTiers = false
+            tierLoadTotal = 0
+            tierLoadCurrent = 0
+            tierLoadProgress = 0
+        }
 
-        // Use equalizations (period-correct) instead of getSubscriptionPricePoints per territory.
-        // The per-territory endpoint returns period-agnostic tiers (e.g. monthly $24.9 max for yearly subs).
-        // Equalizations for each US price point give correct prices for this subscription's period.
+        // Use equalizations for ±50 US price points around base – avoids ~800 API calls. Cached per price point ID.
         var pointsByTerritory: [String: [PricePointOption]] = [:]
         for tid in territoryIds {
             pointsByTerritory[tid] = []
         }
-        let baseIndex = usPricePoints.firstIndex(where: { $0.id == selectedBasePricePoint?.id }) ?? 0
-        let rangeStart = max(0, baseIndex - 50)
-        let rangeEnd = min(usPricePoints.count, baseIndex + 51)
-        let pointsToEqualize = Array(usPricePoints[rangeStart..<rangeEnd])
-
-        for pp in pointsToEqualize {
+        for (idx, pp) in pointsToEqualize.enumerated() {
             guard selectedBasePricePoint?.id == expectedId else { return }
+            tierLoadCurrent = idx + 1
+            tierLoadProgress = Double(idx + 1) / Double(pointsToEqualize.count)
+            if (idx + 1) % 10 == 0 || idx == 0 {
+                debugPrint("[PriceWizard] Loading price tiers \(idx + 1)/\(pointsToEqualize.count)")
+            }
             do {
                 let (eqPoints, _) = try await api.getPricePointEqualizations(pricePointId: pp.id, limit: 200)
                 for eq in eqPoints {
@@ -547,7 +609,7 @@ struct PriceSettingsView: View {
         }
         guard selectedBasePricePoint?.id == expectedId else { return }
         selectedPricePointByTerritory = selections
-        isLoadingCustomTiers = false
+        debugPrint("[PriceWizard] Finished loading price tiers (\(pointsToEqualize.count) price points)")
     }
 
     private func loadFullTiersForAppleEqualization(basePricePointId: String) async {
@@ -555,15 +617,26 @@ struct PriceSettingsView: View {
         let territoryIds = Array(territoryMap.keys)
         guard !territoryIds.isEmpty else { return }
         guard selectedBasePricePoint?.id == basePricePointId else { return }
+        let pointsToEqualize = pricePointsForEqualization(usPricePoints: usPricePoints, basePricePoint: selectedBasePricePoint)
+        tierLoadTotal = pointsToEqualize.count
+        tierLoadCurrent = 0
+        tierLoadProgress = 0
         isLoadingCustomTiers = true
-        defer { isLoadingCustomTiers = false }
+        defer {
+            isLoadingCustomTiers = false
+            tierLoadTotal = 0
+            tierLoadCurrent = 0
+            tierLoadProgress = 0
+        }
         var pointsByTerritory: [String: [PricePointOption]] = [:]
         for tid in territoryIds { pointsByTerritory[tid] = [] }
-        let baseIndex = usPricePoints.firstIndex(where: { $0.id == basePricePointId }) ?? 0
-        let rangeStart = max(0, baseIndex - 50)
-        let rangeEnd = min(usPricePoints.count, baseIndex + 51)
-        for pp in Array(usPricePoints[rangeStart..<rangeEnd]) {
+        for (idx, pp) in pointsToEqualize.enumerated() {
             guard selectedBasePricePoint?.id == basePricePointId else { return }
+            tierLoadCurrent = idx + 1
+            tierLoadProgress = Double(idx + 1) / Double(pointsToEqualize.count)
+            if (idx + 1) % 10 == 0 || idx == 0 {
+                debugPrint("[PriceWizard] Loading price tiers \(idx + 1)/\(pointsToEqualize.count)")
+            }
             do {
                 let (eqPoints, _) = try await api.getPricePointEqualizations(pricePointId: pp.id, limit: 200)
                 for eq in eqPoints {
@@ -577,6 +650,7 @@ struct PriceSettingsView: View {
         }
         guard selectedBasePricePoint?.id == basePricePointId else { return }
         pricePointsByTerritory = pointsByTerritory
+        debugPrint("[PriceWizard] Finished loading price tiers (\(pointsToEqualize.count) price points)")
     }
 
     private func loadPricePointsForTerritory(_ territoryId: String) async {
@@ -603,18 +677,32 @@ struct PriceSettingsView: View {
         let startDateStr = formatter.string(from: priceStartDate)
 
         do {
+            var appliedCount = 0
             for row in rows {
-                try await api.createSubscriptionPrice(
-                    subscriptionId: subId,
-                    pricePointId: row.pricePointId,
-                    territoryId: row.territoryIdForAPI,
-                    startDate: startDateStr,
-                    preserveCurrentPrice: preserveCurrentPriceForExisting ? true : nil
-                )
+                let currentStr = currentPriceByTerritory[row.territoryIdForAPI] ?? ""
+                let newStr = row.price
+                let currentVal = Double(currentStr.replacingOccurrences(of: ",", with: "."))
+                let newVal = Double(newStr.replacingOccurrences(of: ",", with: "."))
+                let alreadySame = currentVal != nil && newVal != nil && abs((currentVal ?? 0) - (newVal ?? 0)) < 0.001
+                if !alreadySame {
+                    try await api.createSubscriptionPrice(
+                        subscriptionId: subId,
+                        pricePointId: row.pricePointId,
+                        territoryId: row.territoryIdForAPI,
+                        startDate: startDateStr,
+                        preserveCurrentPrice: preserveCurrentPriceForExisting ? true : nil
+                    )
+                    appliedCount += 1
+                }
                 completed += 1
                 applyProgress = completed / total
             }
-            successMessage = "Applied \(rows.count) prices successfully"
+            let skipped = rows.count - appliedCount
+            if skipped > 0 {
+                successMessage = "Applied \(appliedCount) prices (\(skipped) already set, skipped)"
+            } else {
+                successMessage = "Applied \(rows.count) prices successfully"
+            }
             for row in rows {
                 currentPriceByTerritory[row.territoryIdForAPI] = row.price
             }
