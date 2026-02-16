@@ -106,6 +106,8 @@ struct PriceSettingsView: View {
     @State private var territoryIdForPriceSheet: String?
     @State private var isLoadingPriceSheet = false
     @State private var isApplying = false
+    @State private var preserveCurrentPriceForExisting = false
+    @State private var priceStartDate = Date()
     @State private var applyProgress: Double = 0
     @State private var errorMessage: String?
     @State private var successMessage: String?
@@ -236,6 +238,11 @@ struct PriceSettingsView: View {
                                 }
                             }
                         }
+                    }
+
+                    Section("Price Change Options") {
+                        Toggle("Preserve current price for existing subscribers", isOn: $preserveCurrentPriceForExisting)
+                        DatePicker("Start date", selection: $priceStartDate, displayedComponents: .date)
                     }
 
                     Section {
@@ -544,12 +551,19 @@ struct PriceSettingsView: View {
         let rows = previewRows
         let total = Double(rows.count)
         var completed = 0.0
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        let startDateStr = formatter.string(from: priceStartDate)
+
         do {
             for row in rows {
                 try await api.createSubscriptionPrice(
                     subscriptionId: subId,
                     pricePointId: row.pricePointId,
-                    territoryId: row.territoryIdForAPI
+                    territoryId: row.territoryIdForAPI,
+                    startDate: startDateStr,
+                    preserveCurrentPrice: preserveCurrentPriceForExisting ? true : nil
                 )
                 completed += 1
                 applyProgress = completed / total

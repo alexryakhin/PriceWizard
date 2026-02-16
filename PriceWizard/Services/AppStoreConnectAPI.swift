@@ -159,7 +159,13 @@ final class AppStoreConnectAPI {
 
     // MARK: - Create Subscription Price
 
-    func createSubscriptionPrice(subscriptionId: String, pricePointId: String, territoryId: String? = nil, preserveCurrentPrice: Bool? = nil) async throws {
+    func createSubscriptionPrice(
+        subscriptionId: String,
+        pricePointId: String,
+        territoryId: String? = nil,
+        startDate: String? = nil,
+        preserveCurrentPrice: Bool? = nil
+    ) async throws {
         let subscriptionRef = RelationshipData(data: ResourceIdentifier(type: "subscriptions", id: subscriptionId))
         let pricePointRef = RelationshipData(data: ResourceIdentifier(type: "subscriptionPricePoints", id: pricePointId))
         let territoryRef: RelationshipData? = territoryId.map { RelationshipData(data: ResourceIdentifier(type: "territories", id: $0)) }
@@ -168,9 +174,10 @@ final class AppStoreConnectAPI {
             subscriptionPricePoint: pricePointRef,
             territory: territoryRef
         )
-        let attributes: SubscriptionPriceCreateRequest.DataPayload.AttributesPayload? = preserveCurrentPrice.map {
-            .init(startDate: nil, preserveCurrentPrice: $0)
-        }
+        let attributes: SubscriptionPriceCreateRequest.DataPayload.AttributesPayload? =
+            (startDate != nil || preserveCurrentPrice != nil)
+                ? .init(startDate: startDate, preserveCurrentPrice: preserveCurrentPrice)
+                : nil
         let payload = SubscriptionPriceCreateRequest(
             data: .init(attributes: attributes, relationships: relationships)
         )
