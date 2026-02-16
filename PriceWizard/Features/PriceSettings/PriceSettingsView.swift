@@ -17,6 +17,7 @@ struct PriceSettingsView: View {
     @State private var selectedBasePricePoint: SubscriptionPricePointResource?
     @State private var equalizations: [SubscriptionPricePointResource] = []
     @State private var territoryMap: [String: TerritoryInfo] = [:]
+    @State private var exchangeRates: [String: Double] = [:]
     @State private var existingPrices: [SubscriptionPriceResource] = []
     @State private var indexMode: IndexMode = .appleEqualization
     @State private var territoryIndices: [String: Double] = [:]
@@ -88,6 +89,9 @@ struct PriceSettingsView: View {
                                 TableColumn("New Price") { row in
                                     Text(row.price)
                                 }
+                                TableColumn("Price (USD)") { row in
+                                    Text(row.priceUSD)
+                                }
                                 if indexMode == .customIndex {
                                     TableColumn("Index") { row in
                                         TextField("Index", value: Binding(
@@ -148,16 +152,28 @@ struct PriceSettingsView: View {
             .map { pp in
                 let tid = pp.relationships!.territory!.data!.id
                 let info = territoryMap[tid]
-                let territoryName = info?.displayName ?? tid
+                let territoryName = TerritoryNames.displayName(for: tid)
                 let currency = info?.currency ?? "—"
+                let priceStr = pp.attributes.customerPrice ?? "—"
+                let priceUSD = formatUSD(priceStr: priceStr, currency: currency)
                 return PreviewRow(
                     territoryIdForAPI: tid,
                     territoryDisplay: territoryName,
                     currency: currency,
-                    price: pp.attributes.customerPrice ?? "—",
+                    price: priceStr,
+                    priceUSD: priceUSD,
                     pricePointId: pp.id
                 )
             }
+            .sorted { $0.territoryDisplay.localizedStandardCompare($1.territoryDisplay) == .orderedAscending }
+    }
+
+    private func formatUSD(priceStr: String, currency: String) -> String {
+        guard let amount = Double(priceStr.replacingOccurrences(of: ",", with: ".")) else { return "—" }
+        guard let usd = ExchangeRateService.toUSD(amount: amount, currency: currency, rates: exchangeRates) else {
+            return currency == "USD" ? priceStr : "—"
+        }
+        return String(format: "%.2f", usd)
     }
 
     private struct PreviewRow: Identifiable {
@@ -166,6 +182,7 @@ struct PriceSettingsView: View {
         let territoryDisplay: String
         let currency: String
         let price: String
+        let priceUSD: String
         let pricePointId: String
     }
 
@@ -208,40 +225,17 @@ struct PriceSettingsView: View {
             let (points, territories) = try await api.getPricePointEqualizations(pricePointId: pricePointId)
             equalizations = points
             territoryMap = Dictionary(uniqueKeysWithValues: territories.map { t in
-                let name = Self.territoryDisplayName(for: t.id, currency: t.attributes.currency ?? "")
+                let name = TerritoryNames.displayName(for: t.id)
                 return (t.id, TerritoryInfo(id: t.id, currency: t.attributes.currency ?? "—", displayName: name))
             })
+            if exchangeRates.isEmpty {
+                exchangeRates = await ExchangeRateService.fetchRatesFromUSD()
+            }
         } catch {
             errorMessage = error.localizedDescription
             equalizations = []
             territoryMap = [:]
         }
-    }
-
-    private static func territoryDisplayName(for code: String, currency: String) -> String {
-        let names: [String: String] = [
-            "USA": "United States", "US": "United States",
-            "GBR": "United Kingdom", "GB": "United Kingdom",
-            "CAN": "Canada", "CA": "Canada",
-            "AUS": "Australia", "AU": "Australia",
-            "DEU": "Germany", "DE": "Germany",
-            "FRA": "France", "FR": "France",
-            "JPN": "Japan", "JP": "Japan",
-            "CHN": "China", "CN": "China",
-            "IND": "India", "IN": "India",
-            "BRA": "Brazil", "BR": "Brazil",
-            "MEX": "Mexico", "MX": "Mexico",
-            "ESP": "Spain", "ES": "Spain",
-            "ITA": "Italy", "IT": "Italy",
-            "KOR": "South Korea", "KR": "South Korea",
-            "RUS": "Russia", "RU": "Russia",
-            "CHE": "Switzerland", "CH": "Switzerland",
-            "NLD": "Netherlands", "NL": "Netherlands",
-            "SWE": "Sweden", "SE": "Sweden",
-            "POL": "Poland", "PL": "Poland",
-            "TUR": "Turkey", "TR": "Turkey"
-        ]
-        return names[code] ?? (currency.isEmpty ? code : "\(code) · \(currency)")
     }
 
     private func applyPrices() async {
