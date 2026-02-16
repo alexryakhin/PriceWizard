@@ -162,6 +162,9 @@ struct PriceSettingsView: View {
                                     Task { await loadEqualizations(pricePointId: id) }
                                 } else {
                                     equalizations = []
+                                    territoryMap = [:]
+                                    pricePointsByTerritory = [:]
+                                    selectedPricePointByTerritory = [:]
                                 }
                             }
                         }
@@ -276,6 +279,11 @@ struct PriceSettingsView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 8))
             }
         }
+        .task(id: successMessage) {
+            guard successMessage != nil else { return }
+            try? await Task.sleep(for: .seconds(3))
+            successMessage = nil
+        }
         .sheet(item: Binding(
             get: { territoryIdForPriceSheet.map { PriceSheetItem(territoryId: $0) } },
             set: { territoryIdForPriceSheet = $0?.territoryId }
@@ -384,13 +392,23 @@ struct PriceSettingsView: View {
         let index: Double
     }
 
+    private func resetContentState() {
+        usPricePoints = []
+        selectedBasePricePoint = nil
+        equalizations = []
+        territoryMap = [:]
+        existingPrices = []
+        pricePointsByTerritory = [:]
+        selectedPricePointByTerritory = [:]
+        currentPriceByTerritory = [:]
+        territoryIdForPriceSheet = nil
+        successMessage = nil
+    }
+
     private func loadData() async {
-        guard let api = authState.api, let subId = subscription?.id else {
-            usPricePoints = []
-            equalizations = []
-            return
-        }
-        api.clearEqualizationsCache()
+        resetContentState()
+        guard let api = authState.api, let subId = subscription?.id else { return }
+        // Don't clear equalizations cache – keep per–price-point cache so switching base price reuses cached tiers.
         isLoading = true
         errorMessage = nil
         do {
@@ -431,6 +449,7 @@ struct PriceSettingsView: View {
         guard let api = authState.api else { return }
         do {
             let (points, territories) = try await api.getPricePointEqualizations(pricePointId: pricePointId)
+            guard selectedBasePricePoint?.id == pricePointId else { return }
             equalizations = points
             territoryMap = Dictionary(uniqueKeysWithValues: territories.map { t in
                 let name = TerritoryNames.displayName(for: t.id)
@@ -439,19 +458,28 @@ struct PriceSettingsView: View {
             if exchangeRates.isEmpty {
                 exchangeRates = await ExchangeRateService.fetchRatesFromUSD()
             }
-            await resetAndReapplyPrices()
+            guard selectedBasePricePoint?.id == pricePointId else { return }
+            await resetAndReapplyPrices(basePricePointId: pricePointId)
         } catch {
+            guard selectedBasePricePoint?.id == pricePointId else { return }
             errorMessage = error.localizedDescription
             equalizations = []
             territoryMap = [:]
         }
     }
 
-    private func resetAndReapplyPrices() async {
+    private func resetAndReapplyPrices(basePricePointId: String? = nil) async {
+        let expectedId = basePricePointId ?? selectedBasePricePoint?.id
         pricePointsByTerritory = [:]
         selectedPricePointByTerritory = [:]
 
+        guard let api = authState.api else { return }
+        let territoryIds = Array(territoryMap.keys)
+        guard !territoryIds.isEmpty else { return }
+        guard selectedBasePricePoint?.id == expectedId else { return }
+
         if indexMode == .appleEqualization {
+            // Use equalizations immediately – base price section appears right away.
             var selections: [String: String] = [:]
             for pp in equalizations {
                 guard let tid = pp.relationships?.territory?.data?.id else { continue }
@@ -463,14 +491,15 @@ struct PriceSettingsView: View {
                 let opt = PricePointOption(id: pp.id, customerPrice: pp.attributes.customerPrice ?? "—")
                 return (tid, [opt])
             })
+            // Fetch full tier options in background – updates picker when done.
+            if let baseId = expectedId {
+                Task { await loadFullTiersForAppleEqualization(basePricePointId: baseId) }
+            }
             return
         }
 
-        guard let api = authState.api else { return }
         guard let base = baseUSD, base > 0 else { return }
-        let territoryIds = Array(territoryMap.keys)
-        guard !territoryIds.isEmpty else { return }
-
+        guard selectedBasePricePoint?.id == expectedId else { return }
         isLoadingCustomTiers = true
 
         // Use equalizations (period-correct) instead of getSubscriptionPricePoints per territory.
@@ -486,6 +515,7 @@ struct PriceSettingsView: View {
         let pointsToEqualize = Array(usPricePoints[rangeStart..<rangeEnd])
 
         for pp in pointsToEqualize {
+            guard selectedBasePricePoint?.id == expectedId else { return }
             do {
                 let (eqPoints, _) = try await api.getPricePointEqualizations(pricePointId: pp.id, limit: 200)
                 for eq in eqPoints {
@@ -515,8 +545,38 @@ struct PriceSettingsView: View {
                 selections[tid] = opt.id
             }
         }
+        guard selectedBasePricePoint?.id == expectedId else { return }
         selectedPricePointByTerritory = selections
         isLoadingCustomTiers = false
+    }
+
+    private func loadFullTiersForAppleEqualization(basePricePointId: String) async {
+        guard indexMode == .appleEqualization, let api = authState.api else { return }
+        let territoryIds = Array(territoryMap.keys)
+        guard !territoryIds.isEmpty else { return }
+        guard selectedBasePricePoint?.id == basePricePointId else { return }
+        isLoadingCustomTiers = true
+        defer { isLoadingCustomTiers = false }
+        var pointsByTerritory: [String: [PricePointOption]] = [:]
+        for tid in territoryIds { pointsByTerritory[tid] = [] }
+        let baseIndex = usPricePoints.firstIndex(where: { $0.id == basePricePointId }) ?? 0
+        let rangeStart = max(0, baseIndex - 50)
+        let rangeEnd = min(usPricePoints.count, baseIndex + 51)
+        for pp in Array(usPricePoints[rangeStart..<rangeEnd]) {
+            guard selectedBasePricePoint?.id == basePricePointId else { return }
+            do {
+                let (eqPoints, _) = try await api.getPricePointEqualizations(pricePointId: pp.id, limit: 200)
+                for eq in eqPoints {
+                    guard let tid = eq.relationships?.territory?.data?.id else { continue }
+                    let opt = PricePointOption(id: eq.id, customerPrice: eq.attributes.customerPrice ?? "—")
+                    if pointsByTerritory[tid]?.contains(where: { $0.id == opt.id }) == false {
+                        pointsByTerritory[tid, default: []].append(opt)
+                    }
+                }
+            } catch { continue }
+        }
+        guard selectedBasePricePoint?.id == basePricePointId else { return }
+        pricePointsByTerritory = pointsByTerritory
     }
 
     private func loadPricePointsForTerritory(_ territoryId: String) async {

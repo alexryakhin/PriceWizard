@@ -21,7 +21,12 @@ final class AppStoreConnectAPI {
     private var getToken: () throws -> String
     private let session: URLSession
     private let decoder: JSONDecoder
+    /// Per–price-point equalizations. Key: pricePointId. Never cleared – monthly and yearly subs have different price point IDs.
     private var equalizationsCache: [String: (pricePoints: [SubscriptionPricePointResource], territories: [TerritoryResource])] = [:]
+    /// Per-subscription US price points. Key: subscriptionId. Never cleared – switching monthly ↔ yearly reuses cache.
+    private var subscriptionPricePointsCache: [String: [SubscriptionPricePointResource]] = [:]
+    /// Per-subscription current prices response. Key: subscriptionId. Never cleared.
+    private var subscriptionPricesResponseCache: [String: SubscriptionPricesResponse] = [:]
 
     init(getToken: @escaping () throws -> String) {
         self.getToken = getToken
@@ -118,17 +123,31 @@ final class AppStoreConnectAPI {
 
     /// Returns full response including `included` price point and territory resources.
     func getSubscriptionPricesResponse(subscriptionId: String, limit: Int = 200) async throws -> SubscriptionPricesResponse {
+        if let cached = subscriptionPricesResponseCache[subscriptionId] {
+            return cached
+        }
         let queryItems = [
             URLQueryItem(name: "limit", value: "\(limit)"),
             URLQueryItem(name: "include", value: "subscriptionPricePoint,territory")
         ]
         let (data, _) = try await request(path: "v1/subscriptions/\(subscriptionId)/prices", queryItems: queryItems)
-        return try decoder.decode(SubscriptionPricesResponse.self, from: data)
+        let response = try decoder.decode(SubscriptionPricesResponse.self, from: data)
+        subscriptionPricesResponseCache[subscriptionId] = response
+        return response
     }
 
     // MARK: - Subscription Price Points
 
+    /// Clears the subscription price points cache. Call when switching subscriptions to limit memory.
+    func clearSubscriptionPricePointsCache() {
+        subscriptionPricePointsCache.removeAll()
+    }
+
     func getSubscriptionPricePoints(subscriptionId: String, territoryId: String? = nil, limit: Int = 200) async throws -> [SubscriptionPricePointResource] {
+        let cacheKey = territoryId.map { "\(subscriptionId):\($0)" } ?? subscriptionId
+        if let cached = subscriptionPricePointsCache[cacheKey] {
+            return cached
+        }
         var queryItems = [
             URLQueryItem(name: "limit", value: "\(min(limit, 8000))"),
             URLQueryItem(name: "include", value: "territory")
@@ -138,15 +157,11 @@ final class AppStoreConnectAPI {
         }
         let (data, _) = try await request(path: "v1/subscriptions/\(subscriptionId)/pricePoints", queryItems: queryItems)
         let response = try decoder.decode(SubscriptionPricePointsResponse.self, from: data)
+        subscriptionPricePointsCache[cacheKey] = response.data
         return response.data
     }
 
     // MARK: - Price Point Equalizations
-
-    /// Clears the equalizations cache. Call when switching subscriptions to avoid stale data.
-    func clearEqualizationsCache() {
-        equalizationsCache.removeAll()
-    }
 
     func getPricePointEqualizations(pricePointId: String, limit: Int = 200) async throws -> (pricePoints: [SubscriptionPricePointResource], territories: [TerritoryResource]) {
         if let cached = equalizationsCache[pricePointId] {
