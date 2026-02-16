@@ -21,7 +21,9 @@ struct PriceSettingsView: View {
     @State private var existingPrices: [SubscriptionPriceResource] = []
     @State private var indexMode: IndexMode = .appleEqualization
     @State private var territoryIndices: [String: Double] = [:]
+    @State private var pricePointsByTerritory: [String: [SubscriptionPricePointResource]] = [:]
     @State private var isLoading = false
+    @State private var isLoadingCustomTiers = false
     @State private var isApplying = false
     @State private var applyProgress: Double = 0
     @State private var errorMessage: String?
@@ -29,7 +31,26 @@ struct PriceSettingsView: View {
 
     enum IndexMode: String, CaseIterable {
         case appleEqualization = "Apple Equalization"
-        case customIndex = "Custom Index"
+        case netflix = "Netflix"
+        case spotify = "Spotify"
+    }
+
+    private var usesCustomIndex: Bool {
+        switch indexMode {
+        case .appleEqualization: return false
+        case .netflix, .spotify: return true
+        }
+    }
+
+    private var canApply: Bool {
+        guard selectedBasePricePoint != nil, !isApplying else { return false }
+        guard !equalizations.isEmpty else { return false }
+        if usesCustomIndex {
+            guard !isLoadingCustomTiers else { return false }
+            let rows = previewRows
+            return rows.allSatisfy { !$0.pricePointId.isEmpty }
+        }
+        return true
     }
 
     var body: some View {
@@ -75,10 +96,30 @@ struct PriceSettingsView: View {
                                 Text(mode.rawValue).tag(mode)
                             }
                         }
+                        .onChange(of: indexMode) { _, new in
+                            switch new {
+                            case .netflix:
+                                territoryIndices = TerritoryIndices.indices(for: .netflix)
+                            case .spotify:
+                                territoryIndices = TerritoryIndices.indices(for: .spotify)
+                            case .appleEqualization:
+                                break
+                            }
+                            if (new == .netflix || new == .spotify) && !territoryMap.isEmpty {
+                                Task { await loadPricePointsForCustomIndex() }
+                            }
+                        }
                     }
 
                     if !equalizations.isEmpty {
                         Section("Preview") {
+                            if usesCustomIndex && isLoadingCustomTiers {
+                                HStack {
+                                    ProgressView()
+                                    Text("Loading price tiers for custom index…")
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
                             Table(previewRows) {
                                 TableColumn("Territory") { row in
                                     Text(row.territoryDisplay)
@@ -92,13 +133,9 @@ struct PriceSettingsView: View {
                                 TableColumn("Price (USD)") { row in
                                     Text(row.priceUSD)
                                 }
-                                if indexMode == .customIndex {
+                                if usesCustomIndex {
                                     TableColumn("Index") { row in
-                                        TextField("Index", value: Binding(
-                                            get: { territoryIndices[row.territoryIdForAPI] ?? 1.0 },
-                                            set: { territoryIndices[row.territoryIdForAPI] = $0 }
-                                        ), format: .number.precision(.fractionLength(2)))
-                                        .frame(width: 60)
+                                        Text(String(format: "%.2f", row.index))
                                     }
                                 }
                             }
@@ -109,7 +146,7 @@ struct PriceSettingsView: View {
                         Button("Apply to App Store Connect") {
                             Task { await applyPrices() }
                         }
-                        .disabled(selectedBasePricePoint == nil || isApplying || equalizations.isEmpty)
+                        .disabled(!canApply)
                         if isApplying {
                             ProgressView(value: applyProgress)
                         }
@@ -146,8 +183,16 @@ struct PriceSettingsView: View {
         let displayName: String
     }
 
+    private var baseUSD: Double? {
+        guard let pp = selectedBasePricePoint, let s = pp.attributes.customerPrice else { return nil }
+        return Double(s.replacingOccurrences(of: ",", with: "."))
+    }
+
     private var previewRows: [PreviewRow] {
-        equalizations
+        if usesCustomIndex {
+            return previewRowsForCustomIndex
+        }
+        return equalizations
             .filter { pp in pp.relationships?.territory?.data?.id != nil }
             .map { pp in
                 let tid = pp.relationships!.territory!.data!.id
@@ -162,10 +207,66 @@ struct PriceSettingsView: View {
                     currency: currency,
                     price: priceStr,
                     priceUSD: priceUSD,
-                    pricePointId: pp.id
+                    pricePointId: pp.id,
+                    index: 1.0
                 )
             }
             .sorted { $0.territoryDisplay.localizedStandardCompare($1.territoryDisplay) == .orderedAscending }
+    }
+
+    private var previewRowsForCustomIndex: [PreviewRow] {
+        guard let base = baseUSD, base > 0 else {
+            return territoryMap.keys.map { tid in
+                let info = territoryMap[tid]
+                return PreviewRow(
+                    territoryIdForAPI: tid,
+                    territoryDisplay: TerritoryNames.displayName(for: tid),
+                    currency: info?.currency ?? "—",
+                    price: "—",
+                    priceUSD: "—",
+                    pricePointId: "",
+                    index: territoryIndices[tid] ?? 1.0
+                )
+            }
+            .sorted { $0.territoryDisplay.localizedStandardCompare($1.territoryDisplay) == .orderedAscending }
+        }
+        return territoryMap.keys.compactMap { tid -> PreviewRow? in
+            let info = territoryMap[tid]
+            let currency = info?.currency ?? "USD"
+            let index = territoryIndices[tid] ?? 1.0
+            let targetUSD = base * index
+            let rate = currency == "USD" ? 1.0 : (exchangeRates[currency.uppercased()] ?? 1.0)
+            let targetLocal = targetUSD * rate
+            let points = pricePointsByTerritory[tid] ?? []
+            let nearest = points.min(by: { a, b in
+                let va = Double(a.attributes.customerPrice?.replacingOccurrences(of: ",", with: ".") ?? "0") ?? 0
+                let vb = Double(b.attributes.customerPrice?.replacingOccurrences(of: ",", with: ".") ?? "0") ?? 0
+                return abs(va - targetLocal) < abs(vb - targetLocal)
+            })
+            guard let pp = nearest else {
+                return PreviewRow(
+                    territoryIdForAPI: tid,
+                    territoryDisplay: TerritoryNames.displayName(for: tid),
+                    currency: currency,
+                    price: "—",
+                    priceUSD: "—",
+                    pricePointId: "",
+                    index: index
+                )
+            }
+            let priceStr = pp.attributes.customerPrice ?? "—"
+            let priceUSD = formatUSD(priceStr: priceStr, currency: currency)
+            return PreviewRow(
+                territoryIdForAPI: tid,
+                territoryDisplay: TerritoryNames.displayName(for: tid),
+                currency: currency,
+                price: priceStr,
+                priceUSD: priceUSD,
+                pricePointId: pp.id,
+                index: index
+            )
+        }
+        .sorted { $0.territoryDisplay.localizedStandardCompare($1.territoryDisplay) == .orderedAscending }
     }
 
     private func formatUSD(priceStr: String, currency: String) -> String {
@@ -177,13 +278,14 @@ struct PriceSettingsView: View {
     }
 
     private struct PreviewRow: Identifiable {
-        var id: String { pricePointId }
+        var id: String { pricePointId.isEmpty ? territoryIdForAPI : pricePointId }
         let territoryIdForAPI: String
         let territoryDisplay: String
         let currency: String
         let price: String
         let priceUSD: String
         let pricePointId: String
+        let index: Double
     }
 
     private func loadData() async {
@@ -231,11 +333,40 @@ struct PriceSettingsView: View {
             if exchangeRates.isEmpty {
                 exchangeRates = await ExchangeRateService.fetchRatesFromUSD()
             }
+            pricePointsByTerritory = [:]
+            if indexMode == .netflix || indexMode == .spotify {
+                await loadPricePointsForCustomIndex()
+            }
         } catch {
             errorMessage = error.localizedDescription
             equalizations = []
             territoryMap = [:]
         }
+    }
+
+    private func loadPricePointsForCustomIndex() async {
+        guard let api = authState.api, let subId = subscription?.id else { return }
+        let territoryIds = Array(territoryMap.keys)
+        guard !territoryIds.isEmpty else { return }
+        isLoadingCustomTiers = true
+        var result: [String: [SubscriptionPricePointResource]] = [:]
+        await withTaskGroup(of: (String, [SubscriptionPricePointResource]).self) { group in
+            for tid in territoryIds {
+                group.addTask {
+                    do {
+                        let points = try await api.getSubscriptionPricePoints(subscriptionId: subId, territoryId: tid, limit: 800)
+                        return (tid, points)
+                    } catch {
+                        return (tid, [])
+                    }
+                }
+            }
+            for await (tid, points) in group {
+                result[tid] = points
+            }
+        }
+        pricePointsByTerritory = result
+        isLoadingCustomTiers = false
     }
 
     private func applyPrices() async {
