@@ -159,6 +159,27 @@ struct SubscriptionPriceResource: Codable {
     }
 }
 
+extension SubscriptionPricesResponse {
+    /// Builds territory ID → current price string from data + included.
+    func currentPriceByTerritory() -> [String: String] {
+        var pricePointById: [String: String] = [:]
+        for resource in included ?? [] where resource.type == "subscriptionPricePoints" {
+            if let attrs = try? resource.decodeAttributes(as: SubscriptionPricePointResource.SubscriptionPricePointAttributes.self) {
+                pricePointById[resource.id] = attrs.customerPrice ?? "—"
+            }
+        }
+        var result: [String: String] = [:]
+        for price in data {
+            guard let tid = price.relationships?.territory?.data?.id,
+                  let ppId = price.relationships?.subscriptionPricePoint?.data?.id else { continue }
+            if let customerPrice = pricePointById[ppId] {
+                result[tid] = customerPrice
+            }
+        }
+        return result
+    }
+}
+
 struct RelationshipData: Codable {
     let data: ResourceIdentifier?
 }

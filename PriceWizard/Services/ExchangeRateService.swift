@@ -65,7 +65,7 @@ struct ExchangeRateService {
             "PKR": 279.5,
             "PLN": 3.5534,
             "RON": 4.2949,
-            "RUB": 123.06,
+            "RUB": 79.0,
             "SAR": 3.75,
             "SEK": 8.9575,
             "SGD": 1.2639,

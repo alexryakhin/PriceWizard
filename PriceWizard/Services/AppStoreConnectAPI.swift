@@ -107,13 +107,18 @@ final class AppStoreConnectAPI {
     // MARK: - Subscription Prices
 
     func getSubscriptionPrices(subscriptionId: String, limit: Int = 200) async throws -> [SubscriptionPriceResource] {
+        let response = try await getSubscriptionPricesResponse(subscriptionId: subscriptionId, limit: limit)
+        return response.data
+    }
+
+    /// Returns full response including `included` price point and territory resources.
+    func getSubscriptionPricesResponse(subscriptionId: String, limit: Int = 200) async throws -> SubscriptionPricesResponse {
         let queryItems = [
             URLQueryItem(name: "limit", value: "\(limit)"),
             URLQueryItem(name: "include", value: "subscriptionPricePoint,territory")
         ]
         let (data, _) = try await request(path: "v1/subscriptions/\(subscriptionId)/prices", queryItems: queryItems)
-        let response = try decoder.decode(SubscriptionPricesResponse.self, from: data)
-        return response.data
+        return try decoder.decode(SubscriptionPricesResponse.self, from: data)
     }
 
     // MARK: - Subscription Price Points

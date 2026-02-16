@@ -15,6 +15,27 @@ private struct PricePointOption: Identifiable {
     let customerPrice: String
 }
 
+/// True if the price ends in 9 (e.g. 3.99, 279) – psychological pricing preference.
+private func priceEndsInNine(_ price: String) -> Bool {
+    let s = price.replacingOccurrences(of: ",", with: ".").trimmingCharacters(in: .whitespaces)
+    return s.last == "9"
+}
+
+/// Compare two price options for nearest-to-target, preferring prices that end in 9 when close.
+private func isPreferredPrice(
+    _ a: PricePointOption, _ b: PricePointOption,
+    targetLocal: Double
+) -> Bool {
+    let va = Double(a.customerPrice.replacingOccurrences(of: ",", with: ".")) ?? 0
+    let vb = Double(b.customerPrice.replacingOccurrences(of: ",", with: ".")) ?? 0
+    let da = abs(va - targetLocal)
+    let db = abs(vb - targetLocal)
+    let tol = max(targetLocal * 0.005, 0.01)
+    if da < db - tol { return true }
+    if db < da - tol { return false }
+    return priceEndsInNine(a.customerPrice) && !priceEndsInNine(b.customerPrice)
+}
+
 private struct PricePickerSheet: View {
     let territoryDisplay: String
     let currency: String
@@ -79,6 +100,7 @@ struct PriceSettingsView: View {
     @State private var territoryIndices: [String: Double] = [:]
     @State private var pricePointsByTerritory: [String: [PricePointOption]] = [:]
     @State private var selectedPricePointByTerritory: [String: String] = [:]
+    @State private var currentPriceByTerritory: [String: String] = [:]
     @State private var isLoading = false
     @State private var isLoadingCustomTiers = false
     @State private var territoryIdForPriceSheet: String?
@@ -182,20 +204,29 @@ struct PriceSettingsView: View {
                                 TableColumn("Currency") { row in
                                     Text(row.currency)
                                 }
-                                TableColumn("Price") { row in
+                                TableColumn("Current price") { row in
+                                    Text(row.currentPrice)
+                                }
+                                TableColumn("New Price") { row in
                                     Button {
                                         territoryIdForPriceSheet = row.territoryIdForAPI
                                     } label: {
-                                        HStack {
+                                        HStack(spacing: 2) {
                                             Text(row.price)
-                                            Image(systemName: "chevron.right")
+                                            priceChangeIcon(
+                                                newPrice: row.price,
+                                                currentPrice: row.currentPrice
+                                            )
+                                            Spacer()
+                                            Image(systemName: "chevron.up.chevron.down")
                                                 .font(.caption2)
                                                 .foregroundStyle(.secondary)
                                         }
+                                        .contentShape(.rect)
                                     }
                                     .buttonStyle(.plain)
                                 }
-                                TableColumn("Price (USD)") { row in
+                                TableColumn("New Price (USD)") { row in
                                     Text(row.priceUSD)
                                 }
                                 if usesCustomIndex {
@@ -292,9 +323,11 @@ struct PriceSettingsView: View {
             let priceStr = opt?.customerPrice ?? eqPrice ?? "—"
             let priceUSD = formatUSD(priceStr: priceStr, currency: currency)
             let index = usesCustomIndex ? (territoryIndices[tid] ?? 1.0) : 1.0
+            let currentPrice = currentPriceByTerritory[tid] ?? "—"
             return PreviewRow(
                 territoryIdForAPI: tid,
                 territoryDisplay: TerritoryNames.displayName(for: tid),
+                currentPrice: currentPrice,
                 currency: currency,
                 price: priceStr,
                 priceUSD: priceUSD,
@@ -303,6 +336,27 @@ struct PriceSettingsView: View {
             )
         }
         .sorted { $0.territoryDisplay.localizedStandardCompare($1.territoryDisplay) == .orderedAscending }
+    }
+
+    @ViewBuilder
+    private func priceChangeIcon(newPrice: String, currentPrice: String) -> some View {
+        let newVal = Double(newPrice.replacingOccurrences(of: ",", with: "."))
+        let curVal = Double(currentPrice.replacingOccurrences(of: ",", with: "."))
+        if let n = newVal, let c = curVal {
+            if abs(n - c) < 0.001 {
+                Image(systemName: "equal")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            } else if n > c {
+                Image(systemName: "arrow.up")
+                    .font(.caption)
+                    .foregroundStyle(.green)
+            } else {
+                Image(systemName: "arrow.down")
+                    .font(.caption)
+                    .foregroundStyle(.red)
+            }
+        }
     }
 
     private func formatUSD(priceStr: String, currency: String) -> String {
@@ -317,6 +371,7 @@ struct PriceSettingsView: View {
         var id: String { pricePointId.isEmpty ? territoryIdForAPI : pricePointId }
         let territoryIdForAPI: String
         let territoryDisplay: String
+        let currentPrice: String
         let currency: String
         let price: String
         let priceUSD: String
@@ -344,12 +399,21 @@ struct PriceSettingsView: View {
             if usPricePoints.isEmpty && !allPoints.isEmpty {
                 usPricePoints = allPoints
             }
-            existingPrices = try await api.getSubscriptionPrices(subscriptionId: subId)
-            if selectedBasePricePoint == nil, let first = usPricePoints.first {
-                selectedBasePricePoint = first
-                await loadEqualizations(pricePointId: first.id)
-            } else if let selected = selectedBasePricePoint, usPricePoints.contains(where: { $0.id == selected.id }) {
-                await loadEqualizations(pricePointId: selected.id)
+            let pricesResponse = try await api.getSubscriptionPricesResponse(subscriptionId: subId)
+            existingPrices = pricesResponse.data
+            currentPriceByTerritory = pricesResponse.currentPriceByTerritory()
+
+            let usCurrentPrice = usTerritoryIds.lazy.compactMap { currentPriceByTerritory[$0] }.first
+            let baseToSelect = usCurrentPrice.flatMap { priceStr in
+                let target = Double(priceStr.replacingOccurrences(of: ",", with: "."))
+                return usPricePoints.first(where: { pp in
+                    guard let v = Double(pp.attributes.customerPrice?.replacingOccurrences(of: ",", with: ".") ?? "") else { return false }
+                    return target != nil && abs((target ?? 0) - v) < 0.01
+                })
+            } ?? usPricePoints.first
+            selectedBasePricePoint = baseToSelect
+            if let id = baseToSelect?.id {
+                await loadEqualizations(pricePointId: id)
             }
         } catch {
             errorMessage = error.localizedDescription
@@ -434,11 +498,7 @@ struct PriceSettingsView: View {
             let rate = currency == "USD" ? 1.0 : (exchangeRates[currency.uppercased()] ?? 1.0)
             let targetLocal = targetUSD * rate
             let points = result[tid] ?? []
-            let nearest = points.min(by: { a, b in
-                let va = Double(a.customerPrice.replacingOccurrences(of: ",", with: ".")) ?? 0
-                let vb = Double(b.customerPrice.replacingOccurrences(of: ",", with: ".")) ?? 0
-                return abs(va - targetLocal) < abs(vb - targetLocal)
-            })
+            let nearest = points.min(by: { isPreferredPrice($0, $1, targetLocal: targetLocal) })
             if let opt = nearest {
                 selections[tid] = opt.id
             }
@@ -463,11 +523,7 @@ struct PriceSettingsView: View {
                     let targetUSD = base * index
                     let rate = currency == "USD" ? 1.0 : (exchangeRates[currency.uppercased()] ?? 1.0)
                     let targetLocal = targetUSD * rate
-                    let nearest = opts.min(by: { a, b in
-                        let va = Double(a.customerPrice.replacingOccurrences(of: ",", with: ".")) ?? 0
-                        let vb = Double(b.customerPrice.replacingOccurrences(of: ",", with: ".")) ?? 0
-                        return abs(va - targetLocal) < abs(vb - targetLocal)
-                    })
+                    let nearest = opts.min(by: { isPreferredPrice($0, $1, targetLocal: targetLocal) })
                     d[territoryId] = nearest?.id
                 } else if let first = opts.first {
                     d[territoryId] = first.id
@@ -499,6 +555,9 @@ struct PriceSettingsView: View {
                 applyProgress = completed / total
             }
             successMessage = "Applied \(rows.count) prices successfully"
+            for row in rows {
+                currentPriceByTerritory[row.territoryIdForAPI] = row.price
+            }
         } catch {
             errorMessage = error.localizedDescription
         }
