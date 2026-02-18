@@ -1,4 +1,4 @@
-Price Wizard sætter dine App Store-abonnementspriser for alle områder fra én skærm — ingen manuel opdatering af 175 lande.
+Price Wizard sætter dine App Store-abonnementspriser for alle områder fra én skærm - ingen manuel opdatering af 175 lande.
 
 TIL UDVIKLERE MED ABONNEMENTER
 
@@ -7,7 +7,7 @@ TIL UDVIKLERE MED ABONNEMENTER
 • Vælg Apple Equalization-, Netflix- eller Spotify-stil for regionale priser og tilpas ethvert område.
 • Anvend alle ændringer på én gang. Appen springer områder over, der allerede har målprisen, og tillader ikke anvendelse på en dato med allerede planlagt ændring.
 
-Ingen konto hos os — kun dit Apple ID og din App Store Connect API-nøgle.
+Ingen konto hos os - kun dit Apple ID og din App Store Connect API-nøgle.
 
 PRIVATLIV
 

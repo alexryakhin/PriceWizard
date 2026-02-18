@@ -1,4 +1,4 @@
-Price Wizard asettaa App Store -tilaushinnat kaikille alueille yhdeltä näytöltä — ei enää manuaalista päivittämistä 175 maahan.
+Price Wizard asettaa App Store -tilaushinnat kaikille alueille yhdeltä näytöltä - ei enää manuaalista päivittämistä 175 maahan.
 
 KEHITTÄJILLE, JOILLA ON TILAUKSIA
 
@@ -7,7 +7,7 @@ KEHITTÄJILLE, JOILLA ON TILAUKSIA
 • Valitse Apple Equalization-, Netflix- tai Spotify-tyylinen aluehintaus ja säädä mitä tahansa aluetta.
 • Toteuta kaikki muutokset kerralla. Sovellus ohittaa alueet, joilla on jo tavoitehinta, eikä salli sovellusta päivälle, jolla on jo ajoitettu muutos.
 
-Ei tiliä meillä — vain Apple ID ja App Store Connect API -avain.
+Ei tiliä meillä - vain Apple ID ja App Store Connect API -avain.
 
 TIETOSUOJA
 

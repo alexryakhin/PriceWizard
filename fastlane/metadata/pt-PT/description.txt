@@ -1,4 +1,4 @@
-O Price Wizard define os preços de subscrição da App Store para todos os territórios num ecrã — sem atualizar 175 países manualmente.
+O Price Wizard define os preços de subscrição da App Store para todos os territórios num ecrã - sem atualizar 175 países manualmente.
 
 PARA PROGRAMADORES COM SUBSCRIÇÕES
 
@@ -7,7 +7,7 @@ PARA PROGRAMADORES COM SUBSCRIÇÕES
 • Escolha preços regionais ao estilo Apple Equalization, Netflix ou Spotify e ajuste qualquer território.
 • Aplique todas as alterações de uma vez. A app ignora territórios que já têm o preço alvo e não permite aplicar numa data que já tenha alteração agendada.
 
-Sem conta connosco — apenas o seu Apple ID e a sua chave API do App Store Connect.
+Sem conta connosco - apenas o seu Apple ID e a sua chave API do App Store Connect.
 
 PRIVACIDADE
 

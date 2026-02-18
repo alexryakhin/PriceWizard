@@ -7,7 +7,7 @@ FOR DEVELOPERS WITH SUBSCRIPTIONS
 • Choose Apple Equalization, Netflix-style, or Spotify-style regional pricing and tweak any territory.
 • Apply all changes in one go. The app skips territories that already have the target price and won’t let you apply on a date that already has a scheduled change.
 
-No account with us—just your Apple ID and your App Store Connect API key.
+No account with us - just your Apple ID and your App Store Connect API key.
 
 PRIVACY
 

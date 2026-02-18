@@ -1,5 +1,5 @@
 /**
- * PriceWizard website — minimal JS
+ * PriceWizard website - minimal JS
  */
 
 (function () {

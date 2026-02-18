@@ -1,4 +1,4 @@
-Price Wizard ustawia ceny subskrypcji App Store dla wszystkich regionów z jednego ekranu — bez ręcznej aktualizacji 175 krajów.
+Price Wizard ustawia ceny subskrypcji App Store dla wszystkich regionów z jednego ekranu - bez ręcznej aktualizacji 175 krajów.
 
 DLA DEWELOPERÓW Z SUBSKRYPCJAMI
 
@@ -7,7 +7,7 @@ DLA DEWELOPERÓW Z SUBSKRYPCJAMI
 • Wybierz ceny regionalne w stylu Apple Equalization, Netflix lub Spotify i dostosuj dowolny region.
 • Zastosuj wszystkie zmiany za jednym razem. Aplikacja pomija regiony z już docelową ceną i nie pozwala zastosować w dacie z zaplanowaną zmianą.
 
-Bez konta u nas — tylko Twój Apple ID i klucz API App Store Connect.
+Bez konta u nas - tylko Twój Apple ID i klucz API App Store Connect.
 
 PRYWATNOŚĆ
 

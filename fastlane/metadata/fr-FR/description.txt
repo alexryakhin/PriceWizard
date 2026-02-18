@@ -1,4 +1,4 @@
-Price Wizard définit les prix d'abonnement App Store pour tous les territoires depuis un seul écran — plus besoin de mettre à jour 175 pays à la main.
+Price Wizard définit les prix d'abonnement App Store pour tous les territoires depuis un seul écran - plus besoin de mettre à jour 175 pays à la main.
 
 POUR LES DÉVELOPPEURS AVEC ABONNEMENTS
 
@@ -7,7 +7,7 @@ POUR LES DÉVELOPPEURS AVEC ABONNEMENTS
 • Choisissez la tarification régionale type Apple Equalization, Netflix ou Spotify et ajustez tout territoire.
 • Appliquez toutes les modifications en une fois. L'app ignore les territoires qui ont déjà le prix cible et refuse d'appliquer à une date déjà prévue pour un changement.
 
-Aucun compte chez nous — seulement votre Apple ID et votre clé API App Store Connect.
+Aucun compte chez nous - seulement votre Apple ID et votre clé API App Store Connect.
 
 CONFIDENTIALITÉ
 

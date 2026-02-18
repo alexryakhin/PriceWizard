@@ -1,4 +1,4 @@
-Price Wizard setează prețurile abonamentelor App Store pentru toate teritoriile dintr-un singur ecran — fără actualizare manuală a 175 de țări.
+Price Wizard setează prețurile abonamentelor App Store pentru toate teritoriile dintr-un singur ecran - fără actualizare manuală a 175 de țări.
 
 PENTRU DEZVOLTATORI CU ABONAMENTE
 
@@ -7,7 +7,7 @@ PENTRU DEZVOLTATORI CU ABONAMENTE
 • Alegeți prețuri regionale în stil Apple Equalization, Netflix sau Spotify și ajustați orice teritoriu.
 • Aplicați toate modificările dintr-o dată. Aplicația omite teritoriile care au deja prețul țintă și nu permite aplicarea într-o dată cu o modificare deja programată.
 
-Fără cont la noi — doar Apple ID și cheia API App Store Connect.
+Fără cont la noi - doar Apple ID și cheia API App Store Connect.
 
 CONFIDENȚIALITATE
 

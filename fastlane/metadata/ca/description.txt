@@ -1,4 +1,4 @@
-Price Wizard defineix els preus de subscripció de l'App Store per a tots els territoris des d'una sola pantalla — sense actualitzar 175 països a mà.
+Price Wizard defineix els preus de subscripció de l'App Store per a tots els territoris des d'una sola pantalla - sense actualitzar 175 països a mà.
 
 PER A DESENVOLUPADORS AMB SUBSCRIPCIONS
 

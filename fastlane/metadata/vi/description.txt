@@ -1,4 +1,4 @@
-Price Wizard đặt giá gói đăng ký App Store cho mọi lãnh thổ từ một màn hình — không cần cập nhật thủ công 175 quốc gia.
+Price Wizard đặt giá gói đăng ký App Store cho mọi lãnh thổ từ một màn hình - không cần cập nhật thủ công 175 quốc gia.
 
 CHO NHÀ PHÁT TRIỂN CÓ GÓI ĐĂNG KÝ
 
@@ -7,7 +7,7 @@ CHO NHÀ PHÁT TRIỂN CÓ GÓI ĐĂNG KÝ
 • Chọn định giá theo vùng kiểu Apple Equalization, Netflix hoặc Spotify và chỉnh từng lãnh thổ.
 • Áp dụng mọi thay đổi một lần. Ứng dụng bỏ qua các lãnh thổ đã đạt giá đích và không cho áp dụng vào ngày đã có thay đổi theo lịch.
 
-Không cần tài khoản với chúng tôi — chỉ cần Apple ID và khóa API App Store Connect của bạn.
+Không cần tài khoản với chúng tôi - chỉ cần Apple ID và khóa API App Store Connect của bạn.
 
 QUYỀN RIÊNG TƯ
 

@@ -1,9 +1,9 @@
 /**
- * Design tokens — colors, typography, spacing
+ * Design tokens - colors, typography, spacing
  */
 
 :root {
-  /* Colors — dark theme, indigo accent (matches app accent) */
+  /* Colors - dark theme, indigo accent (matches app accent) */
   --color-bg: #0c0f14;
   --color-bg-elevated: #13171f;
   --color-bg-card: #181d28;

@@ -1,4 +1,4 @@
-Price Wizard sätter dina App Store-prenumerationspriser för alla territorier från en skärm — inget manuellt uppdaterande av 175 länder.
+Price Wizard sätter dina App Store-prenumerationspriser för alla territorier från en skärm - inget manuellt uppdaterande av 175 länder.
 
 FÖR UTVECKLARE MED PRENUMERATIONER
 
@@ -7,7 +7,7 @@ FÖR UTVECKLARE MED PRENUMERATIONER
 • Välj Apple Equalization-, Netflix- eller Spotify-stil för regional prissättning och justera valfritt territorium.
 • Tillämpa alla ändringar på en gång. Appen hoppar över territorier som redan har målpriset och tillåter inte tillämpning på ett datum med redan schemalagd ändring.
 
-Inget konto hos oss — bara ditt Apple ID och din App Store Connect API-nyckel.
+Inget konto hos oss - bara ditt Apple ID och din App Store Connect API-nyckel.
 
 INTEGRITET
 

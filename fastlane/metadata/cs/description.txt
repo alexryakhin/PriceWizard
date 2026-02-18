@@ -1,4 +1,4 @@
-Price Wizard nastaví ceny předplatného App Store pro všechna území z jedné obrazovky — žádná ruční aktualizace 175 zemí.
+Price Wizard nastaví ceny předplatného App Store pro všechna území z jedné obrazovky - žádná ruční aktualizace 175 zemí.
 
 PRO VÝVOJÁŘE S PŘEDPLATNÝM
 
@@ -7,7 +7,7 @@ PRO VÝVOJÁŘE S PŘEDPLATNÝM
 • Zvolte regionální ceny ve stylu Apple Equalization, Netflix nebo Spotify a upravte libovolné území.
 • Aplikujte všechny změny najednou. Aplikace přeskočí území, která již mají cílovou cenu, a nedovolí aplikaci v datu s již naplánovanou změnou.
 
-Žádný účet u nás — jen vaše Apple ID a klíč API App Store Connect.
+Žádný účet u nás - jen vaše Apple ID a klíč API App Store Connect.
 
 SOUKROMÍ
 

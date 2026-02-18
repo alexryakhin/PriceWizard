@@ -1,4 +1,4 @@
-Price Wizard, App Store abonelik fiyatlarınızı tek bir ekrandan tüm bölgeler için ayarlar — 175 ülkeyi elle güncellemeye gerek yok.
+Price Wizard, App Store abonelik fiyatlarınızı tek bir ekrandan tüm bölgeler için ayarlar - 175 ülkeyi elle güncellemeye gerek yok.
 
 ABONELİKLİ GELİŞTİRİCİLER İÇİN
 
@@ -7,7 +7,7 @@ ABONELİKLİ GELİŞTİRİCİLER İÇİN
 • Apple Equalization, Netflix tarzı veya Spotify tarzı bölgesel fiyatlandırma seçin ve istediğiniz bölgeyi ayarlayın.
 • Tüm değişiklikleri tek seferde uygulayın. Uygulama hedef fiyata ulaşmış bölgeleri atlar ve zaten planlanmış değişiklik olan bir tarihe uygulama yapmanıza izin vermez.
 
-Bizde hesap yok — sadece Apple ID’niz ve App Store Connect API anahtarınız.
+Bizde hesap yok - sadece Apple ID’niz ve App Store Connect API anahtarınız.
 
 GİZLİLİK
 

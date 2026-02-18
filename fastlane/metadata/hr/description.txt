@@ -1,4 +1,4 @@
-Price Wizard postavlja cijene pretplata App Storea za sva područja s jednog zaslona — nema više ručnog ažuriranja 175 zemalja.
+Price Wizard postavlja cijene pretplata App Storea za sva područja s jednog zaslona - nema više ručnog ažuriranja 175 zemalja.
 
 ZA PROGRAMERE S PRETPLATAMA
 
@@ -7,7 +7,7 @@ ZA PROGRAMERE S PRETPLATAMA
 • Odaberite regionalne cijene u stilu Apple Equalization, Netflix ili Spotify i prilagodite bilo koje područje.
 • Primijenite sve promjene odjednom. Aplikacija preskače područja koja već imaju ciljnu cijenu i ne dopušta primjenu na datum s već zakazanom promjenom.
 
-Nema računa kod nas — samo vaš Apple ID i ključ API App Store Connecta.
+Nema računa kod nas - samo vaš Apple ID i ključ API App Store Connecta.
 
 PRIVATNOST
 

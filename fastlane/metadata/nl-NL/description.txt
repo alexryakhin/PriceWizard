@@ -1,4 +1,4 @@
-Price Wizard zet je App Store-abonnementsprijzen voor elk gebied in één scherm — geen handmatig bijwerken van 175 landen meer.
+Price Wizard zet je App Store-abonnementsprijzen voor elk gebied in één scherm - geen handmatig bijwerken van 175 landen meer.
 
 VOOR ONTWIKKELAARS MET ABONNEMENTEN
 
@@ -7,7 +7,7 @@ VOOR ONTWIKKELAARS MET ABONNEMENTEN
 • Kies Apple Equalization-, Netflix- of Spotify-stijl voor regionale prijzen en pas elk gebied aan.
 • Pas alle wijzigingen in één keer toe. De app slaat gebieden over die al de doelpijs hebben en laat geen toepassing toe op een datum met een geplande wijziging.
 
-Geen account bij ons — alleen je Apple ID en je App Store Connect API-sleutel.
+Geen account bij ons - alleen je Apple ID en je App Store Connect API-sleutel.
 
 PRIVACY
 

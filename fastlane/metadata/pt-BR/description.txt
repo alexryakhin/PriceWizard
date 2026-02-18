@@ -1,4 +1,4 @@
-O Price Wizard define os preços de assinatura da App Store para todos os territórios em uma tela — sem atualizar 175 países manualmente.
+O Price Wizard define os preços de assinatura da App Store para todos os territórios em uma tela - sem atualizar 175 países manualmente.
 
 PARA DESENVOLVEDORES COM ASSINATURAS
 
@@ -7,7 +7,7 @@ PARA DESENVOLVEDORES COM ASSINATURAS
 • Escolha preços regionais no estilo Apple Equalization, Netflix ou Spotify e ajuste qualquer território.
 • Aplique todas as alterações de uma vez. O app ignora territórios que já têm o preço alvo e não permite aplicar em uma data que já tenha alteração agendada.
 
-Nenhuma conta conosco — apenas seu Apple ID e sua chave de API do App Store Connect.
+Nenhuma conta conosco - apenas seu Apple ID e sua chave de API do App Store Connect.
 
 PRIVACIDADE
 

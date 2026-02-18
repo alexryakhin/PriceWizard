@@ -1,4 +1,4 @@
-A Price Wizard egy képernyőről állítja be az App Store előfizetési árait minden területre — nincs többé kézi frissítés 175 országban.
+A Price Wizard egy képernyőről állítja be az App Store előfizetési árait minden területre - nincs többé kézi frissítés 175 országban.
 
 ELŐFIZETÉSSEL RENDELKEZŐ FEJLESZTŐKNEK
 
@@ -7,7 +7,7 @@ ELŐFIZETÉSSEL RENDELKEZŐ FEJLESZTŐKNEK
 • Válassza az Apple Equalization, Netflix vagy Spotify stílusú regionális árazást, és igazítson bármely területet.
 • Alkalmazza az összes módosítást egyszerre. Az alkalmazás kihagyja a már célárat elért területeket, és nem engedélyezi az alkalmazást olyan dátumban, amelyen már van ütemezett változás.
 
-Nincs fiók nálunk — csak az Apple ID és az App Store Connect API-kulcs.
+Nincs fiók nálunk - csak az Apple ID és az App Store Connect API-kulcs.
 
 ADATVÉDELEM
 

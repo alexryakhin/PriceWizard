@@ -1,4 +1,4 @@
-Price Wizard menetapkan harga langganan App Store untuk semua wilayah dari satu skrin — tidak perlu kemas kini 175 negara secara manual.
+Price Wizard menetapkan harga langganan App Store untuk semua wilayah dari satu skrin - tidak perlu kemas kini 175 negara secara manual.
 
 UNTUK PEMBANGUN DENGAN LANGGANAN
 
@@ -7,7 +7,7 @@ UNTUK PEMBANGUN DENGAN LANGGANAN
 • Pilih penetapan harga serantau gaya Apple Equalization, Netflix atau Spotify dan laraskan mana-mana wilayah.
 • Guna semua perubahan sekaligus. Aplikasi melangkau wilayah yang sudah mempunyai harga sasaran dan tidak membenarkan penggunaan pada tarikh yang sudah ada perubahan dijadualkan.
 
-Tiada akaun dengan kami — hanya Apple ID dan kunci API App Store Connect anda.
+Tiada akaun dengan kami - hanya Apple ID dan kunci API App Store Connect anda.
 
 PRIVASI
 
