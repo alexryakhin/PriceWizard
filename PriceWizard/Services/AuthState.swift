@@ -51,6 +51,7 @@ final class AuthState {
 
     func logout() {
         try? KeychainService.deleteCredentials()
+        AppIconService.clearCache()
         isAuthenticated = false
         api = nil
         jwtService = nil
