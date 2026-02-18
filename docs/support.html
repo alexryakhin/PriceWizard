@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PriceWizard Support — Get help with App Store Connect subscription pricing. API key setup, requirements, and contact.">
+  <title>Support — PriceWizard</title>
+  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="favicon/favicon.svg" alt="" class="logo-icon" width="28" height="28">
+        <span>PriceWizard</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#requirements">Requirements</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-title">Support</h1>
+        <p class="page-lead">Get help with PriceWizard</p>
+      </header>
+
+      <div class="prose">
+        <section class="prose-section">
+          <h2>Getting your API key</h2>
+          <p>PriceWizard uses the App Store Connect API. You need a key with <strong>App Manager</strong> or <strong>Admin</strong> access.</p>
+          <ol>
+            <li>Open <a href="https://appstoreconnect.apple.com" target="_blank" rel="noopener noreferrer">App Store Connect</a> → <strong>Users and Access</strong> → <strong>Integrations</strong> → <strong>App Store Connect API</strong>.</li>
+            <li>Create a key (or use an existing one).</li>
+            <li>Download the <strong>.p8</strong> file once—Apple won’t show it again.</li>
+            <li>Note the <strong>Key ID</strong> and <strong>Issuer ID</strong> on the same page.</li>
+          </ol>
+          <p>Enter these in PriceWizard when connecting. Your credentials stay in your Mac’s Keychain.</p>
+        </section>
+
+        <section class="prose-section">
+          <h2>Requirements</h2>
+          <ul>
+            <li><strong>macOS 15</strong> or later</li>
+            <li><strong>App Store Connect API key</strong> with Key ID, Issuer ID, and .p8 file</li>
+          </ul>
+        </section>
+
+        <section class="prose-section">
+          <h2>Common issues</h2>
+          <dl>
+            <dt>“Invalid API key” or connection fails</dt>
+            <dd>Check that your Key ID, Issuer ID, and .p8 content are correct. The .p8 file should include the full PEM block (including <code>-----BEGIN PRIVATE KEY-----</code> and <code>-----END PRIVATE KEY-----</code>). Ensure the key has not been revoked in App Store Connect.</dd>
+
+            <dt>“Access denied” or 403 errors</dt>
+            <dd>Your API key needs <strong>App Manager</strong> or <strong>Admin</strong> role. Users with only Developer or Marketing access cannot manage subscription prices.</dd>
+
+            <dt>Prices don’t apply</dt>
+            <dd>PriceWizard skips territories that already have the target price. It will not apply on a date that already has a scheduled price change. Check for conflicts in App Store Connect.</dd>
+          </dl>
+        </section>
+
+        <section class="prose-section">
+          <h2>Contact</h2>
+          <p>For questions, bugs, or feature requests, email <a href="mailto:bonney977@gmail.com">bonney977@gmail.com</a>.</p>
+        </section>
+      </div>
+
+      <p class="back-link"><a href="index.html">← Back to PriceWizard</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="copyright">© 2026 Alexander Riakhin. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="mailto:bonney977@gmail.com">Email</a>
+        <a href="https://buymeacoffee.com/xander1100001" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
