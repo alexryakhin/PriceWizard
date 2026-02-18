@@ -98,18 +98,22 @@ struct SubscriptionRow: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(subscription.attributes.name ?? subscription.attributes.productId ?? "Unknown")
                     .font(.headline)
-                HStack(spacing: 8) {
                 if let productId = subscription.attributes.productId {
                     Text(productId)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
-                if let period = subscription.attributes.subscriptionPeriod {
-                    Text(periodDisplay(period))
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-                }
+            }
+            Spacer(minLength: 8)
+            if let period = subscription.attributes.subscriptionPeriod {
+                Text(periodDisplay(period))
+                    .font(.caption)
+                    .fontWeight(.medium)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Color.secondary.opacity(0.15))
+                    .clipShape(Capsule())
             }
         }
         .padding(.vertical, 8)
