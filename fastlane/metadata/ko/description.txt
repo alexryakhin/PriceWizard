@@ -1,0 +1,16 @@
+Price Wizard로 한 화면에서 App Store 구독 가격을 모든 지역에 설정하세요. 175개국을 수동으로 업데이트할 필요가 없습니다.
+
+구독이 있는 개발자용
+
+• App Store Connect API 키(Key ID, Issuer ID, .p8 파일)로 연결하세요. 키는 Mac 키체인에만 저장되며 저희는 볼 수 없습니다.
+• 미국 기준 가격을 선택하면 전체 미리보기가 표시됩니다. 지역별 새 가격, 현지 통화 및 USD로 확인할 수 있습니다.
+• Apple Equalization, Netflix 스타일, Spotify 스타일 지역별 가격 중 선택하고 지역을 조정할 수 있습니다.
+• 모든 변경 사항을 한 번에 적용합니다. 이미 목표 가격인 지역은 건너뛰고, 이미 예정된 변경이 있는 날짜에는 적용할 수 없습니다.
+
+저희 서비스 계정은 필요 없습니다. Apple ID와 App Store Connect API 키만 있으면 됩니다.
+
+개인정보 보호
+
+귀하의 데이터를 수집하거나 수신하지 않습니다. 자격 증명은 Mac 키체인에만 저장됩니다. 앱은 Apple API와 USD 환산을 위한 공개 환율 서비스에만 연결됩니다.
+
+필요 사항: macOS 15 이상. App Manager(또는 Admin) 권한이 있는 App Store Connect API 키.

@@ -1,0 +1,40 @@
+# Fastlane configuration for PriceWizard – metadata management
+# Usage: bundle exec fastlane <lane>
+
+default_platform(:mac)
+
+platform :mac do
+  desc "Download current metadata from App Store Connect into fastlane/metadata"
+  lane :metadata_download do
+    # Use absolute path so deliver doesn't create fastlane/fastlane/metadata (it resolves -m relative to fastlane dir)
+    metadata_dir = File.expand_path("metadata", File.dirname(__FILE__))
+    sh("bundle exec fastlane deliver download_metadata -m #{metadata_dir} -j osx --force")
+  end
+
+  desc "Upload local metadata from fastlane/metadata to App Store Connect"
+  lane :metadata_upload do
+    deliver(
+      platform: "osx",
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      metadata_path: "./fastlane/metadata",
+      force: true
+    )
+  end
+
+  desc "Validate app metadata (precheck against App Store Connect)"
+  lane :metadata_check do
+    precheck
+  end
+
+  desc "Initialize metadata folder (downloads existing or creates structure)"
+  lane :metadata_init do
+    deliver(
+      platform: "osx",
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      metadata_path: "./fastlane/metadata",
+      run_precheck_before_submit: false
+    )
+  end
+end

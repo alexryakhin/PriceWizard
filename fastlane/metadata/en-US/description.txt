@@ -1,0 +1,16 @@
+Price Wizard sets your App Store subscription prices for every territory from one screen - no more updating 175 countries by hand.
+
+FOR DEVELOPERS WITH SUBSCRIPTIONS
+
+• Connect with your App Store Connect API key (Key ID, Issuer ID, .p8 file). Your key stays in your Mac’s Keychain; we never see it.
+• Pick a US base price and see a full preview: new price per territory, in local currency and USD.
+• Choose Apple Equalization, Netflix-style, or Spotify-style regional pricing and tweak any territory.
+• Apply all changes in one go. The app skips territories that already have the target price and won’t let you apply on a date that already has a scheduled change.
+
+No account with us—just your Apple ID and your App Store Connect API key.
+
+PRIVACY
+
+We don’t collect or receive your data. Credentials are stored only in your Mac’s Keychain. The app talks only to Apple’s API and to a public exchange-rate service for USD conversion.
+
+Requires: macOS 15 or later. An App Store Connect API key with App Manager (or Admin) access.

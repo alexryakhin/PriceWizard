@@ -32,6 +32,22 @@ No extra dependencies; the project uses only the macOS SDK.
 
 ---
 
+## Fastlane (metadata)
+
+For managing App Store metadata (name, description, keywords, etc.) from the repo:
+
+1. **Install:** `bundle install` (from project root).
+2. **Set Apple ID:** `export DELIVER_USERNAME=your@email.com` or edit `fastlane/Appfile` and set `apple_id`.
+3. **Lanes:**
+   - `bundle exec fastlane metadata_download` — pull current metadata from App Store Connect into `fastlane/metadata`.
+   - `bundle exec fastlane metadata_upload` — push `fastlane/metadata` to App Store Connect.
+   - `bundle exec fastlane metadata_check` — run precheck (validates metadata before submit).
+   - `bundle exec fastlane metadata_init` — initialize or refresh metadata folder from App Store Connect.
+
+Edit `fastlane/metadata/en-US/*.txt` and `fastlane/metadata/copyright.txt` as needed. Update `support_url.txt` with your real support URL before upload.
+
+---
+
 ## What it does
 
 - **Connect** with your App Store Connect API key.  

@@ -1,0 +1,16 @@
+Price Wizard 在一个界面内为所有地区设置 App Store 订阅价格，无需再手动更新 175 个国家/地区。
+
+面向提供订阅的开发者
+
+• 使用 App Store Connect API 密钥（Key ID、Issuer ID、.p8 文件）连接。密钥仅保存在您 Mac 的钥匙串中，我们无法查看。
+• 选择美国基准价格即可查看完整预览：各地区新价格、本地货币与美元显示。
+• 选择 Apple 均衡、Netflix 风格或 Spotify 风格的地区定价，并可单独调整任一地区。
+• 一键应用全部更改。应用会跳过已达目标价格的地区，且不允许在已有计划变更的日期应用。
+
+无需在我们处注册账户，仅需您的 Apple ID 和 App Store Connect API 密钥。
+
+隐私
+
+我们不会收集或接收您的数据。凭据仅存储在您 Mac 的钥匙串中。应用仅与 Apple API 及用于美元换算的公开汇率服务通信。
+
+要求：macOS 15 或更高版本。具有 App Manager（或 Admin）权限的 App Store Connect API 密钥。

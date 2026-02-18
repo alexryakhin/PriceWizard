@@ -1,0 +1,16 @@
+O Price Wizard define os preços de assinatura da App Store para todos os territórios em uma tela — sem atualizar 175 países manualmente.
+
+PARA DESENVOLVEDORES COM ASSINATURAS
+
+• Conecte com sua chave de API do App Store Connect (Key ID, Issuer ID, arquivo .p8). A chave fica no Cadeado do seu Mac; nós nunca a vemos.
+• Escolha um preço base em dólares e veja a pré-visualização completa: novo preço por território em moeda local e em USD.
+• Escolha preços regionais no estilo Apple Equalization, Netflix ou Spotify e ajuste qualquer território.
+• Aplique todas as alterações de uma vez. O app ignora territórios que já têm o preço alvo e não permite aplicar em uma data que já tenha alteração agendada.
+
+Nenhuma conta conosco — apenas seu Apple ID e sua chave de API do App Store Connect.
+
+PRIVACIDADE
+
+Não coletamos nem recebemos seus dados. As credenciais ficam apenas no Cadeado do seu Mac. O app se comunica só com a API da Apple e com um serviço público de câmbio para conversão em USD.
+
+Requisitos: macOS 15 ou posterior. Chave de API do App Store Connect com acesso App Manager (ou Admin).

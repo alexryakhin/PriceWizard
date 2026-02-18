@@ -1,0 +1,16 @@
+Price Wizard asettaa App Store -tilaushinnat kaikille alueille yhdeltä näytöltä — ei enää manuaalista päivittämistä 175 maahan.
+
+KEHITTÄJILLE, JOILLA ON TILAUKSIA
+
+• Yhdistä App Store Connect API -avaimella (Key ID, Issuer ID, .p8-tiedosto). Avain pysyy Macin Avaimenketjussa; emme näe sitä koskaan.
+• Valitse USA-perushinta ja näet täyden esikatselun: uusi hinta per alue paikallisessa valuutassa ja USD.
+• Valitse Apple Equalization-, Netflix- tai Spotify-tyylinen aluehintaus ja säädä mitä tahansa aluetta.
+• Toteuta kaikki muutokset kerralla. Sovellus ohittaa alueet, joilla on jo tavoitehinta, eikä salli sovellusta päivälle, jolla on jo ajoitettu muutos.
+
+Ei tiliä meillä — vain Apple ID ja App Store Connect API -avain.
+
+TIETOSUOJA
+
+Emme kerää tai vastaanota tietojasi. Kirjautumistiedot tallennetaan vain Macin Avaimenketjuun. Sovellus kommunikoi vain Applen API:n ja julkisen valuuttapalvelun kanssa USD-muunnokseen.
+
+Vaatimukset: macOS 15 tai uudempi. App Store Connect API -avain, jolla on App Manager- (tai Admin-)käyttöoikeus.

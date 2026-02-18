@@ -1,0 +1,1 @@
+Állítsa be az előfizetési árakat minden területre egyszerre. Egyszeri vásárlás — nincs előfizetés. Kapcsolódjon az App Store Connect API-kulccsal.

@@ -1,0 +1,16 @@
+Price Wizard ustawia ceny subskrypcji App Store dla wszystkich regionów z jednego ekranu — bez ręcznej aktualizacji 175 krajów.
+
+DLA DEWELOPERÓW Z SUBSKRYPCJAMI
+
+• Połącz się kluczem API App Store Connect (Key ID, Issuer ID, plik .p8). Klucz pozostaje w Pęku kluczy Maca; my go nie widzimy.
+• Wybierz cenę bazową w USA i zobacz pełny podgląd: nowa cena dla każdego regionu w walucie lokalnej i USD.
+• Wybierz ceny regionalne w stylu Apple Equalization, Netflix lub Spotify i dostosuj dowolny region.
+• Zastosuj wszystkie zmiany za jednym razem. Aplikacja pomija regiony z już docelową ceną i nie pozwala zastosować w dacie z zaplanowaną zmianą.
+
+Bez konta u nas — tylko Twój Apple ID i klucz API App Store Connect.
+
+PRYWATNOŚĆ
+
+Nie zbieramy ani nie otrzymujemy Twoich danych. Dane logowania są przechowywane tylko w Pęku kluczy Maca. Aplikacja łączy się wyłącznie z API Apple i publicznym serwisem kursów do przeliczenia na USD.
+
+Wymagania: macOS 15 lub nowszy. Klucz API App Store Connect z dostępem App Manager (lub Admin).

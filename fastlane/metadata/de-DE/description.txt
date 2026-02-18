@@ -1,0 +1,16 @@
+Price Wizard legt Ihre App-Store-Abopreise für alle Gebiete auf einen Schlag fest – kein manuelles Aktualisieren von 175 Ländern mehr.
+
+FÜR ENTWICKLER MIT ABOS
+
+• Verbindung mit Ihrem App Store Connect API-Schlüssel (Key ID, Issuer ID, .p8-Datei). Der Schlüssel bleibt in Ihrer Mac-Keychain; wir sehen ihn nie.
+• Wählen Sie einen US-Basispreis und sehen Sie die vollständige Vorschau: neuer Preis pro Gebiet in Landeswährung und USD.
+• Wählen Sie Apple-Equalization-, Netflix- oder Spotify-Stil für regionale Preise und passen Sie einzelne Gebiete an.
+• Alle Änderungen auf einmal anwenden. Die App überspringt Gebiete mit dem Zielpreis und verhindert Anwendung an Tagen mit bereits geplanter Änderung.
+
+Kein Konto bei uns – nur Ihre Apple-ID und Ihr App Store Connect API-Schlüssel.
+
+DATENSCHUTZ
+
+Wir erfassen oder empfangen keine Ihrer Daten. Zugangsdaten werden nur in Ihrer Mac-Keychain gespeichert. Die App spricht nur mit der Apple-API und einem öffentlichen Wechselkursdienst für die USD-Umrechnung.
+
+Voraussetzung: macOS 15 oder neuer. Ein App Store Connect API-Schlüssel mit App Manager- (oder Admin-)Zugang.

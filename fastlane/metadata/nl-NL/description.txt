@@ -1,0 +1,16 @@
+Price Wizard zet je App Store-abonnementsprijzen voor elk gebied in één scherm — geen handmatig bijwerken van 175 landen meer.
+
+VOOR ONTWIKKELAARS MET ABONNEMENTEN
+
+• Verbind met je App Store Connect API-sleutel (Key ID, Issuer ID, .p8-bestand). De sleutel blijft in de Sleutelhang van je Mac; wij zien hem nooit.
+• Kies een US-basisprijs en bekijk de volledige preview: nieuwe prijs per gebied in lokale valuta en USD.
+• Kies Apple Equalization-, Netflix- of Spotify-stijl voor regionale prijzen en pas elk gebied aan.
+• Pas alle wijzigingen in één keer toe. De app slaat gebieden over die al de doelpijs hebben en laat geen toepassing toe op een datum met een geplande wijziging.
+
+Geen account bij ons — alleen je Apple ID en je App Store Connect API-sleutel.
+
+PRIVACY
+
+We verzamelen of ontvangen je gegevens niet. Inloggegevens worden alleen in de Sleutelhang van je Mac opgeslagen. De app praat alleen met de API van Apple en een openbare wisselkoersservice voor USD-omrekening.
+
+Vereist: macOS 15 of nieuwer. Een App Store Connect API-sleutel met App Manager- (of Admin-)toegang.

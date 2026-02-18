@@ -1,0 +1,1 @@
+app store connect,abonelik,fiyat,bölgeler,uygulama içi satın alma,geliştirici,asc api,yerelleştirme

@@ -1,0 +1,1 @@
+app store connect,tilaus,hinnat,alueet,sovellusosto,kehittäjä,asc api,lokalisointi

@@ -1,0 +1,1 @@
+Tüm bölgelerin abonelik fiyatlarını tek seferde ayarlayın. Tek seferlik satın alma — abonelik yok. App Store Connect API anahtarınızla bağlanın.

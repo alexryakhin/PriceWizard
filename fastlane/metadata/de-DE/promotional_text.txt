@@ -1,0 +1,1 @@
+Abopreise für alle Gebiete auf einen Schlag festlegen. Einmalkauf – kein Abo. Verbinden Sie Ihren App Store Connect API-Schlüssel.

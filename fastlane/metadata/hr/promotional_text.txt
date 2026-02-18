@@ -1,0 +1,1 @@
+Postavite cijene pretplata za sva područja odjednom. Jednokratna kupnja — bez pretplate. Povežite se ključem API App Store Connecta.

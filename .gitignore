@@ -1,3 +1,4 @@
 *.xcbkptlist
 *.xcscheme
 Documentation
+fastlane/Appfile

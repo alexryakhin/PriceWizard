@@ -1,0 +1,1 @@
+app store connect,サブスク,価格,地域,アプリ内課金,開発者,asc api,ローカライズ

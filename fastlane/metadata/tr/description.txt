@@ -1,0 +1,16 @@
+Price Wizard, App Store abonelik fiyatlarınızı tek bir ekrandan tüm bölgeler için ayarlar — 175 ülkeyi elle güncellemeye gerek yok.
+
+ABONELİKLİ GELİŞTİRİCİLER İÇİN
+
+• App Store Connect API anahtarınızla (Key ID, Issuer ID, .p8 dosyası) bağlanın. Anahtar Mac’inizdeki Anahtar Zinciri’nde kalır; biz asla görmeyiz.
+• ABD baz fiyatı seçin, tam önizleme görün: bölge başına yeni fiyat, yerel para birimi ve USD.
+• Apple Equalization, Netflix tarzı veya Spotify tarzı bölgesel fiyatlandırma seçin ve istediğiniz bölgeyi ayarlayın.
+• Tüm değişiklikleri tek seferde uygulayın. Uygulama hedef fiyata ulaşmış bölgeleri atlar ve zaten planlanmış değişiklik olan bir tarihe uygulama yapmanıza izin vermez.
+
+Bizde hesap yok — sadece Apple ID’niz ve App Store Connect API anahtarınız.
+
+GİZLİLİK
+
+Verilerinizi toplamıyor veya almıyoruz. Kimlik bilgileri yalnızca Mac’inizin Anahtar Zinciri’nde saklanır. Uygulama yalnızca Apple API’si ve USD dönüşümü için genel döviz servisiyle iletişim kurar.
+
+Gereksinimler: macOS 15 veya üzeri. App Manager (veya Admin) erişimli App Store Connect API anahtarı.

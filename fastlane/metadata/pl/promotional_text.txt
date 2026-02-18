@@ -1,0 +1,1 @@
+Ustaw ceny subskrypcji dla wszystkich regionów za jednym razem. Jednorazowy zakup — bez subskrypcji. Połącz klucz API App Store Connect.

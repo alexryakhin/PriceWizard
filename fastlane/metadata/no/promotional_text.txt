@@ -1,0 +1,1 @@
+Sett abonnementspriser for alle territorier på én gang. Engangskjøp — ingen abonnement. Koble til App Store Connect API-nøkkelen din.

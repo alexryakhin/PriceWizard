@@ -1,0 +1,16 @@
+Price Wizard defineix els preus de subscripció de l'App Store per a tots els territoris des d'una sola pantalla — sense actualitzar 175 països a mà.
+
+PER A DESENVOLUPADORS AMB SUBSCRIPCIONS
+
+• Connecta amb la teva clau API d'App Store Connect (Key ID, Issuer ID, fitxer .p8). La clau es queda al Portaclaus del teu Mac; nosaltres no la veiem mai.
+• Tria un preu base en dòlars i obtén la vista prèvia completa: preu nou per territori en moneda local i USD.
+• Tria preus regionals tipus Apple Equalization, Netflix o Spotify i ajusta qualsevol territori.
+• Aplica tots els canvis d'una vegada. L'app omet els territoris que ja tenen el preu objectiu i no permet aplicar en una data que ja tingui un canvi programat.
+
+Sense compte amb nosaltres: només el teu Apple ID i la teva clau API d'App Store Connect.
+
+PRIVACITAT
+
+No recollim ni rebem les teves dades. Les credencials es guarden només al Portaclaus del teu Mac. L'app només es comunica amb l'API d'Apple i amb un servei públic de tipus de canvi per a la conversió a USD.
+
+Requisits: macOS 15 o posterior. Una clau API d'App Store Connect amb accés App Manager (o Admin).

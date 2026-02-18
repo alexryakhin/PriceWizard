@@ -1,0 +1,16 @@
+Price Wizard đặt giá gói đăng ký App Store cho mọi lãnh thổ từ một màn hình — không cần cập nhật thủ công 175 quốc gia.
+
+CHO NHÀ PHÁT TRIỂN CÓ GÓI ĐĂNG KÝ
+
+• Kết nối bằng khóa API App Store Connect (Key ID, Issuer ID, file .p8). Khóa nằm trong Keychain trên Mac của bạn; chúng tôi không bao giờ thấy.
+• Chọn giá gốc USD và xem bản xem trước đầy đủ: giá mới theo từng lãnh thổ bằng tiền tệ địa phương và USD.
+• Chọn định giá theo vùng kiểu Apple Equalization, Netflix hoặc Spotify và chỉnh từng lãnh thổ.
+• Áp dụng mọi thay đổi một lần. Ứng dụng bỏ qua các lãnh thổ đã đạt giá đích và không cho áp dụng vào ngày đã có thay đổi theo lịch.
+
+Không cần tài khoản với chúng tôi — chỉ cần Apple ID và khóa API App Store Connect của bạn.
+
+QUYỀN RIÊNG TƯ
+
+Chúng tôi không thu thập hay nhận dữ liệu của bạn. Thông tin đăng nhập chỉ lưu trong Keychain trên Mac. Ứng dụng chỉ giao tiếp với API của Apple và dịch vụ tỷ giá công khai để quy đổi USD.
+
+Yêu cầu: macOS 15 trở lên. Khóa API App Store Connect có quyền App Manager (hoặc Admin).

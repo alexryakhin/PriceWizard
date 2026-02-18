@@ -1,0 +1,1 @@
+app store connect,구독,가격,지역,인앱구매,개발자,asc api,현지화

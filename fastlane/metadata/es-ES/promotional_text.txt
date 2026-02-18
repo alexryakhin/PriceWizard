@@ -1,0 +1,1 @@
+Configura los precios de suscripción para todos los territorios de una vez. Compra única, sin suscripción. Conecta tu clave API de App Store Connect.

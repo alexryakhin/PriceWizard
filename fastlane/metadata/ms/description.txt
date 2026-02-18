@@ -1,0 +1,16 @@
+Price Wizard menetapkan harga langganan App Store untuk semua wilayah dari satu skrin — tidak perlu kemas kini 175 negara secara manual.
+
+UNTUK PEMBANGUN DENGAN LANGGANAN
+
+• Sambung dengan kunci API App Store Connect anda (Key ID, Issuer ID, fail .p8). Kunci kekal dalam Keychain Mac anda; kami tidak pernah melihatnya.
+• Pilih harga asas AS dan lihat pratonton penuh: harga baharu setiap wilayah dalam mata wang tempatan dan USD.
+• Pilih penetapan harga serantau gaya Apple Equalization, Netflix atau Spotify dan laraskan mana-mana wilayah.
+• Guna semua perubahan sekaligus. Aplikasi melangkau wilayah yang sudah mempunyai harga sasaran dan tidak membenarkan penggunaan pada tarikh yang sudah ada perubahan dijadualkan.
+
+Tiada akaun dengan kami — hanya Apple ID dan kunci API App Store Connect anda.
+
+PRIVASI
+
+Kami tidak mengumpul atau menerima data anda. Kelayakan disimpan hanya dalam Keychain Mac anda. Aplikasi hanya berkomunikasi dengan API Apple dan perkhidmatan kadar pertukaran awam untuk penukaran USD.
+
+Memerlukan: macOS 15 atau lebih baru. Kunci API App Store Connect dengan akses App Manager (atau Admin).

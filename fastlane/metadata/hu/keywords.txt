@@ -1,0 +1,1 @@
+app store connect,előfizetés,árak,területek,alkalmazáson belüli vásárlás,fejlesztő,asc api,honosítás

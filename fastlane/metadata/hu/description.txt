@@ -1,0 +1,16 @@
+A Price Wizard egy képernyőről állítja be az App Store előfizetési árait minden területre — nincs többé kézi frissítés 175 országban.
+
+ELŐFIZETÉSSEL RENDELKEZŐ FEJLESZTŐKNEK
+
+• Kapcsolódjon az App Store Connect API-kulccsal (Key ID, Issuer ID, .p8 fájl). A kulcs a Mac Kulcsláncában marad; mi soha nem látjuk.
+• Válasszon USA alapárat, és tekintse meg a teljes előnézetet: új ár területenként helyi pénznemben és USD-ben.
+• Válassza az Apple Equalization, Netflix vagy Spotify stílusú regionális árazást, és igazítson bármely területet.
+• Alkalmazza az összes módosítást egyszerre. Az alkalmazás kihagyja a már célárat elért területeket, és nem engedélyezi az alkalmazást olyan dátumban, amelyen már van ütemezett változás.
+
+Nincs fiók nálunk — csak az Apple ID és az App Store Connect API-kulcs.
+
+ADATVÉDELEM
+
+Nem gyűjtünk és nem fogadunk adatokat. A hitelesítő adatok csak a Mac Kulcsláncában tárolódnak. Az alkalmazás csak az Apple API-val és egy nyilvános árfolyamszolgáltatással kommunikál USD átváltáshoz.
+
+Követelmény: macOS 15 vagy újabb. App Store Connect API-kulcs App Manager (vagy Admin) hozzáféréssel.

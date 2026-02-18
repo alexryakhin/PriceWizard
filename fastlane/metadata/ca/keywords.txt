@@ -1,0 +1,1 @@
+app store connect,subscripció,preus,territoris,compra dins de l'app,desenvolupador,asc api

@@ -1,0 +1,16 @@
+Price Wizard nastaví ceny předplatného App Store pro všechna území z jedné obrazovky — žádná ruční aktualizace 175 zemí.
+
+PRO VÝVOJÁŘE S PŘEDPLATNÝM
+
+• Připojte se klíčem API App Store Connect (Key ID, Issuer ID, soubor .p8). Klíč zůstane v Keychain vašeho Macu; my ho nikdy neuvidíme.
+• Zvolte základní cenu v USA a uvidíte celý náhled: nová cena za území v místní měně a USD.
+• Zvolte regionální ceny ve stylu Apple Equalization, Netflix nebo Spotify a upravte libovolné území.
+• Aplikujte všechny změny najednou. Aplikace přeskočí území, která již mají cílovou cenu, a nedovolí aplikaci v datu s již naplánovanou změnou.
+
+Žádný účet u nás — jen vaše Apple ID a klíč API App Store Connect.
+
+SOUKROMÍ
+
+Vaše data nezhromažďujeme ani nepřijímáme. Přihlašovací údaje se ukládají pouze do Keychain vašeho Macu. Aplikace komunikuje pouze s API Apple a veřejnou službou směnných kurzů pro převod na USD.
+
+Požadavky: macOS 15 nebo novější. Klíč API App Store Connect s přístupem App Manager (nebo Admin).

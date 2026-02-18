@@ -1,0 +1,1 @@
+app store connect,subscription,pricing,territories,in-app purchase,developer,asc api,localization

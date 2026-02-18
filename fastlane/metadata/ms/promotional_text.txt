@@ -1,0 +1,1 @@
+Tetapkan harga langganan untuk semua wilayah sekaligus. Pembelian sekali — tanpa langganan. Sambungkan kunci API App Store Connect anda.

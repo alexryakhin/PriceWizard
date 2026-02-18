@@ -1,0 +1,16 @@
+Price Wizard setează prețurile abonamentelor App Store pentru toate teritoriile dintr-un singur ecran — fără actualizare manuală a 175 de țări.
+
+PENTRU DEZVOLTATORI CU ABONAMENTE
+
+• Conectați-vă cu cheia API App Store Connect (Key ID, Issuer ID, fișier .p8). Cheia rămâne în Lantul de chei Mac; noi nu o vedem niciodată.
+• Alegeți un preț de bază USD și vedeți previzualizarea completă: preț nou per teritoriu în monedă locală și USD.
+• Alegeți prețuri regionale în stil Apple Equalization, Netflix sau Spotify și ajustați orice teritoriu.
+• Aplicați toate modificările dintr-o dată. Aplicația omite teritoriile care au deja prețul țintă și nu permite aplicarea într-o dată cu o modificare deja programată.
+
+Fără cont la noi — doar Apple ID și cheia API App Store Connect.
+
+CONFIDENȚIALITATE
+
+Nu colectăm și nu primim datele dvs. Credențialele sunt stocate doar în Lantul de chei Mac. Aplicația comunică doar cu API-ul Apple și cu un serviciu public de curs valutar pentru conversia în USD.
+
+Necesită: macOS 15 sau mai nou. Cheie API App Store Connect cu acces App Manager (sau Admin).

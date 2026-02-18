@@ -1,0 +1,16 @@
+Price Wizard sätter dina App Store-prenumerationspriser för alla territorier från en skärm — inget manuellt uppdaterande av 175 länder.
+
+FÖR UTVECKLARE MED PRENUMERATIONER
+
+• Anslut med din App Store Connect API-nyckel (Key ID, Issuer ID, .p8-fil). Nyckeln stannar i din Macs Nyckelhantere; vi ser den aldrig.
+• Välj ett US-baspris och se full förhandsgranskning: nytt pris per territorium i lokal valuta och USD.
+• Välj Apple Equalization-, Netflix- eller Spotify-stil för regional prissättning och justera valfritt territorium.
+• Tillämpa alla ändringar på en gång. Appen hoppar över territorier som redan har målpriset och tillåter inte tillämpning på ett datum med redan schemalagd ändring.
+
+Inget konto hos oss — bara ditt Apple ID och din App Store Connect API-nyckel.
+
+INTEGRITET
+
+Vi samlar inte in eller tar emot dina data. Uppgifter lagras bara i din Macs Nyckelhantere. Appen pratar bara med Apples API och en offentlig växelkurstjänst för USD-konvertering.
+
+Krävs: macOS 15 eller senare. App Store Connect API-nyckel med App Manager- (eller Admin-)åtkomst.

@@ -1,0 +1,1 @@
+Sätt prenumerationspriser för alla territorier på en gång. Engångsköp — ingen prenumeration. Anslut din App Store Connect API-nyckel.

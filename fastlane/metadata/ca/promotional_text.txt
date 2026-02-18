@@ -1,0 +1,1 @@
+Defineix els preus de subscripció per a tots els territoris d'una vegada. Compra única, sense subscripció. Connecta la teva clau API d'App Store Connect.
