@@ -1,1 +1,1 @@
-Defina os preços de assinatura para todos os territórios de uma vez. Compra única — sem assinatura. Conecte sua chave de API do App Store Connect.
+Defina os preços de assinatura para todos os territórios de uma vez. Totalmente grátis. Conecte sua chave de API do App Store Connect.

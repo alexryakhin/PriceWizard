@@ -1,6 +1,6 @@
 # PriceWizard
 
-A Mac app to set **App Store subscription prices** for all territories from one screen—no more updating 175 countries by hand in App Store Connect.
+A **free** Mac app to set **App Store subscription prices** for all territories from one screen—no more updating 175 countries by hand in App Store Connect.
 
 ---
 

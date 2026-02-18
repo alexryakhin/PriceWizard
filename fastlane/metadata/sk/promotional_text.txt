@@ -1,1 +1,1 @@
-Nastavte ceny predplatného pre všetky územia naraz. Jednorazový nákup — bez predplatného. Pripojte kľúč API App Store Connect.
+Nastavte ceny predplatného pre všetky územia naraz. Úplne zadarmo. Pripojte kľúč API App Store Connect.

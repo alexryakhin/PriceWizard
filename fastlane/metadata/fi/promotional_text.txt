@@ -1,1 +1,1 @@
-Aseta tilaushinnat kaikille alueille kerralla. Kertaostos — ei tilausta. Yhdistä App Store Connect API -avaimella.
+Aseta tilaushinnat kaikille alueille kerralla. Täysin ilmainen. Yhdistä App Store Connect API -avaimella.

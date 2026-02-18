@@ -1,1 +1,1 @@
-全地域のサブスク価格を一括設定。買い切りでサブスク不要。App Store Connect APIキーで接続。
+全地域のサブスク価格を一括設定。完全無料。App Store Connect APIキーで接続。

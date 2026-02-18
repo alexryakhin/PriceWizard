@@ -1,1 +1,1 @@
-一次設定所有地區的訂閱價格。一次購買，無需訂閱。使用 App Store Connect API 金鑰連線。
+一次設定所有地區的訂閱價格。完全免費。使用 App Store Connect API 金鑰連線。

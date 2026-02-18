@@ -1,1 +1,1 @@
-Imposta i prezzi degli abbonamenti per tutti i territori in un colpo solo. Acquisto una tantum, senza abbonamento. Connetti la tua chiave API App Store Connect.
+Imposta i prezzi degli abbonamenti per tutti i territori in un colpo solo. Completamente gratuito. Connetti la tua chiave API App Store Connect.

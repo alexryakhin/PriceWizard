@@ -1,1 +1,1 @@
-Atur harga langganan untuk semua wilayah sekaligus. Pembelian sekali — tanpa langganan. Hubungkan kunci API App Store Connect.
+Atur harga langganan untuk semua wilayah sekaligus. Gratis sepenuhnya. Hubungkan kunci API App Store Connect Anda.

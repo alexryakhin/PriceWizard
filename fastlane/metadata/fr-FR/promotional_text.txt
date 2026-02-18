@@ -1,1 +1,1 @@
-Définissez les prix d'abonnement pour tous les territoires en une fois. Achat unique — pas d'abonnement. Connectez votre clé API App Store Connect.
+Définissez les prix d'abonnement pour tous les territoires en une fois. Entièrement gratuit. Connectez votre clé API App Store Connect.

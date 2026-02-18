@@ -1,1 +1,1 @@
-Setați prețurile abonamentelor pentru toate teritoriile dintr-o dată. Achiziție unică — fără abonament. Conectați-vă cu cheia API App Store Connect.
+Setați prețurile abonamentelor pentru toate teritoriile dintr-o dată. Complet gratuit. Conectați-vă cu cheia API App Store Connect.

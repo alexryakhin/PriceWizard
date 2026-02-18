@@ -1,1 +1,1 @@
-一键设置所有地区的订阅价格。一次购买，无需订阅。使用 App Store Connect API 密钥连接。
+一键设置所有地区的订阅价格。完全免费。使用 App Store Connect API 密钥连接。
