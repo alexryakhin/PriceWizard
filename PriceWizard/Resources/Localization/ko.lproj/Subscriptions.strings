@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "구독";
+"selectApp" = "앱 선택";
+"selectAppDescription" = "사이드바에서 앱을 선택하면 구독 목록이 표시됩니다.";
+"loadingSubscriptions" = "구독 로딩 중…";
+"error" = "오류";
+"noSubscriptions" = "구독 없음";
+"noSubscriptionsDescription" = "이 앱에는 인앱 구독이 없습니다.";
+"unknown" = "알 수 없음";
+"weekly" = "매주";
+"monthly" = "매월";
+"twoMonths" = "2개월";
+"threeMonths" = "3개월";
+"sixMonths" = "6개월";
+"yearly" = "매년";

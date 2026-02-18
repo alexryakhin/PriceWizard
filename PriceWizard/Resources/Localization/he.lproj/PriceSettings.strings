@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "בחר מנוי";
+"selectSubscriptionDescription" = "בחר מנוי מהרשימה כדי להגדיר את המחירים.";
+"basePrice" = "מחיר בסיס";
+"loadingPricePoints" = "טוען מחירים…";
+"noPricePointsForSubscription" = "אין מחירים זמינים למנוי זה.";
+"price" = "מחיר";
+"select" = "בחר…";
+"indexMode" = "מצב אינדקס";
+"mode" = "מצב";
+"preview" = "תצוגה מקדימה";
+"territory" = "אזור";
+"currency" = "מטבע";
+"currentPrice" = "מחיר נוכחי";
+"newPrice" = "מחיר חדש";
+"newPriceUSD" = "מחיר חדש (USD)";
+"priceChangeOptions" = "אפשרויות שינוי מחיר";
+"preserveCurrentPrice" = "שמור מחיר נוכחי למנויים קיימים";
+"startDate" = "תאריך התחלה";
+"nextScheduledChange" = "שינוי מתוכנן הבא: %@";
+"noFutureScheduledChanges" = "אין שינויים מתוכננים";
+"startDateConflict" = "התאריך הזה כבר בשימוש בשינוי מחיר מתוכנן; בחר תאריך אחר.";
+"applyToAppStoreConnect" = "החל ב־App Store Connect";
+"done" = "סיום";
+"selectPriceFor" = "בחר מחיר עבור %@";
+"loadingPricePointsProgress" = "טוען מחירים…";
+"noPricePointsAvailable" = "אין מחירים זמינים";
+"priceCurrency" = "מחיר (%@)";
+"loadingPriceTiers" = "טוען דרגות מחיר…";
+"tierProgress" = "%@ מתוך %@";
+"error" = "שגיאה";
+"ok" = "אישור";

@@ -21,12 +21,12 @@ struct PriceWizardApp: App {
                 Button {
                     openWindow(id: AboutView.windowId)
                 } label: {
-                    Text("About Price Wizard")
+                    Text(Loc.ContentView.aboutTooltip)
                 }
             }
         }
 
-        Window("About Price Wizard", id: AboutView.windowId) {
+        Window(Loc.ContentView.aboutTooltip, id: AboutView.windowId) {
             AboutView()
         }
         .defaultSize(width: 400, height: 400)

@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "सब्सक्रिप्शन";
+"selectApp" = "ऐप चुनें";
+"selectAppDescription" = "साइडबार से ऐप चुनकर उसके सब्सक्रिप्शन देखें।";
+"loadingSubscriptions" = "सब्सक्रिप्शन लोड हो रहे हैं…";
+"error" = "त्रुटि";
+"noSubscriptions" = "कोई सब्सक्रिप्शन नहीं";
+"noSubscriptionsDescription" = "इस ऐप में इन-ऐप सब्सक्रिप्शन नहीं हैं।";
+"unknown" = "अज्ञात";
+"weekly" = "साप्ताहिक";
+"monthly" = "मासिक";
+"twoMonths" = "2 महीने";
+"threeMonths" = "3 महीने";
+"sixMonths" = "6 महीने";
+"yearly" = "वार्षिक";

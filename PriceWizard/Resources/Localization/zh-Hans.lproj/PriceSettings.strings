@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "选择订阅";
+"selectSubscriptionDescription" = "从列表中选择订阅以配置其价格。";
+"basePrice" = "基础价格";
+"loadingPricePoints" = "正在加载价格…";
+"noPricePointsForSubscription" = "此订阅暂无可用价格。";
+"price" = "价格";
+"select" = "选择…";
+"indexMode" = "指数模式";
+"mode" = "模式";
+"preview" = "预览";
+"territory" = "地区";
+"currency" = "货币";
+"currentPrice" = "当前价格";
+"newPrice" = "新价格";
+"newPriceUSD" = "新价格 (USD)";
+"priceChangeOptions" = "价格变更选项";
+"preserveCurrentPrice" = "为现有订阅者保留当前价格";
+"startDate" = "开始日期";
+"nextScheduledChange" = "下次计划变更：%@";
+"noFutureScheduledChanges" = "暂无计划变更";
+"startDateConflict" = "该日期已被计划价格变更使用，请选择其他日期。";
+"applyToAppStoreConnect" = "应用到 App Store Connect";
+"done" = "完成";
+"selectPriceFor" = "选择 %@ 的价格";
+"loadingPricePointsProgress" = "正在加载价格…";
+"noPricePointsAvailable" = "暂无可用价格";
+"priceCurrency" = "价格（%@）";
+"loadingPriceTiers" = "正在加载价格档位…";
+"tierProgress" = "%@ / %@";
+"error" = "错误";
+"ok" = "好";

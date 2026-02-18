@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "Alkalmazások";
+"loading" = "Betöltés";
+"loadingDescription" = "Alkalmazásaid betöltése…";
+"error" = "Hiba";

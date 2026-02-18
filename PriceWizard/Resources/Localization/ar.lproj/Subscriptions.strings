@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "الاشتراكات";
+"selectApp" = "اختر تطبيقاً";
+"selectAppDescription" = "اختر تطبيقاً من الشريط الجانبي لعرض اشتراكاته.";
+"loadingSubscriptions" = "جاري تحميل الاشتراكات…";
+"error" = "خطأ";
+"noSubscriptions" = "لا توجد اشتراكات";
+"noSubscriptionsDescription" = "هذا التطبيق لا يحتوي على اشتراكات داخل التطبيق.";
+"unknown" = "غير معروف";
+"weekly" = "أسبوعي";
+"monthly" = "شهري";
+"twoMonths" = "شهران";
+"threeMonths" = "3 أشهر";
+"sixMonths" = "6 أشهر";
+"yearly" = "سنوي";

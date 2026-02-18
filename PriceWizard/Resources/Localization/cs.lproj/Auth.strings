@@ -1,0 +1,8 @@
+/* AuthSetupView */
+
+"title" = "API App Store Connect";
+"instructions" = "Zadejte údaje o klíči API z App Store Connect > Uživatelé a přístup > Integrace.";
+"keyIdPlaceholder" = "XXXXXXXXXX";
+"issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+"selectP8" = "Vybrat AuthKey_XXXXXXXX.p8";
+"connect" = "Připojit";

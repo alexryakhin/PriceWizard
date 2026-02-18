@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Odaberi pretplatu";
+"selectSubscriptionDescription" = "Odaberi pretplatu s popisa za postavljanje cijena.";
+"basePrice" = "Osnovna cijena";
+"loadingPricePoints" = "Učitavanje cijena…";
+"noPricePointsForSubscription" = "Nema dostupnih cijena za ovu pretplatu.";
+"price" = "Cijena";
+"select" = "Odaberi…";
+"indexMode" = "Način indeksa";
+"mode" = "Način";
+"preview" = "Pregled";
+"territory" = "Područje";
+"currency" = "Valuta";
+"currentPrice" = "Trenutna cijena";
+"newPrice" = "Nova cijena";
+"newPriceUSD" = "Nova cijena (USD)";
+"priceChangeOptions" = "Opcije promjene cijene";
+"preserveCurrentPrice" = "Zadrži trenutnu cijenu za postojeće pretplatnike";
+"startDate" = "Datum početka";
+"nextScheduledChange" = "Sljedeća planirana promjena: %@";
+"noFutureScheduledChanges" = "Nema planiranih promjena";
+"startDateConflict" = "Ovaj datum već koristi planirana promjena cijene; odaberi drugi.";
+"applyToAppStoreConnect" = "Primijeni u App Store Connectu";
+"done" = "Gotovo";
+"selectPriceFor" = "Odaberi cijenu za %@";
+"loadingPricePointsProgress" = "Učitavanje cijena…";
+"noPricePointsAvailable" = "Nema dostupnih cijena";
+"priceCurrency" = "Cijena (%@)";
+"loadingPriceTiers" = "Učitavanje razina cijena…";
+"tierProgress" = "%@ od %@";
+"error" = "Greška";
+"ok" = "OK";

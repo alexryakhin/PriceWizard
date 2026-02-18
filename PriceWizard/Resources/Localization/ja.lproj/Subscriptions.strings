@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "サブスクリプション";
+"selectApp" = "アプリを選択";
+"selectAppDescription" = "サイドバーでアプリを選ぶとサブスクリプションが表示されます。";
+"loadingSubscriptions" = "サブスクリプションを読み込み中…";
+"error" = "エラー";
+"noSubscriptions" = "サブスクリプションなし";
+"noSubscriptionsDescription" = "このアプリにはアプリ内サブスクリプションがありません。";
+"unknown" = "不明";
+"weekly" = "毎週";
+"monthly" = "毎月";
+"twoMonths" = "2か月";
+"threeMonths" = "3か月";
+"sixMonths" = "6か月";
+"yearly" = "毎年";

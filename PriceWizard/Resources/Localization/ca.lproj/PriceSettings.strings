@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Selecciona una subscripció";
+"selectSubscriptionDescription" = "Tria una subscripció de la llista per configurar els preus.";
+"basePrice" = "Preu base";
+"loadingPricePoints" = "Carregant preus…";
+"noPricePointsForSubscription" = "No hi ha preus disponibles per a aquesta subscripció.";
+"price" = "Preu";
+"select" = "Selecciona…";
+"indexMode" = "Mode d’índex";
+"mode" = "Mode";
+"preview" = "Vista prèvia";
+"territory" = "Territori";
+"currency" = "Moneda";
+"currentPrice" = "Preu actual";
+"newPrice" = "Preu nou";
+"newPriceUSD" = "Preu nou (USD)";
+"priceChangeOptions" = "Opcions de canvi de preu";
+"preserveCurrentPrice" = "Mantén el preu actual per als subscriptors existents";
+"startDate" = "Data d’inici";
+"nextScheduledChange" = "Proper canvi programat: %@";
+"noFutureScheduledChanges" = "Cap canvi programat";
+"startDateConflict" = "Aquesta data ja s’usa en un canvi de preu programat; tria’n una altra.";
+"applyToAppStoreConnect" = "Aplicar a App Store Connect";
+"done" = "Fet";
+"selectPriceFor" = "Selecciona preu per a %@";
+"loadingPricePointsProgress" = "Carregant preus…";
+"noPricePointsAvailable" = "Cap preu disponible";
+"priceCurrency" = "Preu (%@)";
+"loadingPriceTiers" = "Carregant nivells de preu…";
+"tierProgress" = "%@ de %@";
+"error" = "Error";
+"ok" = "OK";

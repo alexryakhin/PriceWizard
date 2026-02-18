@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Επιλέξτε συνδρομή";
+"selectSubscriptionDescription" = "Επιλέξτε συνδρομή από τη λίστα για ρύθμιση τιμών.";
+"basePrice" = "Βασική τιμή";
+"loadingPricePoints" = "Φόρτωση τιμών…";
+"noPricePointsForSubscription" = "Δεν υπάρχουν διαθέσιμες τιμές για αυτή τη συνδρομή.";
+"price" = "Τιμή";
+"select" = "Επιλογή…";
+"indexMode" = "Λειτουργία ευρετηρίου";
+"mode" = "Λειτουργία";
+"preview" = "Προεπισκόπηση";
+"territory" = "Περιοχή";
+"currency" = "Νόμισμα";
+"currentPrice" = "Τρέχουσα τιμή";
+"newPrice" = "Νέα τιμή";
+"newPriceUSD" = "Νέα τιμή (USD)";
+"priceChangeOptions" = "Επιλογές αλλαγής τιμής";
+"preserveCurrentPrice" = "Διατήρηση τρέχουσας τιμής για υπάρχοντες συνδρομητές";
+"startDate" = "Ημερομηνία έναρξης";
+"nextScheduledChange" = "Επόμενη προγραμματισμένη αλλαγή: %@";
+"noFutureScheduledChanges" = "Δεν υπάρχουν προγραμματισμένες αλλαγές";
+"startDateConflict" = "Αυτή η ημερομηνία χρησιμοποιείται ήδη από αλλαγή τιμής· επιλέξτε άλλη.";
+"applyToAppStoreConnect" = "Εφαρμογή στο App Store Connect";
+"done" = "Τέλος";
+"selectPriceFor" = "Επιλέξτε τιμή για %@";
+"loadingPricePointsProgress" = "Φόρτωση τιμών…";
+"noPricePointsAvailable" = "Δεν υπάρχουν διαθέσιμες τιμές";
+"priceCurrency" = "Τιμή (%@)";
+"loadingPriceTiers" = "Φόρτωση βαθμίδων τιμών…";
+"tierProgress" = "%@ από %@";
+"error" = "Σφάλμα";
+"ok" = "OK";

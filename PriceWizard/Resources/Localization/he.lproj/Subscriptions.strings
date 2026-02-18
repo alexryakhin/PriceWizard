@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "מנויים";
+"selectApp" = "בחר אפליקציה";
+"selectAppDescription" = "בחר אפליקציה מהסרגל הצדדי כדי לראות את המנויים שלה.";
+"loadingSubscriptions" = "טוען מנויים…";
+"error" = "שגיאה";
+"noSubscriptions" = "אין מנויים";
+"noSubscriptionsDescription" = "לאפליקציה הזו אין מנויים בתוך האפליקציה.";
+"unknown" = "לא ידוע";
+"weekly" = "שבועי";
+"monthly" = "חודשי";
+"twoMonths" = "חודשיים";
+"threeMonths" = "3 חודשים";
+"sixMonths" = "6 חודשים";
+"yearly" = "שנתי";

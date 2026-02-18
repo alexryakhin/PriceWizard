@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Subscriptions";
+"selectApp" = "Select an App";
+"selectAppDescription" = "Choose an app from the sidebar to see its subscriptions.";
+"loadingSubscriptions" = "Loading subscriptions…";
+"error" = "Error";
+"noSubscriptions" = "No Subscriptions";
+"noSubscriptionsDescription" = "This app has no in-app subscriptions.";
+"unknown" = "Unknown";
+"weekly" = "Weekly";
+"monthly" = "Monthly";
+"twoMonths" = "2 months";
+"threeMonths" = "3 months";
+"sixMonths" = "6 months";
+"yearly" = "Yearly";

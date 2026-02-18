@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "앱";
+"loading" = "로딩 중";
+"loadingDescription" = "앱을 가져오는 중…";
+"error" = "오류";

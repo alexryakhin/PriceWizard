@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "เลือกการสมัครสมาชิก";
+"selectSubscriptionDescription" = "เลือกการสมัครสมาชิกจากรายการเพื่อกำหนดราคา";
+"basePrice" = "ราคาพื้นฐาน";
+"loadingPricePoints" = "กำลังโหลดราคา…";
+"noPricePointsForSubscription" = "ไม่มีราคาสำหรับการสมัครสมาชิกนี้";
+"price" = "ราคา";
+"select" = "เลือก…";
+"indexMode" = "โหมดดัชนี";
+"mode" = "โหมด";
+"preview" = "แสดงตัวอย่าง";
+"territory" = "ภูมิภาค";
+"currency" = "สกุลเงิน";
+"currentPrice" = "ราคาปัจจุบัน";
+"newPrice" = "ราคาใหม่";
+"newPriceUSD" = "ราคาใหม่ (USD)";
+"priceChangeOptions" = "ตัวเลือกการเปลี่ยนราคา";
+"preserveCurrentPrice" = "รักษาราคาปัจจุบันสำหรับสมาชิกที่มีอยู่";
+"startDate" = "วันเริ่มต้น";
+"nextScheduledChange" = "การเปลี่ยนแปลงที่กำหนดครั้งถัดไป: %@";
+"noFutureScheduledChanges" = "ไม่มีการเปลี่ยนแปลงที่กำหนด";
+"startDateConflict" = "วันนี้ถูกใช้โดยการเปลี่ยนราคาที่กำหนดแล้ว เลือกวันอื่น";
+"applyToAppStoreConnect" = "นำไปใช้ใน App Store Connect";
+"done" = "เสร็จสิ้น";
+"selectPriceFor" = "เลือกราคาสำหรับ %@";
+"loadingPricePointsProgress" = "กำลังโหลดราคา…";
+"noPricePointsAvailable" = "ไม่มีราคา";
+"priceCurrency" = "ราคา (%@)";
+"loadingPriceTiers" = "กำลังโหลดระดับราคา…";
+"tierProgress" = "%@ จาก %@";
+"error" = "ข้อผิดพลาด";
+"ok" = "ตกลง";

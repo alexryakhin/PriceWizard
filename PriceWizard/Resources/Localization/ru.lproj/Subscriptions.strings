@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Подписки";
+"selectApp" = "Выберите приложение";
+"selectAppDescription" = "Выберите приложение на боковой панели, чтобы увидеть подписки.";
+"loadingSubscriptions" = "Загрузка подписок…";
+"error" = "Ошибка";
+"noSubscriptions" = "Нет подписок";
+"noSubscriptionsDescription" = "В этом приложении нет встроенных подписок.";
+"unknown" = "Неизвестно";
+"weekly" = "Еженедельно";
+"monthly" = "Ежемесячно";
+"twoMonths" = "2 месяца";
+"threeMonths" = "3 месяца";
+"sixMonths" = "6 месяцев";
+"yearly" = "Ежегодно";

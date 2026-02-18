@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Vyberte předplatné";
+"selectSubscriptionDescription" = "Vyberte předplatné ze seznamu pro nastavení cen.";
+"basePrice" = "Základní cena";
+"loadingPricePoints" = "Načítání cen…";
+"noPricePointsForSubscription" = "Pro toto předplatné nejsou k dispozici žádné ceny.";
+"price" = "Cena";
+"select" = "Vybrat…";
+"indexMode" = "Režim indexu";
+"mode" = "Režim";
+"preview" = "Náhled";
+"territory" = "Oblast";
+"currency" = "Měna";
+"currentPrice" = "Aktuální cena";
+"newPrice" = "Nová cena";
+"newPriceUSD" = "Nová cena (USD)";
+"priceChangeOptions" = "Možnosti změny ceny";
+"preserveCurrentPrice" = "Zachovat aktuální cenu pro stávající předplatitele";
+"startDate" = "Datum zahájení";
+"nextScheduledChange" = "Další plánovaná změna: %@";
+"noFutureScheduledChanges" = "Žádné plánované změny";
+"startDateConflict" = "Toto datum již používá plánovaná změna ceny; vyberte jiné.";
+"applyToAppStoreConnect" = "Použít v App Store Connect";
+"done" = "Hotovo";
+"selectPriceFor" = "Vybrat cenu pro %@";
+"loadingPricePointsProgress" = "Načítání cen…";
+"noPricePointsAvailable" = "Žádné ceny k dispozici";
+"priceCurrency" = "Cena (%@)";
+"loadingPriceTiers" = "Načítání cenových úrovní…";
+"tierProgress" = "%@ z %@";
+"error" = "Chyba";
+"ok" = "OK";

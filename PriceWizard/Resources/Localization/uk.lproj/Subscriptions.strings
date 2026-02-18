@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Підписки";
+"selectApp" = "Виберіть програму";
+"selectAppDescription" = "Виберіть програму на бічній панелі, щоб переглянути підписки.";
+"loadingSubscriptions" = "Завантаження підписок…";
+"error" = "Помилка";
+"noSubscriptions" = "Немає підписок";
+"noSubscriptionsDescription" = "У цій програмі немає вбудованих підписок.";
+"unknown" = "Невідомо";
+"weekly" = "Щотижня";
+"monthly" = "Щомісяця";
+"twoMonths" = "2 місяці";
+"threeMonths" = "3 місяці";
+"sixMonths" = "6 місяців";
+"yearly" = "Щорічно";

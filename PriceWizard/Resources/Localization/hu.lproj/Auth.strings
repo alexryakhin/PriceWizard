@@ -1,0 +1,8 @@
+/* AuthSetupView */
+
+"title" = "App Store Connect API";
+"instructions" = "Add meg az API-kulcs adatait az App Store Connect > Felhasználók és hozzáférés > Integrációk menüpontból.";
+"keyIdPlaceholder" = "XXXXXXXXXX";
+"issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+"selectP8" = "AuthKey_XXXXXXXX.p8 kiválasztása";
+"connect" = "Csatlakozás";

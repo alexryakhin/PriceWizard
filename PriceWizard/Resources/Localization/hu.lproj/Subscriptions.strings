@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Előfizetések";
+"selectApp" = "Válassz alkalmazást";
+"selectAppDescription" = "Válassz egy alkalmazást az oldalsávból az előfizetések megtekintéséhez.";
+"loadingSubscriptions" = "Előfizetések betöltése…";
+"error" = "Hiba";
+"noSubscriptions" = "Nincs előfizetés";
+"noSubscriptionsDescription" = "Ennek az alkalmazásnak nincs alkalmazáson belüli előfizetése.";
+"unknown" = "Ismeretlen";
+"weekly" = "Heti";
+"monthly" = "Havi";
+"twoMonths" = "2 hónap";
+"threeMonths" = "3 hónap";
+"sixMonths" = "6 hónap";
+"yearly" = "Éves";

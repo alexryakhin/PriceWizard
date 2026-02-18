@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "אפליקציות";
+"loading" = "טוען";
+"loadingDescription" = "מושך את האפליקציות שלך…";
+"error" = "שגיאה";

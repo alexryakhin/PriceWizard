@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Valitse tilaus";
+"selectSubscriptionDescription" = "Valitse tilaus listasta hinnoittelun määrittämiseksi.";
+"basePrice" = "Perushinta";
+"loadingPricePoints" = "Ladataan hintoja…";
+"noPricePointsForSubscription" = "Tilaukseen ei ole hintoja.";
+"price" = "Hinta";
+"select" = "Valitse…";
+"indexMode" = "Indeksitila";
+"mode" = "Tila";
+"preview" = "Esikatselu";
+"territory" = "Alue";
+"currency" = "Valuutta";
+"currentPrice" = "Nykyinen hinta";
+"newPrice" = "Uusi hinta";
+"newPriceUSD" = "Uusi hinta (USD)";
+"priceChangeOptions" = "Hinnanmuutosvaihtoehdot";
+"preserveCurrentPrice" = "Säilytä nykyinen hinta nykyisille tilaajille";
+"startDate" = "Aloituspäivä";
+"nextScheduledChange" = "Seuraava suunniteltu muutos: %@";
+"noFutureScheduledChanges" = "Ei suunniteltuja muutoksia";
+"startDateConflict" = "Tätä päivää käyttää jo suunniteltu hinnanmuutos; valitse toinen.";
+"applyToAppStoreConnect" = "Käytä App Store Connectissa";
+"done" = "Valmis";
+"selectPriceFor" = "Valitse hinta kohteelle %@";
+"loadingPricePointsProgress" = "Ladataan hintoja…";
+"noPricePointsAvailable" = "Ei hintoja saatavilla";
+"priceCurrency" = "Hinta (%@)";
+"loadingPriceTiers" = "Ladataan hintatasot…";
+"tierProgress" = "%@ / %@";
+"error" = "Virhe";
+"ok" = "OK";

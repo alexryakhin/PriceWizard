@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Συνδρομές";
+"selectApp" = "Επιλέξτε εφαρμογή";
+"selectAppDescription" = "Επιλέξτε εφαρμογή από την πλευρική μπάρα για να δείτε τις συνδρομές.";
+"loadingSubscriptions" = "Φόρτωση συνδρομών…";
+"error" = "Σφάλμα";
+"noSubscriptions" = "Χωρίς συνδρομές";
+"noSubscriptionsDescription" = "Αυτή η εφαρμογή δεν έχει συνδρομές εντός εφαρμογής.";
+"unknown" = "Άγνωστο";
+"weekly" = "Εβδομαδιαία";
+"monthly" = "Μηνιαία";
+"twoMonths" = "2 μήνες";
+"threeMonths" = "3 μήνες";
+"sixMonths" = "6 μήνες";
+"yearly" = "Ετήσια";

@@ -1,0 +1,8 @@
+/* AuthSetupView */
+
+"title" = "App Store Connect API";
+"instructions" = "App Store Connect > 사용자 및 액세스 > 통합에서 API 키 정보를 입력하세요.";
+"keyIdPlaceholder" = "XXXXXXXXXX";
+"issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+"selectP8" = "AuthKey_XXXXXXXX.p8 선택";
+"connect" = "연결";

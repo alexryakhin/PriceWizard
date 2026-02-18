@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "App";
+"loading" = "Caricamento";
+"loadingDescription" = "Caricamento delle tue app…";
+"error" = "Errore";

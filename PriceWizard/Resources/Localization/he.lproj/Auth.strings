@@ -1,0 +1,8 @@
+/* AuthSetupView */
+
+"title" = "API של App Store Connect";
+"instructions" = "הזן את פרטי מפתח ה־API מ־App Store Connect > משתמשים וגישה > אינטגרציות.";
+"keyIdPlaceholder" = "XXXXXXXXXX";
+"issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+"selectP8" = "בחר AuthKey_XXXXXXXX.p8";
+"connect" = "התחבר";

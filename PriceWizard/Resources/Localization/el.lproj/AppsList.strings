@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "Εφαρμογές";
+"loading" = "Φόρτωση";
+"loadingDescription" = "Λήψη εφαρμογών…";
+"error" = "Σφάλμα";

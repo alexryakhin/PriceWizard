@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Vælg et abonnement";
+"selectSubscriptionDescription" = "Vælg et abonnement på listen for at konfigurere priser.";
+"basePrice" = "Basispris";
+"loadingPricePoints" = "Indlæser priser…";
+"noPricePointsForSubscription" = "Ingen priser tilgængelige for dette abonnement.";
+"price" = "Pris";
+"select" = "Vælg…";
+"indexMode" = "Indeks tilstand";
+"mode" = "Tilstand";
+"preview" = "Forhåndsvisning";
+"territory" = "Område";
+"currency" = "Valuta";
+"currentPrice" = "Nuværende pris";
+"newPrice" = "Ny pris";
+"newPriceUSD" = "Ny pris (USD)";
+"priceChangeOptions" = "Prisændringsmuligheder";
+"preserveCurrentPrice" = "Bevar nuværende pris for eksisterende abonnenter";
+"startDate" = "Startdato";
+"nextScheduledChange" = "Næste planlagte ændring: %@";
+"noFutureScheduledChanges" = "Ingen fremtidige ændringer planlagt";
+"startDateConflict" = "Denne dato bruges allerede af en planlagt prisændring; vælg en anden.";
+"applyToAppStoreConnect" = "Anvend i App Store Connect";
+"done" = "Færdig";
+"selectPriceFor" = "Vælg pris for %@";
+"loadingPricePointsProgress" = "Indlæser priser…";
+"noPricePointsAvailable" = "Ingen priser tilgængelige";
+"priceCurrency" = "Pris (%@)";
+"loadingPriceTiers" = "Indlæser prisniveauer…";
+"tierProgress" = "%@ af %@";
+"error" = "Fejl";
+"ok" = "OK";

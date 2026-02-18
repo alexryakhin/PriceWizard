@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Assinaturas";
+"selectApp" = "Selecione um app";
+"selectAppDescription" = "Escolha um app na barra lateral para ver as assinaturas.";
+"loadingSubscriptions" = "Carregando assinaturas…";
+"error" = "Erro";
+"noSubscriptions" = "Sem assinaturas";
+"noSubscriptionsDescription" = "Este app não tem assinaturas no app.";
+"unknown" = "Desconhecido";
+"weekly" = "Semanal";
+"monthly" = "Mensal";
+"twoMonths" = "2 meses";
+"threeMonths" = "3 meses";
+"sixMonths" = "6 meses";
+"yearly" = "Anual";

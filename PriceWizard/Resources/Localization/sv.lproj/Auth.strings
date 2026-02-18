@@ -1,0 +1,8 @@
+/* AuthSetupView */
+
+"title" = "App Store Connect API";
+"instructions" = "Ange din API-nyckelinformation från App Store Connect > Användare och åtkomst > Integrationer.";
+"keyIdPlaceholder" = "XXXXXXXXXX";
+"issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+"selectP8" = "Välj AuthKey_XXXXXXXX.p8";
+"connect" = "Anslut";

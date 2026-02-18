@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "Appar";
+"loading" = "Laddar";
+"loadingDescription" = "Hämtar dina appar…";
+"error" = "Fel";

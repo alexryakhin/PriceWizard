@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "التطبيقات";
+"loading" = "جاري التحميل";
+"loadingDescription" = "جاري جلب تطبيقاتك…";
+"error" = "خطأ";

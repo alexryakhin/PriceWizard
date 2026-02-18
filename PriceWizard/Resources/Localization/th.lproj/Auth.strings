@@ -1,0 +1,8 @@
+/* AuthSetupView */
+
+"title" = "API App Store Connect";
+"instructions" = "ป้อนรายละเอียดคีย์ API จาก App Store Connect > ผู้ใช้และการเข้าถึง > การผสานรวม";
+"keyIdPlaceholder" = "XXXXXXXXXX";
+"issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+"selectP8" = "เลือก AuthKey_XXXXXXXX.p8";
+"connect" = "เชื่อมต่อ";

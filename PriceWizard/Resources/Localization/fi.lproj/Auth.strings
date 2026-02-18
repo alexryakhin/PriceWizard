@@ -1,0 +1,8 @@
+/* AuthSetupView */
+
+"title" = "App Store Connect -sovellusrajapinta";
+"instructions" = "Syötä API-avaimen tiedot kohdasta App Store Connect > Käyttäjät ja käyttöoikeudet > Integraatiot.";
+"keyIdPlaceholder" = "XXXXXXXXXX";
+"issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+"selectP8" = "Valitse AuthKey_XXXXXXXX.p8";
+"connect" = "Yhdistä";

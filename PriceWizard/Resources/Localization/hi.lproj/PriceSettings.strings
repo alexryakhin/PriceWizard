@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "सब्सक्रिप्शन चुनें";
+"selectSubscriptionDescription" = "कीमतें सेट करने के लिए सूची से सब्सक्रिप्शन चुनें।";
+"basePrice" = "आधार कीमत";
+"loadingPricePoints" = "कीमतें लोड हो रही हैं…";
+"noPricePointsForSubscription" = "इस सब्सक्रिप्शन के लिए कोई कीमत उपलब्ध नहीं।";
+"price" = "कीमत";
+"select" = "चुनें…";
+"indexMode" = "इंडेक्स मोड";
+"mode" = "मोड";
+"preview" = "पूर्वावलोकन";
+"territory" = "क्षेत्र";
+"currency" = "मुद्रा";
+"currentPrice" = "वर्तमान कीमत";
+"newPrice" = "नई कीमत";
+"newPriceUSD" = "नई कीमत (USD)";
+"priceChangeOptions" = "कीमत बदलने के विकल्प";
+"preserveCurrentPrice" = "मौजूदा सब्सक्राइबर के लिए वर्तमान कीमत बनाए रखें";
+"startDate" = "शुरू तारीख";
+"nextScheduledChange" = "अगला निर्धारित बदलाव: %@";
+"noFutureScheduledChanges" = "कोई निर्धारित बदलाव नहीं";
+"startDateConflict" = "यह तारीख पहले से निर्धारित कीमत बदलाव में इस्तेमाल हो रही है; दूसरी चुनें।";
+"applyToAppStoreConnect" = "App Store Connect में लागू करें";
+"done" = "हो गया";
+"selectPriceFor" = "%@ के लिए कीमत चुनें";
+"loadingPricePointsProgress" = "कीमतें लोड हो रही हैं…";
+"noPricePointsAvailable" = "कोई कीमत उपलब्ध नहीं";
+"priceCurrency" = "कीमत (%@)";
+"loadingPriceTiers" = "कीमत स्तर लोड हो रहे हैं…";
+"tierProgress" = "%@ / %@";
+"error" = "त्रुटि";
+"ok" = "ठीक है";

@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Abonelikler";
+"selectApp" = "Uygulama Seçin";
+"selectAppDescription" = "Abonelikleri görmek için kenar çubuğundan bir uygulama seçin.";
+"loadingSubscriptions" = "Abonelikler yükleniyor…";
+"error" = "Hata";
+"noSubscriptions" = "Abonelik Yok";
+"noSubscriptionsDescription" = "Bu uygulamanın uygulama içi aboneliği yok.";
+"unknown" = "Bilinmiyor";
+"weekly" = "Haftalık";
+"monthly" = "Aylık";
+"twoMonths" = "2 ay";
+"threeMonths" = "3 ay";
+"sixMonths" = "6 ay";
+"yearly" = "Yıllık";

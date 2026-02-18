@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Abonnementer";
+"selectApp" = "Vælg en app";
+"selectAppDescription" = "Vælg en app i sidepanelet for at se abonnementer.";
+"loadingSubscriptions" = "Indlæser abonnementer…";
+"error" = "Fejl";
+"noSubscriptions" = "Ingen abonnementer";
+"noSubscriptionsDescription" = "Denne app har ingen in-app-abonnementer.";
+"unknown" = "Ukendt";
+"weekly" = "Ugentligt";
+"monthly" = "Månedligt";
+"twoMonths" = "2 måneder";
+"threeMonths" = "3 måneder";
+"sixMonths" = "6 måneder";
+"yearly" = "Årligt";

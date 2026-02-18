@@ -18,20 +18,20 @@ struct AuthSetupView: View {
 
     var body: some View {
         VStack(spacing: 24) {
-            Text("App Store Connect API")
+            Text(Loc.Auth.title)
                 .font(.title)
 
-            Text("Enter your API key details from App Store Connect > Users and Access > Integrations.")
+            Text(Loc.Auth.instructions)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
 
             VStack(alignment: .leading, spacing: 12) {
-                TextField("Key ID", text: $keyId, prompt: Text("XXXXXXXXXX"))
+                TextField("Key ID", text: $keyId, prompt: Text(Loc.Auth.keyIdPlaceholder))
                     .textFieldStyle(.roundedBorder)
 
-                TextField("Issuer ID", text: $issuerId, prompt: Text("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"))
+                TextField("Issuer ID", text: $issuerId, prompt: Text(Loc.Auth.issuerIdPlaceholder))
                     .textFieldStyle(.roundedBorder)
 
                 HStack {
@@ -39,7 +39,7 @@ struct AuthSetupView: View {
                         isImportingP8 = true
                     } label: {
                         Label(
-                            p8FileName ?? "Select AuthKey_XXXXXXXX.p8",
+                            p8FileName ?? Loc.Auth.selectP8,
                             systemImage: "doc.badge.plus"
                         )
                     }
@@ -59,7 +59,7 @@ struct AuthSetupView: View {
                     .multilineTextAlignment(.center)
             }
 
-            Button("Connect") {
+            Button(Loc.Auth.connect) {
                 authState.saveAndConfigure(keyId: keyId, issuerId: issuerId, p8Content: p8Content)
             }
             .buttonStyle(.borderedProminent)

@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Đăng ký";
+"selectApp" = "Chọn ứng dụng";
+"selectAppDescription" = "Chọn ứng dụng từ thanh bên để xem đăng ký.";
+"loadingSubscriptions" = "Đang tải đăng ký…";
+"error" = "Lỗi";
+"noSubscriptions" = "Không có đăng ký";
+"noSubscriptionsDescription" = "Ứng dụng này không có đăng ký trong ứng dụng.";
+"unknown" = "Không xác định";
+"weekly" = "Hàng tuần";
+"monthly" = "Hàng tháng";
+"twoMonths" = "2 tháng";
+"threeMonths" = "3 tháng";
+"sixMonths" = "6 tháng";
+"yearly" = "Hàng năm";

@@ -1,0 +1,8 @@
+/* AuthSetupView */
+
+"title" = "API App Store Connect";
+"instructions" = "Introdu datele cheii API din App Store Connect > Utilizatori și acces > Integrări.";
+"keyIdPlaceholder" = "XXXXXXXXXX";
+"issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+"selectP8" = "Selectează AuthKey_XXXXXXXX.p8";
+"connect" = "Conectare";

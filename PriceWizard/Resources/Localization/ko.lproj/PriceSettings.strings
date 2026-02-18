@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "구독 선택";
+"selectSubscriptionDescription" = "목록에서 구독을 선택하여 가격을 설정합니다.";
+"basePrice" = "기본 가격";
+"loadingPricePoints" = "가격 로딩 중…";
+"noPricePointsForSubscription" = "이 구독에 사용 가능한 가격이 없습니다.";
+"price" = "가격";
+"select" = "선택…";
+"indexMode" = "인덱스 모드";
+"mode" = "모드";
+"preview" = "미리보기";
+"territory" = "지역";
+"currency" = "통화";
+"currentPrice" = "현재 가격";
+"newPrice" = "새 가격";
+"newPriceUSD" = "새 가격 (USD)";
+"priceChangeOptions" = "가격 변경 옵션";
+"preserveCurrentPrice" = "기존 구독자 현재 가격 유지";
+"startDate" = "시작일";
+"nextScheduledChange" = "다음 예정된 변경: %@";
+"noFutureScheduledChanges" = "예정된 변경 없음";
+"startDateConflict" = "이 날짜는 이미 예정된 가격 변경에 사용됩니다. 다른 날짜를 선택하세요.";
+"applyToAppStoreConnect" = "App Store Connect에 적용";
+"done" = "완료";
+"selectPriceFor" = "%@ 가격 선택";
+"loadingPricePointsProgress" = "가격 로딩 중…";
+"noPricePointsAvailable" = "사용 가능한 가격 없음";
+"priceCurrency" = "가격 (%@)";
+"loadingPriceTiers" = "가격 구간 로딩 중…";
+"tierProgress" = "%@ / %@";
+"error" = "오류";
+"ok" = "확인";

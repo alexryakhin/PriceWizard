@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Chọn đăng ký";
+"selectSubscriptionDescription" = "Chọn đăng ký từ danh sách để cấu hình giá.";
+"basePrice" = "Giá cơ bản";
+"loadingPricePoints" = "Đang tải giá…";
+"noPricePointsForSubscription" = "Không có giá cho đăng ký này.";
+"price" = "Giá";
+"select" = "Chọn…";
+"indexMode" = "Chế độ chỉ mục";
+"mode" = "Chế độ";
+"preview" = "Xem trước";
+"territory" = "Khu vực";
+"currency" = "Tiền tệ";
+"currentPrice" = "Giá hiện tại";
+"newPrice" = "Giá mới";
+"newPriceUSD" = "Giá mới (USD)";
+"priceChangeOptions" = "Tùy chọn thay đổi giá";
+"preserveCurrentPrice" = "Giữ giá hiện tại cho người đăng ký hiện có";
+"startDate" = "Ngày bắt đầu";
+"nextScheduledChange" = "Thay đổi theo lịch tiếp theo: %@";
+"noFutureScheduledChanges" = "Không có thay đổi theo lịch";
+"startDateConflict" = "Ngày này đã được dùng cho thay đổi giá theo lịch; chọn ngày khác.";
+"applyToAppStoreConnect" = "Áp dụng trong App Store Connect";
+"done" = "Xong";
+"selectPriceFor" = "Chọn giá cho %@";
+"loadingPricePointsProgress" = "Đang tải giá…";
+"noPricePointsAvailable" = "Không có giá";
+"priceCurrency" = "Giá (%@)";
+"loadingPriceTiers" = "Đang tải mức giá…";
+"tierProgress" = "%@ / %@";
+"error" = "Lỗi";
+"ok" = "OK";

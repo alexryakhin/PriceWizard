@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "Ứng dụng";
+"loading" = "Đang tải";
+"loadingDescription" = "Đang tải ứng dụng của bạn…";
+"error" = "Lỗi";

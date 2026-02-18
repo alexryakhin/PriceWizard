@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "Aplikácie";
+"loading" = "Načítava sa";
+"loadingDescription" = "Načítavajú sa vaše aplikácie…";
+"error" = "Chyba";

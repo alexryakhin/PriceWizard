@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Prenumerationer";
+"selectApp" = "Välj en app";
+"selectAppDescription" = "Välj en app i sidofältet för att se prenumerationer.";
+"loadingSubscriptions" = "Laddar prenumerationer…";
+"error" = "Fel";
+"noSubscriptions" = "Inga prenumerationer";
+"noSubscriptionsDescription" = "Den här appen har inga in-app-prenumerationer.";
+"unknown" = "Okänd";
+"weekly" = "Veckovis";
+"monthly" = "Månadsvis";
+"twoMonths" = "2 månader";
+"threeMonths" = "3 månader";
+"sixMonths" = "6 månader";
+"yearly" = "Årligen";

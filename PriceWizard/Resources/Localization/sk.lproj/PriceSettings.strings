@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Vyberte predplatné";
+"selectSubscriptionDescription" = "Vyberte predplatné zo zoznamu pre nastavenie cien.";
+"basePrice" = "Základná cena";
+"loadingPricePoints" = "Načítavajú sa ceny…";
+"noPricePointsForSubscription" = "Pre toto predplatné nie sú k dispozícii žiadne ceny.";
+"price" = "Cena";
+"select" = "Vybrať…";
+"indexMode" = "Režim indexu";
+"mode" = "Režim";
+"preview" = "Náhľad";
+"territory" = "Oblasť";
+"currency" = "Mena";
+"currentPrice" = "Aktuálna cena";
+"newPrice" = "Nová cena";
+"newPriceUSD" = "Nová cena (USD)";
+"priceChangeOptions" = "Možnosti zmeny ceny";
+"preserveCurrentPrice" = "Zachovať aktuálnu cenu pre existujúcich predplatiteľov";
+"startDate" = "Dátum začiatku";
+"nextScheduledChange" = "Ďalšia plánovaná zmena: %@";
+"noFutureScheduledChanges" = "Žiadne plánované zmeny";
+"startDateConflict" = "Tento dátum už používa plánovaná zmena ceny; vyberte iný.";
+"applyToAppStoreConnect" = "Použiť v App Store Connect";
+"done" = "Hotovo";
+"selectPriceFor" = "Vybrať cenu pre %@";
+"loadingPricePointsProgress" = "Načítavajú sa ceny…";
+"noPricePointsAvailable" = "Žiadne ceny k dispozícii";
+"priceCurrency" = "Cena (%@)";
+"loadingPriceTiers" = "Načítavajú sa cenové úrovne…";
+"tierProgress" = "%@ z %@";
+"error" = "Chyba";
+"ok" = "OK";

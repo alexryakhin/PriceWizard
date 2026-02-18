@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Válassz előfizetést";
+"selectSubscriptionDescription" = "Válassz előfizetést a listából az árak beállításához.";
+"basePrice" = "Alapár";
+"loadingPricePoints" = "Árak betöltése…";
+"noPricePointsForSubscription" = "Ehhez az előfizetéshez nincs elérhető ár.";
+"price" = "Ár";
+"select" = "Válassz…";
+"indexMode" = "Index mód";
+"mode" = "Mód";
+"preview" = "Előnézet";
+"territory" = "Régió";
+"currency" = "Pénznem";
+"currentPrice" = "Jelenlegi ár";
+"newPrice" = "Új ár";
+"newPriceUSD" = "Új ár (USD)";
+"priceChangeOptions" = "Árváltoztatási lehetőségek";
+"preserveCurrentPrice" = "Meglévő előfizetők jelenlegi árának megtartása";
+"startDate" = "Kezdő dátum";
+"nextScheduledChange" = "Következő ütemezett változás: %@";
+"noFutureScheduledChanges" = "Nincs ütemezett változás";
+"startDateConflict" = "Ezt a dátumot már használja egy ütemezett árváltozás; válassz másikat.";
+"applyToAppStoreConnect" = "Alkalmazás az App Store Connectben";
+"done" = "Kész";
+"selectPriceFor" = "Ár kiválasztása ehhez: %@";
+"loadingPricePointsProgress" = "Árak betöltése…";
+"noPricePointsAvailable" = "Nincs elérhető ár";
+"priceCurrency" = "Ár (%@)";
+"loadingPriceTiers" = "Árszintek betöltése…";
+"tierProgress" = "%@ / %@";
+"error" = "Hiba";
+"ok" = "OK";

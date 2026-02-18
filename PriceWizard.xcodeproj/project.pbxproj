@@ -10,9 +10,22 @@
 		53C3A2922F42CDD800A60DDC /* PriceWizard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PriceWizard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		53624E192F45AFC800DE5D01 /* Exceptions for "PriceWizard" folder in "PriceWizard" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				openapi.oas.json,
+			);
+			target = 53C3A2912F42CDD800A60DDC /* PriceWizard */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		53C3A2942F42CDD800A60DDC /* PriceWizard */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				53624E192F45AFC800DE5D01 /* Exceptions for "PriceWizard" folder in "PriceWizard" target */,
+			);
 			path = PriceWizard;
 			sourceTree = "<group>";
 		};
@@ -52,6 +65,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 53C3A29D2F42CDD800A60DDC /* Build configuration list for PBXNativeTarget "PriceWizard" */;
 			buildPhases = (
+				53624E1A2F45AFD800DE5D01 /* SwiftGen: Generate Loc.swift */,
 				53C3A28E2F42CDD800A60DDC /* Sources */,
 				53C3A28F2F42CDD800A60DDC /* Frameworks */,
 				53C3A2902F42CDD800A60DDC /* Resources */,
@@ -91,6 +105,39 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
+				ca,
+				"zh-Hans",
+				"zh-Hant",
+				hr,
+				cs,
+				da,
+				nl,
+				fi,
+				fr,
+				de,
+				el,
+				he,
+				hi,
+				hu,
+				id,
+				it,
+				ja,
+				ko,
+				ms,
+				nb,
+				pl,
+				"pt-PT",
+				"pt-BR",
+				ro,
+				ru,
+				sk,
+				es,
+				sv,
+				th,
+				tr,
+				uk,
+				vi,
 			);
 			mainGroup = 53C3A2892F42CDD800A60DDC;
 			minimizedProjectReferenceProxies = 1;
@@ -113,6 +160,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		53624E1A2F45AFD800DE5D01 /* SwiftGen: Generate Loc.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftGen: Generate Loc.swift";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mkdir -p \"${SRCROOT}/PriceWizard/Generated\"\nif command -v swiftgen >/dev/null 2>&1; then\n  (cd \"${SRCROOT}\" && swiftgen) || echo \"warning: SwiftGen failed. Using committed Loc.swift.\"\nelse\n  echo \"warning: SwiftGen not installed (brew install swiftgen). Using committed Loc.swift.\"\nfi\nexit 0\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		53C3A28E2F42CDD800A60DDC /* Sources */ = {
@@ -261,6 +330,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Price Wizard";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026 Alexander Riakhin";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -268,7 +338,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dor.PriceWizard;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dor.price-wizard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -296,6 +366,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Price Wizard";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026 Alexander Riakhin";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -303,7 +374,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dor.PriceWizard;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dor.price-wizard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;

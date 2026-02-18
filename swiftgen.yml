@@ -1,0 +1,12 @@
+# SwiftGen config: generates Loc enum from per-screen .strings files.
+# Run: swiftgen (install with: brew install swiftgen)
+# Generated output: PriceWizard/Generated/Loc.swift
+
+strings:
+  inputs: PriceWizard/Resources/Localization/en.lproj
+  filter: ".+\\.strings$"
+  outputs:
+    - templateName: structured-swift5
+      output: PriceWizard/Generated/Loc.swift
+      params:
+        enumName: Loc

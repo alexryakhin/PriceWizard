@@ -44,14 +44,14 @@ struct AboutView: View {
                     .foregroundStyle(.secondary)
             }
 
-            Text("Manage App Store Connect subscription pricing and territories.")
+            Text(Loc.About.description)
                 .font(.body)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 320)
                 .padding(.top, 8)
 
-            Text("If Price Wizard saves you time, I’d love to hear from you - or you can buy me a coffee to say thanks.")
+            Text(Loc.About.supportMessage)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -64,7 +64,7 @@ struct AboutView: View {
                         openURL(url)
                     }
                 } label: {
-                    Label("Email me", systemImage: "envelope.fill")
+                    Label(Loc.About.emailMe, systemImage: "envelope.fill")
                 }
                 .buttonStyle(.bordered)
 
@@ -73,7 +73,7 @@ struct AboutView: View {
                         openURL(url)
                     }
                 } label: {
-                    Label("Buy me a coffee", systemImage: "cup.and.saucer.fill")
+                    Label(Loc.About.buyMeACoffee, systemImage: "cup.and.saucer.fill")
                 }
                 .buttonStyle(.bordered)
             }
@@ -81,7 +81,7 @@ struct AboutView: View {
 
             Spacer(minLength: 24)
 
-            Button("Done") {
+            Button(Loc.About.done) {
                 dismiss()
             }
             .buttonStyle(.borderedProminent)

@@ -1,0 +1,8 @@
+/* AuthSetupView */
+
+"title" = "API App Store Connect";
+"instructions" = "Inserisci i dati della tua chiave API da App Store Connect > Utenti e accesso > Integrazioni.";
+"keyIdPlaceholder" = "XXXXXXXXXX";
+"issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+"selectP8" = "Seleziona AuthKey_XXXXXXXX.p8";
+"connect" = "Connetti";

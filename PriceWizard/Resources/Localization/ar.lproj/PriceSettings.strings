@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "اختر اشتراكاً";
+"selectSubscriptionDescription" = "اختر اشتراكاً من القائمة لتكوين أسعاره.";
+"basePrice" = "السعر الأساسي";
+"loadingPricePoints" = "جاري تحميل الأسعار…";
+"noPricePointsForSubscription" = "لا توجد أسعار متاحة لهذا الاشتراك.";
+"price" = "السعر";
+"select" = "اختر…";
+"indexMode" = "وضع المؤشر";
+"mode" = "الوضع";
+"preview" = "معاينة";
+"territory" = "المنطقة";
+"currency" = "العملة";
+"currentPrice" = "السعر الحالي";
+"newPrice" = "السعر الجديد";
+"newPriceUSD" = "السعر الجديد (USD)";
+"priceChangeOptions" = "خيارات تغيير السعر";
+"preserveCurrentPrice" = "الإبقاء على السعر الحالي للمشتركين الحاليين";
+"startDate" = "تاريخ البدء";
+"nextScheduledChange" = "التغيير المجدول التالي: %@";
+"noFutureScheduledChanges" = "لا توجد تغييرات مجدولة";
+"startDateConflict" = "هذا التاريخ مستخدم بالفعل في تغيير سعر مجدول؛ اختر تاريخاً آخر.";
+"applyToAppStoreConnect" = "تطبيق في App Store Connect";
+"done" = "تم";
+"selectPriceFor" = "اختر السعر لـ %@";
+"loadingPricePointsProgress" = "جاري تحميل الأسعار…";
+"noPricePointsAvailable" = "لا توجد أسعار متاحة";
+"priceCurrency" = "السعر (%@)";
+"loadingPriceTiers" = "جاري تحميل مستويات الأسعار…";
+"tierProgress" = "%@ من %@";
+"error" = "خطأ";
+"ok" = "موافق";

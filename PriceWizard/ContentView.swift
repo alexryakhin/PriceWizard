@@ -38,10 +38,10 @@ struct ContentView: View {
                         } label: {
                             Image(systemName: "info.circle")
                         }
-                        .help("About Price Wizard")
+                        .help(Loc.ContentView.aboutTooltip)
                     }
                     ToolbarItem(placement: .automatic) {
-                        Button("Log Out") {
+                        Button(Loc.ContentView.logOut) {
                             authState.logout()
                         }
                     }

@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Abonnementen";
+"selectApp" = "Selecteer een app";
+"selectAppDescription" = "Kies een app in de zijbalk om abonnementen te bekijken.";
+"loadingSubscriptions" = "Abonnementen laden…";
+"error" = "Fout";
+"noSubscriptions" = "Geen abonnementen";
+"noSubscriptionsDescription" = "Deze app heeft geen in-app-abonnementen.";
+"unknown" = "Onbekend";
+"weekly" = "Wekelijks";
+"monthly" = "Maandelijks";
+"twoMonths" = "2 maanden";
+"threeMonths" = "3 maanden";
+"sixMonths" = "6 maanden";
+"yearly" = "Jaarlijks";

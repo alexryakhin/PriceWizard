@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Selecteer een abonnement";
+"selectSubscriptionDescription" = "Kies een abonnement in de lijst om de prijzen in te stellen.";
+"basePrice" = "Basisprijs";
+"loadingPricePoints" = "Prijzen laden…";
+"noPricePointsForSubscription" = "Geen prijzen beschikbaar voor dit abonnement.";
+"price" = "Prijs";
+"select" = "Selecteer…";
+"indexMode" = "Indexmodus";
+"mode" = "Modus";
+"preview" = "Voorvertoning";
+"territory" = "Gebied";
+"currency" = "Valuta";
+"currentPrice" = "Huidige prijs";
+"newPrice" = "Nieuwe prijs";
+"newPriceUSD" = "Nieuwe prijs (USD)";
+"priceChangeOptions" = "Opties voor prijswijziging";
+"preserveCurrentPrice" = "Houd huidige prijs voor bestaande abonnees";
+"startDate" = "Startdatum";
+"nextScheduledChange" = "Volgende geplande wijziging: %@";
+"noFutureScheduledChanges" = "Geen toekomstige wijzigingen gepland";
+"startDateConflict" = "Deze datum wordt al gebruikt door een geplande prijswijziging; kies een andere.";
+"applyToAppStoreConnect" = "Toepassen in App Store Connect";
+"done" = "Gereed";
+"selectPriceFor" = "Selecteer prijs voor %@";
+"loadingPricePointsProgress" = "Prijzen laden…";
+"noPricePointsAvailable" = "Geen prijzen beschikbaar";
+"priceCurrency" = "Prijs (%@)";
+"loadingPriceTiers" = "Prijslagen laden…";
+"tierProgress" = "%@ van %@";
+"error" = "Fout";
+"ok" = "OK";

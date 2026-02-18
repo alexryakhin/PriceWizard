@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Selectează un abonament";
+"selectSubscriptionDescription" = "Alege un abonament din listă pentru a configura prețurile.";
+"basePrice" = "Preț de bază";
+"loadingPricePoints" = "Se încarcă prețurile…";
+"noPricePointsForSubscription" = "Nu există prețuri disponibile pentru acest abonament.";
+"price" = "Preț";
+"select" = "Selectează…";
+"indexMode" = "Mod index";
+"mode" = "Mod";
+"preview" = "Previzualizare";
+"territory" = "Teritoriu";
+"currency" = "Monedă";
+"currentPrice" = "Preț actual";
+"newPrice" = "Preț nou";
+"newPriceUSD" = "Preț nou (USD)";
+"priceChangeOptions" = "Opțiuni modificare preț";
+"preserveCurrentPrice" = "Păstrează prețul actual pentru abonații existenți";
+"startDate" = "Data începerii";
+"nextScheduledChange" = "Următoarea modificare programată: %@";
+"noFutureScheduledChanges" = "Nicio modificare programată";
+"startDateConflict" = "Această dată este deja folosită de o modificare de preț; alege alta.";
+"applyToAppStoreConnect" = "Aplică în App Store Connect";
+"done" = "Gata";
+"selectPriceFor" = "Selectează preț pentru %@";
+"loadingPricePointsProgress" = "Se încarcă prețurile…";
+"noPricePointsAvailable" = "Nicio preț disponibil";
+"priceCurrency" = "Preț (%@)";
+"loadingPriceTiers" = "Se încarcă nivelurile de preț…";
+"tierProgress" = "%@ din %@";
+"error" = "Eroare";
+"ok" = "OK";

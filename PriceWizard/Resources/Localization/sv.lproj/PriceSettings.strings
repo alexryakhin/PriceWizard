@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Välj en prenumeration";
+"selectSubscriptionDescription" = "Välj en prenumeration i listan för att konfigurera priser.";
+"basePrice" = "Baspris";
+"loadingPricePoints" = "Laddar priser…";
+"noPricePointsForSubscription" = "Inga priser tillgängliga för denna prenumeration.";
+"price" = "Pris";
+"select" = "Välj…";
+"indexMode" = "Indexläge";
+"mode" = "Läge";
+"preview" = "Förhandsgranska";
+"territory" = "Region";
+"currency" = "Valuta";
+"currentPrice" = "Aktuellt pris";
+"newPrice" = "Nytt pris";
+"newPriceUSD" = "Nytt pris (USD)";
+"priceChangeOptions" = "Prisändringsalternativ";
+"preserveCurrentPrice" = "Behåll aktuellt pris för befintliga prenumeranter";
+"startDate" = "Startdatum";
+"nextScheduledChange" = "Nästa planerade ändring: %@";
+"noFutureScheduledChanges" = "Inga framtida ändringar planerade";
+"startDateConflict" = "Detta datum används redan av en planerad prisändring; välj ett annat.";
+"applyToAppStoreConnect" = "Tillämpa i App Store Connect";
+"done" = "Klar";
+"selectPriceFor" = "Välj pris för %@";
+"loadingPricePointsProgress" = "Laddar priser…";
+"noPricePointsAvailable" = "Inga priser tillgängliga";
+"priceCurrency" = "Pris (%@)";
+"loadingPriceTiers" = "Laddar prisnivåer…";
+"tierProgress" = "%@ av %@";
+"error" = "Fel";
+"ok" = "OK";

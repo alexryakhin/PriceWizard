@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Выберите подписку";
+"selectSubscriptionDescription" = "Выберите подписку в списке, чтобы настроить цены.";
+"basePrice" = "Базовая цена";
+"loadingPricePoints" = "Загрузка цен…";
+"noPricePointsForSubscription" = "Нет доступных цен для этой подписки.";
+"price" = "Цена";
+"select" = "Выбрать…";
+"indexMode" = "Режим индекса";
+"mode" = "Режим";
+"preview" = "Предпросмотр";
+"territory" = "Территория";
+"currency" = "Валюта";
+"currentPrice" = "Текущая цена";
+"newPrice" = "Новая цена";
+"newPriceUSD" = "Новая цена (USD)";
+"priceChangeOptions" = "Параметры изменения цены";
+"preserveCurrentPrice" = "Сохранить текущую цену для существующих подписчиков";
+"startDate" = "Дата начала";
+"nextScheduledChange" = "Следующее запланированное изменение: %@";
+"noFutureScheduledChanges" = "Нет запланированных изменений";
+"startDateConflict" = "Эта дата уже используется для изменения цены; выберите другую.";
+"applyToAppStoreConnect" = "Применить в App Store Connect";
+"done" = "Готово";
+"selectPriceFor" = "Выбрать цену для %@";
+"loadingPricePointsProgress" = "Загрузка цен…";
+"noPricePointsAvailable" = "Нет доступных цен";
+"priceCurrency" = "Цена (%@)";
+"loadingPriceTiers" = "Загрузка ценовых уровней…";
+"tierProgress" = "%@ из %@";
+"error" = "Ошибка";
+"ok" = "OK";

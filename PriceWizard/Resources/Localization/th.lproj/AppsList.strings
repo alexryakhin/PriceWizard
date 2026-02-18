@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "แอป";
+"loading" = "กำลังโหลด";
+"loadingDescription" = "กำลังดึงแอปของคุณ…";
+"error" = "ข้อผิดพลาด";

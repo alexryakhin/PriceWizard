@@ -1,0 +1,8 @@
+/* AuthSetupView */
+
+"title" = "API App Store Connect";
+"instructions" = "Nhập thông tin khóa API từ App Store Connect > Người dùng và quyền truy cập > Tích hợp.";
+"keyIdPlaceholder" = "XXXXXXXXXX";
+"issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+"selectP8" = "Chọn AuthKey_XXXXXXXX.p8";
+"connect" = "Kết nối";

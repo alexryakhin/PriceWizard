@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "Uygulamalar";
+"loading" = "Yükleniyor";
+"loadingDescription" = "Uygulamalarınız getiriliyor…";
+"error" = "Hata";

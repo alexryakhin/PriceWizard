@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Předplatné";
+"selectApp" = "Vyberte aplikaci";
+"selectAppDescription" = "Vyberte aplikaci na postranním panelu pro zobrazení předplatného.";
+"loadingSubscriptions" = "Načítání předplatného…";
+"error" = "Chyba";
+"noSubscriptions" = "Žádné předplatné";
+"noSubscriptionsDescription" = "Tato aplikace nemá předplatné v aplikaci.";
+"unknown" = "Neznámé";
+"weekly" = "Týdně";
+"monthly" = "Měsíčně";
+"twoMonths" = "2 měsíce";
+"threeMonths" = "3 měsíce";
+"sixMonths" = "6 měsíců";
+"yearly" = "Ročně";

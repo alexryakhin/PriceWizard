@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Abonelik Seçin";
+"selectSubscriptionDescription" = "Fiyatları yapılandırmak için listeden bir abonelik seçin.";
+"basePrice" = "Temel Fiyat";
+"loadingPricePoints" = "Fiyatlar yükleniyor…";
+"noPricePointsForSubscription" = "Bu abonelik için fiyat bulunamadı.";
+"price" = "Fiyat";
+"select" = "Seç…";
+"indexMode" = "Dizin Modu";
+"mode" = "Mod";
+"preview" = "Önizleme";
+"territory" = "Bölge";
+"currency" = "Para Birimi";
+"currentPrice" = "Mevcut fiyat";
+"newPrice" = "Yeni fiyat";
+"newPriceUSD" = "Yeni fiyat (USD)";
+"priceChangeOptions" = "Fiyat Değişikliği Seçenekleri";
+"preserveCurrentPrice" = "Mevcut aboneler için mevcut fiyatı koru";
+"startDate" = "Başlangıç tarihi";
+"nextScheduledChange" = "Sonraki planlanan değişiklik: %@";
+"noFutureScheduledChanges" = "Planlanan değişiklik yok";
+"startDateConflict" = "Bu tarih zaten planlanan bir fiyat değişikliğinde kullanılıyor; başka seçin.";
+"applyToAppStoreConnect" = "App Store Connect’te Uygula";
+"done" = "Tamam";
+"selectPriceFor" = "%@ için fiyat seçin";
+"loadingPricePointsProgress" = "Fiyatlar yükleniyor…";
+"noPricePointsAvailable" = "Fiyat bulunamadı";
+"priceCurrency" = "Fiyat (%@)";
+"loadingPriceTiers" = "Fiyat kademeleri yükleniyor…";
+"tierProgress" = "%@ / %@";
+"error" = "Hata";
+"ok" = "Tamam";

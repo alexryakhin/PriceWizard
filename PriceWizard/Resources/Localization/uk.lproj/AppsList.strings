@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "Програми";
+"loading" = "Завантаження";
+"loadingDescription" = "Отримання програм…";
+"error" = "Помилка";

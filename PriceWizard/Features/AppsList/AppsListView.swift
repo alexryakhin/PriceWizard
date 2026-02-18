@@ -18,13 +18,13 @@ struct AppsListView: View {
         Group {
             if isLoading {
                 ContentUnavailableView {
-                    Label("Loading", systemImage: "arrow.triangle.2.circlepath")
+                    Label(Loc.AppsList.loading, systemImage: "arrow.triangle.2.circlepath")
                 } description: {
-                    Text("Fetching your apps…")
+                    Text(Loc.AppsList.loadingDescription)
                 }
             } else if let error = errorMessage {
                 ContentUnavailableView {
-                    Label("Error", systemImage: "exclamationmark.triangle")
+                    Label(Loc.AppsList.error, systemImage: "exclamationmark.triangle")
                 } description: {
                     Text(error)
                 }
@@ -43,7 +43,7 @@ struct AppsListView: View {
                 .listStyle(.sidebar)
             }
         }
-        .navigationTitle("Apps")
+        .navigationTitle(Loc.AppsList.title)
         .task {
             await loadApps()
         }

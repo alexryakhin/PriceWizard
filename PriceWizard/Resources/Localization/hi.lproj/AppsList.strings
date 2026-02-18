@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "ऐप";
+"loading" = "लोड हो रहा है";
+"loadingDescription" = "आपके ऐप लाए जा रहे हैं…";
+"error" = "त्रुटि";

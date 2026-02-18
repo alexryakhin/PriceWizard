@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Abonamente";
+"selectApp" = "Selectează o aplicație";
+"selectAppDescription" = "Alege o aplicație din bara laterală pentru a vedea abonamentele.";
+"loadingSubscriptions" = "Se încarcă abonamentele…";
+"error" = "Eroare";
+"noSubscriptions" = "Fără abonamente";
+"noSubscriptionsDescription" = "Această aplicație nu are abonamente în aplicație.";
+"unknown" = "Necunoscut";
+"weekly" = "Săptămânal";
+"monthly" = "Lunar";
+"twoMonths" = "2 luni";
+"threeMonths" = "3 luni";
+"sixMonths" = "6 luni";
+"yearly" = "Anual";

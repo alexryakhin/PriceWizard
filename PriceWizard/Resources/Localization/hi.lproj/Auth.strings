@@ -1,0 +1,8 @@
+/* AuthSetupView */
+
+"title" = "App Store Connect API";
+"instructions" = "App Store Connect > उपयोगकर्ता और एक्सेस > इंटीग्रेशन से अपना API कुंजी विवरण दर्ज करें।";
+"keyIdPlaceholder" = "XXXXXXXXXX";
+"issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+"selectP8" = "AuthKey_XXXXXXXX.p8 चुनें";
+"connect" = "कनेक्ट करें";

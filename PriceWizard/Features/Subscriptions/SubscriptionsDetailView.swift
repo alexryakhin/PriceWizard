@@ -19,24 +19,24 @@ struct SubscriptionsDetailView: View {
         Group {
             if app == nil {
                 ContentUnavailableView(
-                    "Select an App",
+                    Loc.Subscriptions.selectApp,
                     systemImage: "app.badge",
-                    description: Text("Choose an app from the sidebar to see its subscriptions.")
+                    description: Text(Loc.Subscriptions.selectAppDescription)
                 )
             } else if isLoading {
-                ProgressView("Loading subscriptions…")
+                ProgressView(Loc.Subscriptions.loadingSubscriptions)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else if let error = errorMessage {
                 ContentUnavailableView(
-                    "Error",
+                    Loc.Subscriptions.error,
                     systemImage: "exclamationmark.triangle",
                     description: Text(error)
                 )
             } else if subscriptions.isEmpty {
                 ContentUnavailableView(
-                    "No Subscriptions",
+                    Loc.Subscriptions.noSubscriptions,
                     systemImage: "creditcard",
-                    description: Text("This app has no in-app subscriptions.")
+                    description: Text(Loc.Subscriptions.noSubscriptionsDescription)
                 )
             } else {
                 ScrollView {
@@ -53,7 +53,7 @@ struct SubscriptionsDetailView: View {
                 .listStyle(.inset)
             }
         }
-        .navigationTitle(app?.attributes.name ?? "Subscriptions")
+        .navigationTitle(app?.attributes.name ?? Loc.Subscriptions.title)
         .task(id: app?.id) {
             await loadSubscriptions()
         }
@@ -96,7 +96,7 @@ struct SubscriptionRow: View {
                 .foregroundStyle(.secondary)
                 .frame(width: 28, alignment: .center)
             VStack(alignment: .leading, spacing: 2) {
-                Text(subscription.attributes.name ?? subscription.attributes.productId ?? "Unknown")
+                Text(subscription.attributes.name ?? subscription.attributes.productId ?? Loc.Subscriptions.unknown)
                     .font(.headline)
                 if let productId = subscription.attributes.productId {
                     Text(productId)
@@ -124,12 +124,12 @@ struct SubscriptionRow: View {
 
     private func periodDisplay(_ period: String) -> String {
         switch period {
-        case "ONE_WEEK": return "Weekly"
-        case "ONE_MONTH": return "Monthly"
-        case "TWO_MONTHS": return "2 months"
-        case "THREE_MONTHS": return "3 months"
-        case "SIX_MONTHS": return "6 months"
-        case "ONE_YEAR": return "Yearly"
+        case "ONE_WEEK": return Loc.Subscriptions.weekly
+        case "ONE_MONTH": return Loc.Subscriptions.monthly
+        case "TWO_MONTHS": return Loc.Subscriptions.twoMonths
+        case "THREE_MONTHS": return Loc.Subscriptions.threeMonths
+        case "SIX_MONTHS": return Loc.Subscriptions.sixMonths
+        case "ONE_YEAR": return Loc.Subscriptions.yearly
         default: return period
         }
     }

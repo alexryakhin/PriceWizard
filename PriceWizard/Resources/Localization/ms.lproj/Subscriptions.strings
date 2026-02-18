@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Langganan";
+"selectApp" = "Pilih Aplikasi";
+"selectAppDescription" = "Pilih aplikasi dari bar sisi untuk melihat langganannya.";
+"loadingSubscriptions" = "Memuat langganan…";
+"error" = "Ralat";
+"noSubscriptions" = "Tiada Langganan";
+"noSubscriptionsDescription" = "Aplikasi ini tidak mempunyai langganan dalam aplikasi.";
+"unknown" = "Tidak Diketahui";
+"weekly" = "Mingguan";
+"monthly" = "Bulanan";
+"twoMonths" = "2 bulan";
+"threeMonths" = "3 bulan";
+"sixMonths" = "6 bulan";
+"yearly" = "Tahunan";

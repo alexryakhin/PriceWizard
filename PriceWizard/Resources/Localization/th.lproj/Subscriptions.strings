@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "การสมัครสมาชิก";
+"selectApp" = "เลือกแอป";
+"selectAppDescription" = "เลือกแอปจากแถบด้านข้างเพื่อดูการสมัครสมาชิก";
+"loadingSubscriptions" = "กำลังโหลดการสมัครสมาชิก…";
+"error" = "ข้อผิดพลาด";
+"noSubscriptions" = "ไม่มีการสมัครสมาชิก";
+"noSubscriptionsDescription" = "แอปนี้ไม่มีรายการสมัครสมาชิกในแอป";
+"unknown" = "ไม่ทราบ";
+"weekly" = "รายสัปดาห์";
+"monthly" = "รายเดือน";
+"twoMonths" = "2 เดือน";
+"threeMonths" = "3 เดือน";
+"sixMonths" = "6 เดือน";
+"yearly" = "รายปี";

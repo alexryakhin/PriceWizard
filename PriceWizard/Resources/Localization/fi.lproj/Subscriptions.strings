@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Tilaukset";
+"selectApp" = "Valitse sovellus";
+"selectAppDescription" = "Valitse sovellus sivupalkista nähdäksesi tilaukset.";
+"loadingSubscriptions" = "Ladataan tilauksia…";
+"error" = "Virhe";
+"noSubscriptions" = "Ei tilauksia";
+"noSubscriptionsDescription" = "Tässä sovelluksessa ei ole sovelluksen sisäisiä tilauksia.";
+"unknown" = "Tuntematon";
+"weekly" = "Viikoittain";
+"monthly" = "Kuukausittain";
+"twoMonths" = "2 kuukautta";
+"threeMonths" = "3 kuukautta";
+"sixMonths" = "6 kuukautta";
+"yearly" = "Vuosittain";

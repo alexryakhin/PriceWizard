@@ -63,19 +63,19 @@ private struct PricePickerSheet: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Select Price for \(territoryDisplay)")
+            Text(Loc.PriceSettings.selectPriceFor(territoryDisplay))
                 .font(.headline)
                 .padding(.top)
 
             if isLoading {
-                ProgressView("Loading price points…")
+                ProgressView(Loc.PriceSettings.loadingPricePointsProgress)
                     .padding()
             } else if pricePoints.isEmpty {
-                Text("No price points available")
+                Text(Loc.PriceSettings.noPricePointsAvailable)
                     .foregroundStyle(.secondary)
                     .padding()
             } else {
-                Picker("Price (\(currency))", selection: $selection) {
+                Picker(Loc.PriceSettings.priceCurrency(currency), selection: $selection) {
                     ForEach(pricePoints) { opt in
                         Text("\(opt.customerPrice) \(currency)")
                             .tag(opt.id)
@@ -88,7 +88,7 @@ private struct PricePickerSheet: View {
 
             Spacer()
 
-            Button("Done") {
+            Button(Loc.PriceSettings.done) {
                 onDismiss()
             }
             .keyboardShortcut(.defaultAction)
@@ -181,27 +181,27 @@ struct PriceSettingsView: View {
         Group {
             if subscription == nil {
                 ContentUnavailableView(
-                    "Select a Subscription",
+                    Loc.PriceSettings.selectSubscription,
                     systemImage: "dollarsign.circle",
-                    description: Text("Choose a subscription from the list to configure its prices.")
+                    description: Text(Loc.PriceSettings.selectSubscriptionDescription)
                 )
             } else {
                 Form {
-                    Section("Base Price") {
+                    Section(Loc.PriceSettings.basePrice) {
                         if isLoading {
                             HStack {
                                 ProgressView()
-                                Text("Loading price points…")
+                                Text(Loc.PriceSettings.loadingPricePoints)
                                     .foregroundStyle(.secondary)
                             }
                         } else if usPricePoints.isEmpty {
-                            Text("No price points available for this subscription.")
+                            Text(Loc.PriceSettings.noPricePointsForSubscription)
                                 .foregroundStyle(.secondary)
                         } else {
-                            Picker("Price", selection: $selectedBasePricePoint) {
-                                Text("Select…").tag(nil as SubscriptionPricePointResource?)
+                            Picker(Loc.PriceSettings.price, selection: $selectedBasePricePoint) {
+                                Text(Loc.PriceSettings.select).tag(nil as SubscriptionPricePointResource?)
                                 ForEach(usPricePoints, id: \.id) { pp in
-                                    Text(pp.attributes.customerPrice ?? "Unknown").tag(pp as SubscriptionPricePointResource?)
+                                    Text(pp.attributes.customerPrice ?? Loc.Subscriptions.unknown).tag(pp as SubscriptionPricePointResource?)
                                 }
                             }
                             .onChange(of: selectedBasePricePoint) { _, new in
@@ -217,8 +217,8 @@ struct PriceSettingsView: View {
                         }
                     }
 
-                    Section("Index Mode") {
-                        Picker("Mode", selection: $indexMode) {
+                    Section(Loc.PriceSettings.indexMode) {
+                        Picker(Loc.PriceSettings.mode, selection: $indexMode) {
                             ForEach(IndexMode.allCases, id: \.self) { mode in
                                 Text(mode.rawValue).tag(mode)
                             }
@@ -239,27 +239,27 @@ struct PriceSettingsView: View {
                     }
 
                     if !equalizations.isEmpty {
-                        Section("Preview") {
+                        Section(Loc.PriceSettings.preview) {
                             if isLoadingCustomTiers {
                                 VStack(alignment: .leading, spacing: 6) {
                                     HStack {
                                         ProgressView(value: tierLoadProgress, total: 1)
                                             .frame(maxWidth: 200)
                                         if tierLoadTotal > 0 {
-                                            Text("\(tierLoadCurrent) of \(tierLoadTotal)")
+                                            Text(Loc.PriceSettings.tierProgress(String(tierLoadCurrent), String(tierLoadTotal)))
                                                 .font(.caption)
                                                 .foregroundStyle(.secondary)
                                                 .monospacedDigit()
                                         }
                                     }
-                                    Text("Loading price tiers…")
+                                    Text(Loc.PriceSettings.loadingPriceTiers)
                                         .font(.subheadline)
                                         .foregroundStyle(.secondary)
                                 }
                                 .padding(.vertical, 4)
                             }
                             Table(previewRows) {
-                                TableColumn("Territory") { row in
+                                TableColumn(Loc.PriceSettings.territory) { row in
                                     if let territory = Territory(apiCode: row.territoryIdForAPI) {
                                         HStack(spacing: 6) {
                                             territory.image
@@ -273,13 +273,13 @@ struct PriceSettingsView: View {
                                         Text(row.territoryDisplay)
                                     }
                                 }
-                                TableColumn("Currency") { row in
+                                TableColumn(Loc.PriceSettings.currency) { row in
                                     Text(row.currency)
                                 }
-                                TableColumn("Current price") { row in
+                                TableColumn(Loc.PriceSettings.currentPrice) { row in
                                     Text(row.currentPrice)
                                 }
-                                TableColumn("New Price") { row in
+                                TableColumn(Loc.PriceSettings.newPrice) { row in
                                     Button {
                                         territoryIdForPriceSheet = row.territoryIdForAPI
                                     } label: {
@@ -298,35 +298,35 @@ struct PriceSettingsView: View {
                                     }
                                     .buttonStyle(.plain)
                                 }
-                                TableColumn("New Price (USD)") { row in
+                                TableColumn(Loc.PriceSettings.newPriceUSD) { row in
                                     Text(row.priceUSD)
                                 }
                             }
                         }
                     }
 
-                    Section("Price Change Options") {
-                        Toggle("Preserve current price for existing subscribers", isOn: $preserveCurrentPriceForExisting)
-                        DatePicker("Start date", selection: $priceStartDate, displayedComponents: .date)
+                    Section(Loc.PriceSettings.priceChangeOptions) {
+                        Toggle(Loc.PriceSettings.preserveCurrentPrice, isOn: $preserveCurrentPriceForExisting)
+                        DatePicker(Loc.PriceSettings.startDate, selection: $priceStartDate, displayedComponents: .date)
                         if let next = nextScheduledStartDate {
                             let formatted = next.formatted(date: .abbreviated, time: .omitted)
-                            Text("Next scheduled change: \(formatted)")
+                            Text(Loc.PriceSettings.nextScheduledChange(formatted))
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         } else if !existingPrices.isEmpty {
-                            Text("No future scheduled changes")
+                            Text(Loc.PriceSettings.noFutureScheduledChanges)
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
                         if isStartDateConflictingWithScheduled {
-                            Label("This date is already used by a scheduled price change; choose another date.", systemImage: "exclamationmark.triangle.fill")
+                            Label(Loc.PriceSettings.startDateConflict, systemImage: "exclamationmark.triangle.fill")
                                 .font(.caption)
                                 .foregroundStyle(.orange)
                         }
                     }
 
                     Section {
-                        Button("Apply to App Store Connect") {
+                        Button(Loc.PriceSettings.applyToAppStoreConnect) {
                             Task { await applyPrices() }
                         }
                         .disabled(!canApply)
@@ -342,8 +342,8 @@ struct PriceSettingsView: View {
         .task(id: subscription?.id) {
             await loadData()
         }
-        .alert("Error", isPresented: .constant(errorMessage != nil)) {
-            Button("OK") { errorMessage = nil }
+        .alert(Loc.PriceSettings.error, isPresented: .constant(errorMessage != nil)) {
+            Button(Loc.PriceSettings.ok) { errorMessage = nil }
         } message: {
             if let err = errorMessage {
                 Text(err)

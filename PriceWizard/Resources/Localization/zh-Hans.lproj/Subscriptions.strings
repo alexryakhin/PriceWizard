@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "订阅";
+"selectApp" = "选择 App";
+"selectAppDescription" = "从侧边栏选择 App 以查看其订阅。";
+"loadingSubscriptions" = "正在加载订阅…";
+"error" = "错误";
+"noSubscriptions" = "无订阅";
+"noSubscriptionsDescription" = "此 App 没有 App 内订阅。";
+"unknown" = "未知";
+"weekly" = "每周";
+"monthly" = "每月";
+"twoMonths" = "2 个月";
+"threeMonths" = "3 个月";
+"sixMonths" = "6 个月";
+"yearly" = "每年";

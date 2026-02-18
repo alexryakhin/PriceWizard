@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "App";
+"loading" = "加载中";
+"loadingDescription" = "正在获取你的 App…";
+"error" = "错误";

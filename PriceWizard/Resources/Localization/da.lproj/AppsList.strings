@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "Apps";
+"loading" = "Indlæser";
+"loadingDescription" = "Henter dine apps…";
+"error" = "Fejl";

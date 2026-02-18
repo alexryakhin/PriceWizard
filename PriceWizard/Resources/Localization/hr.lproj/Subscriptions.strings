@@ -1,0 +1,16 @@
+/* SubscriptionsDetailView */
+
+"title" = "Pretplate";
+"selectApp" = "Odaberi aplikaciju";
+"selectAppDescription" = "Odaberi aplikaciju u bočnoj traci za pregled pretplata.";
+"loadingSubscriptions" = "Učitavanje pretplata…";
+"error" = "Greška";
+"noSubscriptions" = "Nema pretplata";
+"noSubscriptionsDescription" = "Ova aplikacija nema pretplata u aplikaciji.";
+"unknown" = "Nepoznato";
+"weekly" = "Tjedno";
+"monthly" = "Mjesečno";
+"twoMonths" = "2 mjeseca";
+"threeMonths" = "3 mjeseca";
+"sixMonths" = "6 mjeseci";
+"yearly" = "Godišnje";

@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Виберіть підписку";
+"selectSubscriptionDescription" = "Виберіть підписку зі списку, щоб налаштувати ціни.";
+"basePrice" = "Базова ціна";
+"loadingPricePoints" = "Завантаження цін…";
+"noPricePointsForSubscription" = "Немає доступних цін для цієї підписки.";
+"price" = "Ціна";
+"select" = "Вибрати…";
+"indexMode" = "Режим індексу";
+"mode" = "Режим";
+"preview" = "Попередній перегляд";
+"territory" = "Регіон";
+"currency" = "Валюта";
+"currentPrice" = "Поточна ціна";
+"newPrice" = "Нова ціна";
+"newPriceUSD" = "Нова ціна (USD)";
+"priceChangeOptions" = "Параметри зміни ціни";
+"preserveCurrentPrice" = "Зберегти поточну ціну для існуючих підписників";
+"startDate" = "Дата початку";
+"nextScheduledChange" = "Наступна запланована зміна: %@";
+"noFutureScheduledChanges" = "Немає запланованих змін";
+"startDateConflict" = "Цю дату вже використовує запланована зміна ціни; виберіть іншу.";
+"applyToAppStoreConnect" = "Застосувати в App Store Connect";
+"done" = "Готово";
+"selectPriceFor" = "Вибрати ціну для %@";
+"loadingPricePointsProgress" = "Завантаження цін…";
+"noPricePointsAvailable" = "Немає доступних цін";
+"priceCurrency" = "Ціна (%@)";
+"loadingPriceTiers" = "Завантаження рівнів цін…";
+"tierProgress" = "%@ з %@";
+"error" = "Помилка";
+"ok" = "OK";

@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "Sovellukset";
+"loading" = "Ladataan";
+"loadingDescription" = "Haetaan sovelluksiasi…";
+"error" = "Virhe";

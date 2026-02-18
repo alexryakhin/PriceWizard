@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "Apper";
+"loading" = "Laster";
+"loadingDescription" = "Henter appene dine…";
+"error" = "Feil";

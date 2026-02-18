@@ -1,0 +1,8 @@
+/* AuthSetupView */
+
+"title" = "App Store Connect API";
+"instructions" = "Unesite podatke API ključa iz App Store Connect > Korisnici i pristup > Integracije.";
+"keyIdPlaceholder" = "XXXXXXXXXX";
+"issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+"selectP8" = "Odaberi AuthKey_XXXXXXXX.p8";
+"connect" = "Spoji";

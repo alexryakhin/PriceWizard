@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "Aplikasi";
+"loading" = "Memuat";
+"loadingDescription" = "Mengambil aplikasi Anda…";
+"error" = "Error";

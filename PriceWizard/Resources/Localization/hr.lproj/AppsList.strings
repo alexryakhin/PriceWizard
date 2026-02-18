@@ -1,0 +1,6 @@
+/* AppsListView */
+
+"title" = "Aplikacije";
+"loading" = "Učitavanje";
+"loadingDescription" = "Dohvaćanje aplikacija…";
+"error" = "Greška";

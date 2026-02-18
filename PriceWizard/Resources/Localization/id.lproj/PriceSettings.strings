@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Pilih Langganan";
+"selectSubscriptionDescription" = "Pilih langganan dari daftar untuk mengonfigurasi harganya.";
+"basePrice" = "Harga Dasar";
+"loadingPricePoints" = "Memuat harga…";
+"noPricePointsForSubscription" = "Tidak ada harga yang tersedia untuk langganan ini.";
+"price" = "Harga";
+"select" = "Pilih…";
+"indexMode" = "Mode Indeks";
+"mode" = "Mode";
+"preview" = "Pratinjau";
+"territory" = "Wilayah";
+"currency" = "Mata Uang";
+"currentPrice" = "Harga saat ini";
+"newPrice" = "Harga baru";
+"newPriceUSD" = "Harga baru (USD)";
+"priceChangeOptions" = "Opsi Perubahan Harga";
+"preserveCurrentPrice" = "Pertahankan harga saat ini untuk pelanggan yang ada";
+"startDate" = "Tanggal mulai";
+"nextScheduledChange" = "Perubahan terjadwal berikutnya: %@";
+"noFutureScheduledChanges" = "Tidak ada perubahan terjadwal";
+"startDateConflict" = "Tanggal ini sudah digunakan oleh perubahan harga terjadwal; pilih tanggal lain.";
+"applyToAppStoreConnect" = "Terapkan di App Store Connect";
+"done" = "Selesai";
+"selectPriceFor" = "Pilih harga untuk %@";
+"loadingPricePointsProgress" = "Memuat harga…";
+"noPricePointsAvailable" = "Tidak ada harga tersedia";
+"priceCurrency" = "Harga (%@)";
+"loadingPriceTiers" = "Memuat tingkat harga…";
+"tierProgress" = "%@ dari %@";
+"error" = "Error";
+"ok" = "OK";

@@ -1,0 +1,33 @@
+/* PriceSettingsView */
+
+"selectSubscription" = "Select a Subscription";
+"selectSubscriptionDescription" = "Choose a subscription from the list to configure its prices.";
+"basePrice" = "Base Price";
+"loadingPricePoints" = "Loading price points…";
+"noPricePointsForSubscription" = "No price points available for this subscription.";
+"price" = "Price";
+"select" = "Select…";
+"indexMode" = "Index Mode";
+"mode" = "Mode";
+"preview" = "Preview";
+"territory" = "Territory";
+"currency" = "Currency";
+"currentPrice" = "Current price";
+"newPrice" = "New Price";
+"newPriceUSD" = "New Price (USD)";
+"priceChangeOptions" = "Price Change Options";
+"preserveCurrentPrice" = "Preserve current price for existing subscribers";
+"startDate" = "Start date";
+"nextScheduledChange" = "Next scheduled change: %@";
+"noFutureScheduledChanges" = "No future scheduled changes";
+"startDateConflict" = "This date is already used by a scheduled price change; choose another date.";
+"applyToAppStoreConnect" = "Apply to App Store Connect";
+"done" = "Done";
+"selectPriceFor" = "Select Price for %@";
+"loadingPricePointsProgress" = "Loading price points…";
+"noPricePointsAvailable" = "No price points available";
+"priceCurrency" = "Price (%@)";
+"loadingPriceTiers" = "Loading price tiers…";
+"tierProgress" = "%@ of %@";
+"error" = "Error";
+"ok" = "OK";
