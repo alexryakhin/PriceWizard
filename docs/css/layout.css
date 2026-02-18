@@ -1,0 +1,85 @@
+/**
+ * Layout — container, sections, grid
+ */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.section {
+  padding-top: var(--space-20);
+  padding-bottom: var(--space-20);
+}
+
+.section-title {
+  font-size: var(--text-2xl);
+  color: var(--color-text);
+  margin-bottom: var(--space-10);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-12);
+  }
+}
+
+.feature-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .feature-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+.requirement-list {
+  max-width: 36rem;
+  margin: 0 auto var(--space-6);
+}
+
+.requirement-list li {
+  padding: var(--space-2) 0;
+  padding-left: var(--space-6);
+  position: relative;
+}
+
+.requirement-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.requirements-note,
+.privacy-lead {
+  max-width: 42rem;
+  margin: 0 auto;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--line-relaxed);
+}
+
+.privacy-lead {
+  text-align: center;
+}

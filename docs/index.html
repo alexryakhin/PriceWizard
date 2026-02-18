@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PriceWizard — Set App Store subscription prices for all territories from one screen. No more updating 175 countries by hand.">
+  <title>PriceWizard — Subscription pricing for App Store Connect</title>
+  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="favicon/favicon.svg" alt="" class="logo-icon" width="28" height="28">
+        <span>PriceWizard</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#requirements">Requirements</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-badge">macOS app</div>
+        <h1 class="hero-title">Set subscription prices for <em>all</em> territories from one screen</h1>
+        <p class="hero-lead">No more updating 175 countries by hand in App Store Connect. Connect your API key, pick a base price, preview in every currency, and apply in one go.</p>
+        <div class="hero-actions">
+          <a href="https://github.com/alexryakhin/PriceWizard" class="btn btn-primary" id="download-cta">Download (coming soon)</a>
+          <a href="#features" class="btn btn-ghost">See how it works</a>
+        </div>
+        <div class="hero-visual">
+          <img src="assets/screenshot-mac-os.png" alt="PriceWizard app window showing subscription prices by territory" class="hero-screenshot">
+        </div>
+      </div>
+    </section>
+
+    <section class="section features" id="features">
+      <div class="container">
+        <h2 class="section-title">What it does</h2>
+        <ul class="feature-grid">
+          <li class="feature-card">
+            <span class="feature-icon" aria-hidden="true">🔑</span>
+            <h3>Connect</h3>
+            <p>Sign in with your App Store Connect API key (Key ID, Issuer ID, and .p8 file). Stored only in your Mac’s Keychain.</p>
+          </li>
+          <li class="feature-card">
+            <span class="feature-icon" aria-hidden="true">💰</span>
+            <h3>Pick a base price</h3>
+            <p>Choose a US base price and see a live preview of the new price in every territory—local currency and USD.</p>
+          </li>
+          <li class="feature-card">
+            <span class="feature-icon" aria-hidden="true">📐</span>
+            <h3>Choose a mode</h3>
+            <p>Apple Equalization, Netflix-style, or Spotify-style regional pricing. Override per territory when you need to.</p>
+          </li>
+          <li class="feature-card">
+            <span class="feature-icon" aria-hidden="true">✓</span>
+            <h3>Apply in one go</h3>
+            <p>Send all changes at once. The app skips territories that already have the target price and avoids conflicting dates.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section requirements" id="requirements">
+      <div class="container">
+        <h2 class="section-title">Requirements</h2>
+        <ul class="requirement-list">
+          <li><strong>macOS 15</strong> or later</li>
+          <li><strong>App Store Connect API key</strong> with Key ID, Issuer ID, and .p8 file (Manager or Admin)</li>
+        </ul>
+        <p class="requirements-note">Get your key in App Store Connect → Users and Access → Integrations → App Store Connect API. Download the .p8 once—Apple won’t show it again.</p>
+      </div>
+    </section>
+
+    <section class="section privacy" id="privacy">
+      <div class="container">
+        <h2 class="section-title">Privacy</h2>
+        <p class="privacy-lead">We don’t collect or receive your data. Your API key stays in your Mac’s Keychain. The app talks only to Apple’s API and to a public exchange-rate service for USD conversion.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="copyright">© 2026 Alexander Riakhin. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="mailto:bonney977@gmail.com">Email</a>
+        <a href="https://buymeacoffee.com/xander1100001" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
