@@ -71,9 +71,7 @@ struct AppRow: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            Image(systemName: "app.badge.fill")
-                .font(.title2)
-                .foregroundStyle(.secondary)
+            AppIconView(bundleId: app.attributes.bundleId, size: 28)
                 .frame(width: 28, alignment: .center)
             VStack(alignment: .leading, spacing: 2) {
                 Text(app.attributes.name ?? "Unknown")
