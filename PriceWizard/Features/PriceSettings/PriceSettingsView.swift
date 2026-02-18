@@ -260,7 +260,18 @@ struct PriceSettingsView: View {
                             }
                             Table(previewRows) {
                                 TableColumn("Territory") { row in
-                                    Text(row.territoryDisplay)
+                                    if let territory = Territory(apiCode: row.territoryIdForAPI) {
+                                        HStack(spacing: 6) {
+                                            territory.image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .clipShape(RoundedRectangle(cornerRadius: 4))
+                                                .frame(width: 24, height: 24)
+                                            Text(territory.displayName)
+                                        }
+                                    } else {
+                                        Text(row.territoryDisplay)
+                                    }
                                 }
                                 TableColumn("Currency") { row in
                                     Text(row.currency)
@@ -357,7 +368,7 @@ struct PriceSettingsView: View {
             set: { territoryIdForPriceSheet = $0?.territoryId }
         )) { item in
             PricePickerSheet(
-                territoryDisplay: TerritoryNames.displayName(for: item.territoryId),
+                territoryDisplay: Territory(apiCode: item.territoryId)?.displayName ?? TerritoryNames.displayName(for: item.territoryId),
                 currency: territoryMap[item.territoryId]?.currency ?? "—",
                 selection: Binding(
                     get: { selectedPricePointByTerritory[item.territoryId] ?? "" },
