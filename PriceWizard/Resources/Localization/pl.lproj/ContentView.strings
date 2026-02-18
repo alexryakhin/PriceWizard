@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "O Price Wizard";
+"clearCacheTooltip" = "Wyczyść całą pamięć podręczną i przeładuj dane";
 "logOut" = "Wyloguj";

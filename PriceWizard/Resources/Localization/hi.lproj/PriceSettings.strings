@@ -31,3 +31,5 @@
 "tierProgress" = "%@ / %@";
 "error" = "त्रुटि";
 "ok" = "ठीक है";
+"appliedPricesSuccess" = "%@ कीमतें सफलतापूर्वक लागू की गईं";
+"appliedPricesWithSkipped" = "%@ कीमतें लागू (%@ पहले से सेट, छोड़ी गईं)";

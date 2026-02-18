@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "Quant a Price Wizard";
+"clearCacheTooltip" = "Esborra tota la memòria cau i recarrega les dades";
 "logOut" = "Tancar sessió";

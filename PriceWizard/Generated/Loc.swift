@@ -49,10 +49,20 @@ internal enum Loc {
   internal enum ContentView {
     /// ContentView toolbar
     internal static let aboutTooltip = Loc.tr("ContentView", "aboutTooltip", fallback: "About Price Wizard")
+    /// Clear all cache and reload data
+    internal static let clearCacheTooltip = Loc.tr("ContentView", "clearCacheTooltip", fallback: "Clear all cache and reload data")
     /// Log Out
     internal static let logOut = Loc.tr("ContentView", "logOut", fallback: "Log Out")
   }
   internal enum PriceSettings {
+    /// Applied %@ prices successfully
+    internal static func appliedPricesSuccess(_ p1: Any) -> String {
+      return Loc.tr("PriceSettings", "appliedPricesSuccess", String(describing: p1), fallback: "Applied %@ prices successfully")
+    }
+    /// Applied %@ prices (%@ already set, skipped)
+    internal static func appliedPricesWithSkipped(_ p1: Any, _ p2: Any) -> String {
+      return Loc.tr("PriceSettings", "appliedPricesWithSkipped", String(describing: p1), String(describing: p2), fallback: "Applied %@ prices (%@ already set, skipped)")
+    }
     /// Apply to App Store Connect
     internal static let applyToAppStoreConnect = Loc.tr("PriceSettings", "applyToAppStoreConnect", fallback: "Apply to App Store Connect")
     /// Base Price

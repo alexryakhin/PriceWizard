@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "Про Price Wizard";
+"clearCacheTooltip" = "Очистити весь кеш і перезавантажити дані";
 "logOut" = "Вийти";

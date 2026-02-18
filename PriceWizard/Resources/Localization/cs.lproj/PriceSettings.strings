@@ -31,3 +31,5 @@
 "tierProgress" = "%@ z %@";
 "error" = "Chyba";
 "ok" = "OK";
+"appliedPricesSuccess" = "Úspěšně aplikováno %@ cen";
+"appliedPricesWithSkipped" = "Aplikováno %@ cen (%@ již nastaveno, přeskočeno)";

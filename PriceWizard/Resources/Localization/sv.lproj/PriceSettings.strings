@@ -31,3 +31,5 @@
 "tierProgress" = "%@ av %@";
 "error" = "Fel";
 "ok" = "OK";
+"appliedPricesSuccess" = "Tillämpade %@ priser";
+"appliedPricesWithSkipped" = "Tillämpade %@ priser (%@ redan angivna, hoppades över)";

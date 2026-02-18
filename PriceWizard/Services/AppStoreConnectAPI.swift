@@ -20,6 +20,7 @@ final class AppStoreConnectAPI {
     private let baseURL = URL(string: "https://api.appstoreconnect.apple.com")!
     private var getToken: () throws -> String
     private let session: URLSession
+    private let urlCache: URLCache
     private let decoder: JSONDecoder
     /// Per–price-point equalizations. Key: pricePointId. Never cleared – monthly and yearly subs have different price point IDs.
     private var equalizationsCache: [String: (pricePoints: [SubscriptionPricePointResource], territories: [TerritoryResource])] = [:]
@@ -32,12 +33,22 @@ final class AppStoreConnectAPI {
         self.getToken = getToken
         let config = URLSessionConfiguration.default
         config.requestCachePolicy = .returnCacheDataElseLoad
-        config.urlCache = URLCache(memoryCapacity: 20 * 1024 * 1024, diskCapacity: 50 * 1024 * 1024)
+        let urlCache = URLCache(memoryCapacity: 20 * 1024 * 1024, diskCapacity: 50 * 1024 * 1024)
+        config.urlCache = urlCache
+        self.urlCache = urlCache
         self.session = URLSession(configuration: config)
         self.decoder = JSONDecoder()
     }
 
-    private func request(path: String, queryItems: [URLQueryItem] = [], method: String = "GET", body: Data? = nil) async throws -> (Data, HTTPURLResponse) {
+    /// Clears all in-memory and URL caches. Call when you need fresh data (e.g. new app added).
+    func clearAllCaches() {
+        equalizationsCache.removeAll()
+        subscriptionPricePointsCache.removeAll()
+        subscriptionPricesResponseCache.removeAll()
+        urlCache.removeAllCachedResponses()
+    }
+
+    private func request(path: String, queryItems: [URLQueryItem] = [], method: String = "GET", body: Data? = nil, cachePolicy: URLRequest.CachePolicy? = nil) async throws -> (Data, HTTPURLResponse) {
         let pathStr = path.hasPrefix("/") ? path : "/\(path)"
         var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)!
         components.path = pathStr
@@ -47,7 +58,7 @@ final class AppStoreConnectAPI {
         }
         var request = URLRequest(url: url)
         request.httpMethod = method
-        request.cachePolicy = .returnCacheDataElseLoad
+        request.cachePolicy = cachePolicy ?? .returnCacheDataElseLoad
         request.setValue("Bearer \(try getToken())", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = body
@@ -83,12 +94,14 @@ final class AppStoreConnectAPI {
 
     // MARK: - Apps
 
-    func getApps(limit: Int = 200) async throws -> [AppResource] {
+    /// - Parameter ignoreCache: If true, bypasses URL cache so newly added apps appear immediately.
+    func getApps(limit: Int = 200, ignoreCache: Bool = false) async throws -> [AppResource] {
         let queryItems = [
             URLQueryItem(name: "limit", value: "\(limit)"),
             URLQueryItem(name: "sort", value: "name")
         ]
-        let (data, _) = try await request(path: "v1/apps", queryItems: queryItems)
+        let policy: URLRequest.CachePolicy? = ignoreCache ? .reloadIgnoringLocalCacheData : nil
+        let (data, _) = try await request(path: "v1/apps", queryItems: queryItems, cachePolicy: policy)
         let response = try decoder.decode(AppsResponse.self, from: data)
         return response.data
     }

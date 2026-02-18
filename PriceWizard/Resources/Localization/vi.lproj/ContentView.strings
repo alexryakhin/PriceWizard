@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "Giới thiệu Price Wizard";
+"clearCacheTooltip" = "Xóa toàn bộ bộ nhớ đệm và tải lại dữ liệu";
 "logOut" = "Đăng xuất";

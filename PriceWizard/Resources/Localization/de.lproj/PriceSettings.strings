@@ -31,3 +31,5 @@
 "tierProgress" = "%@ von %@";
 "error" = "Fehler";
 "ok" = "OK";
+"appliedPricesSuccess" = "%@ Preise erfolgreich übernommen";
+"appliedPricesWithSkipped" = "%@ Preise übernommen (%@ bereits gesetzt, übersprungen)";

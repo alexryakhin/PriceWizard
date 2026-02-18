@@ -31,3 +31,5 @@
 "tierProgress" = "%@ / %@";
 "error" = "Hiba";
 "ok" = "OK";
+"appliedPricesSuccess" = "%@ ár sikeresen alkalmazva";
+"appliedPricesWithSkipped" = "%@ ár alkalmazva (%@ már beállítva, kihagyva)";

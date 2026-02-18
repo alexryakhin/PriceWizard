@@ -31,3 +31,5 @@
 "tierProgress" = "%@ od %@";
 "error" = "Greška";
 "ok" = "OK";
+"appliedPricesSuccess" = "Primijenjeno %@ cijena uspješno";
+"appliedPricesWithSkipped" = "Primijenjeno %@ cijena (%@ već postavljeno, preskočeno)";

@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "Om Price Wizard";
+"clearCacheTooltip" = "Ryd al cache og genindlæs data";
 "logOut" = "Log ud";

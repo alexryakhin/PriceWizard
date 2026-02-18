@@ -31,3 +31,5 @@
 "tierProgress" = "%@ מתוך %@";
 "error" = "שגיאה";
 "ok" = "אישור";
+"appliedPricesSuccess" = "הוחלו %@ מחירים בהצלחה";
+"appliedPricesWithSkipped" = "הוחלו %@ מחירים (%@ כבר הוגדרו, דולגו)";

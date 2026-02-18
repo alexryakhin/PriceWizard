@@ -10,6 +10,7 @@ import SwiftUI
 struct SubscriptionsDetailView: View {
     @Bindable var authState: AuthState
     let app: AppResource?
+    var cacheClearedId: UUID
     @Binding var selectedSubscription: SubscriptionResource?
     @State private var subscriptions: [SubscriptionResource] = []
     @State private var isLoading = false
@@ -54,7 +55,7 @@ struct SubscriptionsDetailView: View {
             }
         }
         .navigationTitle(app?.attributes.name ?? Loc.Subscriptions.title)
-        .task(id: app?.id) {
+        .task(id: "\(app?.id ?? "").\(cacheClearedId.uuidString)") {
             await loadSubscriptions()
         }
         .refreshable {

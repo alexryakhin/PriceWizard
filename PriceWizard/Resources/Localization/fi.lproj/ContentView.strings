@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "Tietoja Price Wizardista";
+"clearCacheTooltip" = "Tyhjennä välimuisti ja lataa data uudelleen";
 "logOut" = "Kirjaudu ulos";

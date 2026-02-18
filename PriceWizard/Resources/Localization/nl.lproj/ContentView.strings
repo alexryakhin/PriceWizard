@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "Over Price Wizard";
+"clearCacheTooltip" = "Alle cache wissen en gegevens herladen";
 "logOut" = "Uitloggen";

@@ -31,3 +31,5 @@
 "tierProgress" = "%@ daripada %@";
 "error" = "Ralat";
 "ok" = "OK";
+"appliedPricesSuccess" = "Berjaya mengguna %@ harga";
+"appliedPricesWithSkipped" = "Digunakan %@ harga (%@ sudah ditetapkan, dilangkau)";

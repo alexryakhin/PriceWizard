@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "Price Wizard 정보";
+"clearCacheTooltip" = "모든 캐시 지우기 및 데이터 다시 로드";
 "logOut" = "로그아웃";

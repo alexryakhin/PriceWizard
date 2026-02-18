@@ -31,3 +31,5 @@
 "tierProgress" = "%@ από %@";
 "error" = "Σφάλμα";
 "ok" = "OK";
+"appliedPricesSuccess" = "Εφαρμόστηκαν %@ τιμές με επιτυχία";
+"appliedPricesWithSkipped" = "Εφαρμόστηκαν %@ τιμές (%@ ήδη ορισμένες, παραλείφθηκαν)";

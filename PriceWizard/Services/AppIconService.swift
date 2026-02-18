@@ -13,6 +13,13 @@ enum AppIconService {
     private static var cache: [String: URL] = [:]
     private static let cacheLock = NSLock()
 
+    /// Clears the in-memory icon cache. Call with API clearAllCaches when doing a full cache clear.
+    static func clearCache() {
+        cacheLock.lock()
+        cache.removeAll()
+        cacheLock.unlock()
+    }
+
     /// Returns a URL for the app icon (60pt) for the given bundle ID, or nil if not found.
     /// Results are cached in memory.
     static func iconURL(bundleId: String) async -> URL? {

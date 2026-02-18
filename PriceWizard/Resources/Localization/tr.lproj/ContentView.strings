@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "Price Wizard Hakkında";
+"clearCacheTooltip" = "Tüm önbelleği temizle ve verileri yeniden yükle";
 "logOut" = "Çıkış Yap";

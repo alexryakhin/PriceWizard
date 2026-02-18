@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "Despre Price Wizard";
+"clearCacheTooltip" = "Șterge tot cache-ul și reîncarcă datele";
 "logOut" = "Deconectare";

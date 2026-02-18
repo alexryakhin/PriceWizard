@@ -31,3 +31,5 @@
 "tierProgress" = "%@ af %@";
 "error" = "Fejl";
 "ok" = "OK";
+"appliedPricesSuccess" = "Anvendt %@ priser succesfuldt";
+"appliedPricesWithSkipped" = "Anvendt %@ priser (%@ allerede sat, sprunget over)";

@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "Σχετικά με το Price Wizard";
+"clearCacheTooltip" = "Απαλοιφή όλων των προσωρινών δεδομένων και επαναφόρτωση";
 "logOut" = "Αποσύνδεση";

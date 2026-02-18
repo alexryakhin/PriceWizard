@@ -31,3 +31,5 @@
 "tierProgress" = "%@ z %@";
 "error" = "Błąd";
 "ok" = "OK";
+"appliedPricesSuccess" = "Pomyślnie zastosowano %@ cen";
+"appliedPricesWithSkipped" = "Zastosowano %@ cen (%@ już ustawione, pominięto)";

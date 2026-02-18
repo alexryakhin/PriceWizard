@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "Tentang Price Wizard";
+"clearCacheTooltip" = "Hapus semua cache dan muat ulang data";
 "logOut" = "Keluar";

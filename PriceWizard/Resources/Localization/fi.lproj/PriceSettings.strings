@@ -31,3 +31,5 @@
 "tierProgress" = "%@ / %@";
 "error" = "Virhe";
 "ok" = "OK";
+"appliedPricesSuccess" = "Hinnat (%@ kpl) käytettiin onnistuneesti";
+"appliedPricesWithSkipped" = "Käytettiin %@ hintaa (%@ jo asetettu, ohitettu)";

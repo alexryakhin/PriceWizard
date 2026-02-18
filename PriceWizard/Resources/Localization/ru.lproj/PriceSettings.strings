@@ -31,3 +31,5 @@
 "tierProgress" = "%@ из %@";
 "error" = "Ошибка";
 "ok" = "OK";
+"appliedPricesSuccess" = "Успешно применено %@ цен";
+"appliedPricesWithSkipped" = "Применено %@ цен (%@ уже установлено, пропущено)";

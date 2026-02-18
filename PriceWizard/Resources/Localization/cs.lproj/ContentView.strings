@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "O aplikaci Price Wizard";
+"clearCacheTooltip" = "Vymazat celou mezipaměť a znovu načíst data";
 "logOut" = "Odhlásit se";

@@ -9,10 +9,11 @@ import SwiftUI
 
 struct AppsListView: View {
     @Bindable var authState: AuthState
+    var cacheClearedId: UUID
+    @Binding var selectedApp: AppResource?
     @State private var apps: [AppResource] = []
     @State private var isLoading = false
     @State private var errorMessage: String?
-    @Binding var selectedApp: AppResource?
 
     var body: some View {
         Group {
@@ -44,20 +45,20 @@ struct AppsListView: View {
             }
         }
         .navigationTitle(Loc.AppsList.title)
-        .task {
-            await loadApps()
+        .task(id: cacheClearedId) {
+            await loadApps(ignoreCache: true)
         }
         .refreshable {
-            await loadApps()
+            await loadApps(ignoreCache: true)
         }
     }
 
-    private func loadApps() async {
+    private func loadApps(ignoreCache: Bool = false) async {
         guard let api = authState.api else { return }
         isLoading = true
         errorMessage = nil
         do {
-            apps = try await api.getApps()
+            apps = try await api.getApps(ignoreCache: ignoreCache)
         } catch {
             errorMessage = error.localizedDescription
         }

@@ -31,3 +31,5 @@
 "tierProgress" = "%@ / %@";
 "error" = "錯誤";
 "ok" = "好";
+"appliedPricesSuccess" = "已成功套用 %@ 個價格";
+"appliedPricesWithSkipped" = "已套用 %@ 個價格（%@ 個已設定，已略過）";

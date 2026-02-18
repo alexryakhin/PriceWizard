@@ -31,3 +31,5 @@
 "tierProgress" = "%@ จาก %@";
 "error" = "ข้อผิดพลาด";
 "ok" = "ตกลง";
+"appliedPricesSuccess" = "นำราคา %@ รายการไปใช้สำเร็จ";
+"appliedPricesWithSkipped" = "นำราคา %@ รายการไปใช้ (%@ ตั้งไว้แล้ว ข้ามไป)";

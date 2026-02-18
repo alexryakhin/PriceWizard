@@ -31,3 +31,5 @@
 "tierProgress" = "%@ din %@";
 "error" = "Eroare";
 "ok" = "OK";
+"appliedPricesSuccess" = "%@ prețuri aplicate cu succes";
+"appliedPricesWithSkipped" = "%@ prețuri aplicate (%@ deja setate, omise)";

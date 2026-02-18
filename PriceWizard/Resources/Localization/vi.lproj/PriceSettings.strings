@@ -31,3 +31,5 @@
 "tierProgress" = "%@ / %@";
 "error" = "Lỗi";
 "ok" = "OK";
+"appliedPricesSuccess" = "Đã áp dụng %@ giá thành công";
+"appliedPricesWithSkipped" = "Đã áp dụng %@ giá (%@ đã đặt, bỏ qua)";

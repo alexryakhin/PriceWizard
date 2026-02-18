@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "Perihal Price Wizard";
+"clearCacheTooltip" = "Kosongkan semua cache dan muat semula data";
 "logOut" = "Log keluar";

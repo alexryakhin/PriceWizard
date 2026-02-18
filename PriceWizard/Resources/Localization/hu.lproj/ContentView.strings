@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "A Price Wizard névjegye";
+"clearCacheTooltip" = "Összes gyorsítótár törlése és adatok újratöltése";
 "logOut" = "Kijelentkezés";

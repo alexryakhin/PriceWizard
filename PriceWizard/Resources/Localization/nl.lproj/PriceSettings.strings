@@ -31,3 +31,5 @@
 "tierProgress" = "%@ van %@";
 "error" = "Fout";
 "ok" = "OK";
+"appliedPricesSuccess" = "%@ prijzen succesvol toegepast";
+"appliedPricesWithSkipped" = "%@ prijzen toegepast (%@ al ingesteld, overgeslagen)";

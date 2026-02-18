@@ -1,4 +1,5 @@
 /* ContentView toolbar */
 
 "aboutTooltip" = "À propos de Price Wizard";
+"clearCacheTooltip" = "Effacer tout le cache et recharger les données";
 "logOut" = "Déconnexion";

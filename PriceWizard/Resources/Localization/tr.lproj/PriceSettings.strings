@@ -31,3 +31,5 @@
 "tierProgress" = "%@ / %@";
 "error" = "Hata";
 "ok" = "Tamam";
+"appliedPricesSuccess" = "%@ fiyat başarıyla uygulandı";
+"appliedPricesWithSkipped" = "%@ fiyat uygulandı (%@ zaten ayarlı, atlandı)";

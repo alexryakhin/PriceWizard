@@ -13,27 +13,47 @@ struct ContentView: View {
     @State private var authState = AuthState()
     @State private var selectedApp: AppResource?
     @State private var selectedSubscription: SubscriptionResource?
+    @State private var cacheClearedId = UUID()
 
     var body: some View {
         Group {
             if authState.isAuthenticated {
                 NavigationSplitView {
-                    AppsListView(authState: authState, selectedApp: $selectedApp)
-                        .onChange(of: selectedApp?.id) { _, _ in
-                            selectedSubscription = nil
-                        }
-                        .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 300)
+                    AppsListView(
+                        authState: authState,
+                        cacheClearedId: cacheClearedId,
+                        selectedApp: $selectedApp
+                    )
+                    .onChange(of: selectedApp?.id) { _, _ in
+                        selectedSubscription = nil
+                    }
+                    .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 300)
                 } content: {
                     SubscriptionsDetailView(
                         authState: authState,
                         app: selectedApp,
+                        cacheClearedId: cacheClearedId,
                         selectedSubscription: $selectedSubscription
                     )
                     .navigationSplitViewColumnWidth(min: 250, ideal: 300, max: 350)
                 } detail: {
-                    PriceSettingsView(authState: authState, subscription: selectedSubscription)
+                    PriceSettingsView(
+                        authState: authState,
+                        subscription: selectedSubscription,
+                        cacheClearedId: cacheClearedId
+                    )
                 }
                 .toolbar {
+                    ToolbarItem(placement: .automatic) {
+                        Button {
+                            authState.api?.clearAllCaches()
+                            AppIconService.clearCache()
+                            cacheClearedId = UUID()
+                        } label: {
+                            Image(systemName: "arrow.clockwise.circle")
+                        }
+                        .help(Loc.ContentView.clearCacheTooltip)
+                    }
                     ToolbarItem(placement: .automatic) {
                         Button {
                             openWindow(id: AboutView.windowId)

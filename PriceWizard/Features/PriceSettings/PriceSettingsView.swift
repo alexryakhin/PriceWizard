@@ -104,6 +104,7 @@ private struct PricePickerSheet: View {
 struct PriceSettingsView: View {
     @Bindable var authState: AuthState
     let subscription: SubscriptionResource?
+    var cacheClearedId: UUID
     @State private var usPricePoints: [SubscriptionPricePointResource] = []
     @State private var selectedBasePricePoint: SubscriptionPricePointResource?
     @State private var equalizations: [SubscriptionPricePointResource] = []
@@ -341,7 +342,7 @@ struct PriceSettingsView: View {
             }
         }
         .navigationTitle(subscription?.attributes.name ?? "Price Settings")
-        .task(id: subscription?.id) {
+        .task(id: "\(subscription?.id ?? "").\(cacheClearedId.uuidString)") {
             await loadData()
         }
         .alert(Loc.PriceSettings.error, isPresented: .constant(errorMessage != nil)) {
@@ -755,9 +756,9 @@ struct PriceSettingsView: View {
             }
             let skipped = rows.count - appliedCount
             if skipped > 0 {
-                successMessage = "Applied \(appliedCount) prices (\(skipped) already set, skipped)"
+                successMessage = Loc.PriceSettings.appliedPricesWithSkipped(appliedCount, skipped)
             } else {
-                successMessage = "Applied \(rows.count) prices successfully"
+                successMessage = Loc.PriceSettings.appliedPricesSuccess(rows.count)
             }
             for row in rows {
                 currentPriceByTerritory[row.territoryIdForAPI] = row.price
