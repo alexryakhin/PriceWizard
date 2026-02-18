@@ -47,16 +47,6 @@ We don’t collect or receive your data. Your API key stays in your Mac’s Keyc
 
 ---
 
-## Other docs
-
-| Document | Purpose |
-|----------|---------|
-| [APP_STORE_RESUME.md](APP_STORE_RESUME.md) | One-pager for the app (listing, reviewers, landing). |
-| [APP_STORE_PUBLISHING_GUIDE.md](APP_STORE_PUBLISHING_GUIDE.md) | App Store Connect: name, subtitle, keywords, description, review notes, etc. |
-| [APP_STORE_COMPLIANCE_AUDIT.md](APP_STORE_COMPLIANCE_AUDIT.md) | App Store compliance and privacy audit. |
-
----
-
 ## License
 
 © 2026 Alexander Riakhin. All rights reserved.

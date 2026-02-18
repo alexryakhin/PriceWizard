@@ -22,12 +22,14 @@ struct ContentView: View {
                         .onChange(of: selectedApp?.id) { _, _ in
                             selectedSubscription = nil
                         }
+                        .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 300)
                 } content: {
                     SubscriptionsDetailView(
                         authState: authState,
                         app: selectedApp,
                         selectedSubscription: $selectedSubscription
                     )
+                    .navigationSplitViewColumnWidth(min: 250, ideal: 300, max: 350)
                 } detail: {
                     PriceSettingsView(authState: authState, subscription: selectedSubscription)
                 }
@@ -50,7 +52,7 @@ struct ContentView: View {
                 AuthSetupView(authState: authState)
             }
         }
-        .frame(minWidth: 900, minHeight: 600)
+        .frame(minWidth: 1200, minHeight: 800)
     }
 }
 

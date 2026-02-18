@@ -60,7 +60,7 @@ struct AboutView: View {
 
             HStack(spacing: 16) {
                 Button {
-                    if let url = URL(string: "mailto:\(Constant.contactEmail)") {
+                    if let url = URL(string: "mailto:\(Constant.contactEmail)?subject=Price Wizard Application") {
                         openURL(url)
                     }
                 } label: {

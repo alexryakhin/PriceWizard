@@ -29,6 +29,6 @@ struct PriceWizardApp: App {
         Window(Loc.ContentView.aboutTooltip, id: AboutView.windowId) {
             AboutView()
         }
-        .defaultSize(width: 400, height: 400)
+        .defaultSize(width: 400, height: 500)
     }
 }

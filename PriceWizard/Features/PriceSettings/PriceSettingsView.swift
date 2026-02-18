@@ -267,15 +267,17 @@ struct PriceSettingsView: View {
                                                 .aspectRatio(contentMode: .fit)
                                                 .clipShape(RoundedRectangle(cornerRadius: 4))
                                                 .frame(width: 24, height: 24)
-                                            Text(territory.displayName)
+                                            Text(territory.localizedDisplayName)
                                         }
                                     } else {
                                         Text(row.territoryDisplay)
                                     }
                                 }
+                                .width(min: 180, ideal: 200, max: 250)
                                 TableColumn(Loc.PriceSettings.currency) { row in
                                     Text(row.currency)
                                 }
+                                .width(55)
                                 TableColumn(Loc.PriceSettings.currentPrice) { row in
                                     Text(row.currentPrice)
                                 }
@@ -368,7 +370,7 @@ struct PriceSettingsView: View {
             set: { territoryIdForPriceSheet = $0?.territoryId }
         )) { item in
             PricePickerSheet(
-                territoryDisplay: Territory(apiCode: item.territoryId)?.displayName ?? TerritoryNames.displayName(for: item.territoryId),
+                territoryDisplay: Territory(apiCode: item.territoryId)?.localizedDisplayName ?? TerritoryNames.displayName(for: item.territoryId),
                 currency: territoryMap[item.territoryId]?.currency ?? "—",
                 selection: Binding(
                     get: { selectedPricePointByTerritory[item.territoryId] ?? "" },

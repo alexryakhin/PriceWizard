@@ -73,7 +73,11 @@ enum TerritoryNames {
         "YEM": "Yemen", "ZMB": "Zambia", "ZWE": "Zimbabwe"
     ]
 
+    /// Returns the territory name localized for the current locale when possible (via Locale), otherwise the English fallback.
     static func displayName(for territoryCode: String) -> String {
-        displayNames[territoryCode] ?? territoryCode
+        if let territory = Territory(apiCode: territoryCode) {
+            return territory.localizedDisplayName
+        }
+        return displayNames[territoryCode] ?? territoryCode
     }
 }

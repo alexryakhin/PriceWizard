@@ -491,6 +491,16 @@ enum Territory: String, CaseIterable {
         }
     }
 
+    /// ISO 3166-1 alpha-2 region code (e.g. "US", "GB") for system localization.
+    var regionCode: String {
+        flagImageName.uppercased()
+    }
+
+    /// Display name localized for the current locale (uses system region names).
+    var localizedDisplayName: String {
+        Locale.current.localizedString(forRegionCode: regionCode) ?? displayName
+    }
+
     /// Flag image from Assets.xcassets/flags (ISO 3166-1 alpha-2 asset name).
     var image: Image {
         Image("flags/\(flagImageName)")
