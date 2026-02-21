@@ -43,14 +43,22 @@ internal enum Loc {
     internal static let keyIdPlaceholder = Loc.tr("Auth", "keyIdPlaceholder", fallback: "XXXXXXXXXX")
     /// Select AuthKey_XXXXXXXX.p8
     internal static let selectP8 = Loc.tr("Auth", "selectP8", fallback: "Select AuthKey_XXXXXXXX.p8")
+    /// Explore the app with sample data (no API key required).
+    internal static let tryDemoDescription = Loc.tr("Auth", "tryDemoDescription", fallback: "Explore the app with sample data (no API key required).")
     /// AuthSetupView
     internal static let title = Loc.tr("Auth", "title", fallback: "App Store Connect API")
+    /// Try Demo
+    internal static let tryDemo = Loc.tr("Auth", "tryDemo", fallback: "Try Demo")
   }
   internal enum ContentView {
     /// ContentView toolbar
     internal static let aboutTooltip = Loc.tr("ContentView", "aboutTooltip", fallback: "About Price Wizard")
     /// Clear all cache and reload data
     internal static let clearCacheTooltip = Loc.tr("ContentView", "clearCacheTooltip", fallback: "Clear all cache and reload data")
+    /// Demo mode – changes are not saved to App Store Connect
+    internal static let demoModeBanner = Loc.tr("ContentView", "demoModeBanner", fallback: "Demo mode – changes are not saved to App Store Connect")
+    /// Exit Demo
+    internal static let exitDemo = Loc.tr("ContentView", "exitDemo", fallback: "Exit Demo")
     /// Log Out
     internal static let logOut = Loc.tr("ContentView", "logOut", fallback: "Log Out")
   }
@@ -63,6 +71,10 @@ internal enum Loc {
     internal static func appliedPricesWithSkipped(_ p1: Any, _ p2: Any) -> String {
       return Loc.tr("PriceSettings", "appliedPricesWithSkipped", String(describing: p1), String(describing: p2), fallback: "Applied %@ prices (%@ already set, skipped)")
     }
+    /// Demo mode – apply is disabled
+    internal static let demoModeApplyDisabled = Loc.tr("PriceSettings", "demoModeApplyDisabled", fallback: "Demo mode – apply is disabled")
+    /// In demo mode, apply is simulated.
+    internal static let demoModeApplySimulated = Loc.tr("PriceSettings", "demoModeApplySimulated", fallback: "In demo mode, apply is simulated.")
     /// Apply to App Store Connect
     internal static let applyToAppStoreConnect = Loc.tr("PriceSettings", "applyToAppStoreConnect", fallback: "Apply to App Store Connect")
     /// Base Price

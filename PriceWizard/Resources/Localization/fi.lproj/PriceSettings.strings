@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "Hinnat (%@ kpl) käytettiin onnistuneesti";
 "appliedPricesWithSkipped" = "Käytettiin %@ hintaa (%@ jo asetettu, ohitettu)";
+"demoModeApplyDisabled" = "Demotila – käyttö on pois päältä";
+"demoModeApplySimulated" = "Demotilassa käyttö simuloidaan.";

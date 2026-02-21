@@ -6,3 +6,5 @@
 "issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 "selectP8" = "Vælg AuthKey_XXXXXXXX.p8";
 "connect" = "Forbind";
+"tryDemo" = "Prøv demo";
+"tryDemoDescription" = "Udforsk appen med eksempeldata (ingen API-nøgle kræves).";

@@ -33,3 +33,5 @@
 "ok" = "ตกลง";
 "appliedPricesSuccess" = "นำราคา %@ รายการไปใช้สำเร็จ";
 "appliedPricesWithSkipped" = "นำราคา %@ รายการไปใช้ (%@ ตั้งไว้แล้ว ข้ามไป)";
+"demoModeApplyDisabled" = "โหมดสาธิต – การนำไปใช้ปิดอยู่";
+"demoModeApplySimulated" = "ในโหมดสาธิต การนำไปใช้เป็นการจำลอง";

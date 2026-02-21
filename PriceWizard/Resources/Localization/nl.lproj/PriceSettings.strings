@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "%@ prijzen succesvol toegepast";
 "appliedPricesWithSkipped" = "%@ prijzen toegepast (%@ al ingesteld, overgeslagen)";
+"demoModeApplyDisabled" = "Demomodus – toepassen is uitgeschakeld";
+"demoModeApplySimulated" = "In demomodus wordt toepassen gesimuleerd.";

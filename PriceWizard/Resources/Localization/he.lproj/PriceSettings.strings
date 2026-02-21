@@ -33,3 +33,5 @@
 "ok" = "אישור";
 "appliedPricesSuccess" = "הוחלו %@ מחירים בהצלחה";
 "appliedPricesWithSkipped" = "הוחלו %@ מחירים (%@ כבר הוגדרו, דולגו)";
+"demoModeApplyDisabled" = "מצב הדגמה – היישום מושבת";
+"demoModeApplySimulated" = "במצב הדגמה, היישום מדומה.";

@@ -6,3 +6,5 @@
 "issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 "selectP8" = "选择 AuthKey_XXXXXXXX.p8";
 "connect" = "连接";
+"tryDemo" = "尝试演示";
+"tryDemoDescription" = "使用示例数据浏览应用（无需 API 密钥）。";

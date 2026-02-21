@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "type": "subscriptions",
+      "id": "demo-sub-monthly",
+      "attributes": {
+        "name": "Monthly",
+        "productId": "com.example.demo.premium.monthly",
+        "state": "ACTIVE",
+        "subscriptionPeriod": "ONE_MONTH",
+        "groupLevel": 1
+      }
+    },
+    {
+      "type": "subscriptions",
+      "id": "demo-sub-yearly",
+      "attributes": {
+        "name": "Yearly",
+        "productId": "com.example.demo.premium.yearly",
+        "state": "ACTIVE",
+        "subscriptionPeriod": "ONE_YEAR",
+        "groupLevel": 2
+      }
+    }
+  ]
+}

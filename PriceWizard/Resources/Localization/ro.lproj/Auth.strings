@@ -6,3 +6,5 @@
 "issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 "selectP8" = "Selectează AuthKey_XXXXXXXX.p8";
 "connect" = "Conectare";
+"tryDemo" = "Încercați demo";
+"tryDemoDescription" = "Explorați aplicația cu date exemplu (nu este necesară cheie API).";

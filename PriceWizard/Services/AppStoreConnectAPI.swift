@@ -15,8 +15,25 @@ enum APIError: Error {
     case decodingError(Error)
 }
 
+/// Protocol for the App Store Connect API so the UI can use either the real API or a mock (e.g. demo mode).
+protocol AppStoreConnectAPIProtocol: AnyObject {
+    func clearAllCaches()
+    func clearSubscriptionPricePointsCache()
+    func getApps(limit: Int, ignoreCache: Bool) async throws -> [AppResource]
+    func getSubscriptionGroups(appId: String, limit: Int) async throws -> [SubscriptionGroupResource]
+    func getSubscriptions(groupId: String, limit: Int) async throws -> [SubscriptionResource]
+    func getSubscriptionPrices(subscriptionId: String, limit: Int) async throws -> [SubscriptionPriceResource]
+    func getSubscriptionPricesResponse(subscriptionId: String, limit: Int) async throws -> SubscriptionPricesResponse
+    func getSubscriptionPricePoints(subscriptionId: String, territoryId: String?, limit: Int) async throws -> [SubscriptionPricePointResource]
+    func getPricePointEqualizations(pricePointId: String, limit: Int) async throws -> (pricePoints: [SubscriptionPricePointResource], territories: [TerritoryResource])
+    func getTerritories(limit: Int) async throws -> [TerritoryResource]
+    func createSubscriptionPrice(subscriptionId: String, pricePointId: String, territoryId: String?, startDate: String?, preserveCurrentPrice: Bool?) async throws
+    func deleteSubscriptionPrice(priceId: String) async throws
+}
+
+
 @Observable
-final class AppStoreConnectAPI {
+final class AppStoreConnectAPI: AppStoreConnectAPIProtocol {
     private let baseURL = URL(string: "https://api.appstoreconnect.apple.com")!
     private var getToken: () throws -> String
     private let session: URLSession
@@ -86,6 +103,12 @@ final class AppStoreConnectAPI {
             if http.statusCode >= 400 {
                 let message = String(data: data, encoding: .utf8)
                 throw APIError.serverError(http.statusCode, message)
+            }
+            // Dump API response when PRICE_WIZARD_DUMP_API=1 (e.g. in Xcode scheme env) to capture real response shapes for fixtures.
+            if let body = String(data: data, encoding: .utf8) {
+                print("--- PriceWizard API response: \(pathStr) ---")
+                print(body)
+                print("--- end ---")
             }
             return (data, http)
         }

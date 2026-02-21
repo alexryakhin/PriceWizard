@@ -13,7 +13,10 @@ final class AuthState {
     var isLoading: Bool = false
     var errorMessage: String?
 
-    private(set) var api: AppStoreConnectAPI?
+    /// Demo mode uses mock data and does not write to App Store Connect.
+    private(set) var isDemoMode: Bool = false
+
+    private(set) var api: (any AppStoreConnectAPIProtocol)?
     private var jwtService: JWTService?
 
     init() {
@@ -31,13 +34,24 @@ final class AuthState {
                 return try jwt.generateToken()
             }
             isAuthenticated = true
+            isDemoMode = false
             errorMessage = nil
         } catch {
             errorMessage = "Invalid API key: \(error.localizedDescription)"
             isAuthenticated = false
+            isDemoMode = false
             api = nil
             jwtService = nil
         }
+    }
+
+    /// Enters demo mode with mock API so users can explore the UI without App Store Connect access.
+    func configureWithDemo() {
+        api = MockAppStoreConnectAPI()
+        isAuthenticated = true
+        isDemoMode = true
+        errorMessage = nil
+        jwtService = nil
     }
 
     func saveAndConfigure(keyId: String, issuerId: String, p8Content: String) {
@@ -50,9 +64,12 @@ final class AuthState {
     }
 
     func logout() {
-        try? KeychainService.deleteCredentials()
+        if !isDemoMode {
+            try? KeychainService.deleteCredentials()
+        }
         AppIconService.clearCache()
         isAuthenticated = false
+        isDemoMode = false
         api = nil
         jwtService = nil
     }

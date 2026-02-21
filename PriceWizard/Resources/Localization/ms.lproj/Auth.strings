@@ -6,3 +6,5 @@
 "issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 "selectP8" = "Pilih AuthKey_XXXXXXXX.p8";
 "connect" = "Sambungkan";
+"tryDemo" = "Cuba Demo";
+"tryDemoDescription" = "Terokai aplikasi dengan data sampel (tiada kunci API diperlukan).";

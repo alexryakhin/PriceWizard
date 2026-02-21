@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "%@ Preise erfolgreich übernommen";
 "appliedPricesWithSkipped" = "%@ Preise übernommen (%@ bereits gesetzt, übersprungen)";
+"demoModeApplyDisabled" = "Demo-Modus – Übernahme deaktiviert";
+"demoModeApplySimulated" = "Im Demo-Modus wird die Übernahme nur simuliert.";

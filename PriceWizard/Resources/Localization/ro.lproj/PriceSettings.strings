@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "%@ prețuri aplicate cu succes";
 "appliedPricesWithSkipped" = "%@ prețuri aplicate (%@ deja setate, omise)";
+"demoModeApplyDisabled" = "Mod demo – aplicarea este dezactivată";
+"demoModeApplySimulated" = "În mod demo, aplicarea este simulată.";

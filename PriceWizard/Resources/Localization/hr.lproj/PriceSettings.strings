@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "Primijenjeno %@ cijena uspješno";
 "appliedPricesWithSkipped" = "Primijenjeno %@ cijena (%@ već postavljeno, preskočeno)";
+"demoModeApplyDisabled" = "Način demo – primjena je onemogućena";
+"demoModeApplySimulated" = "U načinu demo, primjena se simulira.";

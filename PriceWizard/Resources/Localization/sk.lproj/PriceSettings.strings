@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "Úspešne aplikovaných %@ cien";
 "appliedPricesWithSkipped" = "Aplikovaných %@ cien (%@ už nastavených, preskočených)";
+"demoModeApplyDisabled" = "Demo režim – aplikácia je vypnutá";
+"demoModeApplySimulated" = "V demo režime sa aplikácia len simuluje.";

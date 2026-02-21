@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "%@件の価格を適用しました";
 "appliedPricesWithSkipped" = "%@件の価格を適用（%@件は既に設定済みのためスキップ）";
+"demoModeApplyDisabled" = "デモモード – 適用は無効です";
+"demoModeApplySimulated" = "デモモードでは、適用はシミュレーションされます。";

@@ -6,3 +6,5 @@
 "issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 "selectP8" = "Valitse AuthKey_XXXXXXXX.p8";
 "connect" = "Yhdistä";
+"tryDemo" = "Kokeile demoa";
+"tryDemoDescription" = "Tutustu sovellukseen esimerkkidatalla (API-avainta ei tarvita).";

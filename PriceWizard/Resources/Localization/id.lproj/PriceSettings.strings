@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "Berhasil menerapkan %@ harga";
 "appliedPricesWithSkipped" = "Menerapkan %@ harga (%@ sudah diatur, dilewati)";
+"demoModeApplyDisabled" = "Mode demo – penerapan dinonaktifkan";
+"demoModeApplySimulated" = "Dalam mode demo, penerapan disimulasikan.";

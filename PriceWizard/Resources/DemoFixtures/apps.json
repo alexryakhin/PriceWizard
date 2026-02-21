@@ -1,0 +1,13 @@
+{
+  "data": [
+    {
+      "type": "apps",
+      "id": "demo-app-1",
+      "attributes": {
+        "name": "Demo App",
+        "bundleId": "com.example.demo",
+        "sku": "DEMO001"
+      }
+    }
+  ]
+}

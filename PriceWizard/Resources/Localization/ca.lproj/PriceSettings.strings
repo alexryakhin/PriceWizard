@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "S'han aplicat %@ preus correctament";
 "appliedPricesWithSkipped" = "S'han aplicat %@ preus (%@ ja definits, omesos)";
+"demoModeApplyDisabled" = "Mode demo: l'aplicació està desactivada";
+"demoModeApplySimulated" = "En mode demo, l'aplicació es simula.";

@@ -6,3 +6,5 @@
 "issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 "selectP8" = "Select AuthKey_XXXXXXXX.p8";
 "connect" = "Connect";
+"tryDemo" = "Try Demo";
+"tryDemoDescription" = "Explore the app with sample data (no API key required).";

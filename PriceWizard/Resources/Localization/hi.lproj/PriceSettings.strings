@@ -33,3 +33,5 @@
 "ok" = "ठीक है";
 "appliedPricesSuccess" = "%@ कीमतें सफलतापूर्वक लागू की गईं";
 "appliedPricesWithSkipped" = "%@ कीमतें लागू (%@ पहले से सेट, छोड़ी गईं)";
+"demoModeApplyDisabled" = "डेमो मोड – लागू करना अक्षम है";
+"demoModeApplySimulated" = "डेमो मोड में, लागू करना सिम्युलेट किया जाता है।";

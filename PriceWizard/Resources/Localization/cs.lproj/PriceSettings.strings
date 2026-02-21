@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "Úspěšně aplikováno %@ cen";
 "appliedPricesWithSkipped" = "Aplikováno %@ cen (%@ již nastaveno, přeskočeno)";
+"demoModeApplyDisabled" = "Demo režim – aplikace je vypnuta";
+"demoModeApplySimulated" = "V demo režimu se aplikace pouze simuluje.";

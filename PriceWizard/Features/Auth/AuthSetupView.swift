@@ -64,6 +64,21 @@ struct AuthSetupView: View {
             }
             .buttonStyle(.borderedProminent)
             .disabled(keyId.isEmpty || issuerId.isEmpty || p8Content.isEmpty)
+
+            Divider()
+                .frame(maxWidth: 200)
+                .padding(.vertical, 8)
+
+            VStack(spacing: 6) {
+                Text(Loc.Auth.tryDemoDescription)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                Button(Loc.Auth.tryDemo) {
+                    authState.configureWithDemo()
+                }
+                .buttonStyle(.bordered)
+            }
         }
         .padding(40)
         .frame(minWidth: 400, minHeight: 350)

@@ -33,3 +33,5 @@
 "ok" = "好";
 "appliedPricesSuccess" = "已成功套用 %@ 個價格";
 "appliedPricesWithSkipped" = "已套用 %@ 個價格（%@ 個已設定，已略過）";
+"demoModeApplyDisabled" = "示範模式 – 套用已停用";
+"demoModeApplySimulated" = "在示範模式下，套用為模擬。";

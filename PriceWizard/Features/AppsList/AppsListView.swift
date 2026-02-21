@@ -58,7 +58,7 @@ struct AppsListView: View {
         isLoading = true
         errorMessage = nil
         do {
-            apps = try await api.getApps(ignoreCache: ignoreCache)
+            apps = try await api.getApps(limit: 200, ignoreCache: ignoreCache)
         } catch {
             errorMessage = error.localizedDescription
         }

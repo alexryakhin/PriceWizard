@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "Applicati %@ prezzi con successo";
 "appliedPricesWithSkipped" = "Applicati %@ prezzi (%@ già impostati, saltati)";
+"demoModeApplyDisabled" = "Modalità demo – applicazione disattivata";
+"demoModeApplySimulated" = "In modalità demo, l'applicazione è simulata.";

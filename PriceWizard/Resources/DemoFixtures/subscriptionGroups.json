@@ -1,0 +1,11 @@
+{
+  "data": [
+    {
+      "type": "subscriptionGroups",
+      "id": "demo-group-1",
+      "attributes": {
+        "referenceName": "Premium"
+      }
+    }
+  ]
+}

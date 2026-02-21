@@ -71,11 +71,17 @@ struct SubscriptionsDetailView: View {
         isLoading = true
         errorMessage = nil
         do {
-            let groups = try await api.getSubscriptionGroups(appId: appId)
+            let groups = try await api.getSubscriptionGroups(appId: appId, limit: 200)
             var all: [SubscriptionResource] = []
-            for group in groups {
-                let subs = try await api.getSubscriptions(groupId: group.id)
-                all.append(contentsOf: subs)
+            try await withThrowingTaskGroup(of: [SubscriptionResource].self) { group in
+                for groupResource in groups {
+                    group.addTask {
+                        try await api.getSubscriptions(groupId: groupResource.id, limit: 200)
+                    }
+                }
+                for try await subs in group {
+                    all.append(contentsOf: subs)
+                }
             }
             subscriptions = all
         } catch {

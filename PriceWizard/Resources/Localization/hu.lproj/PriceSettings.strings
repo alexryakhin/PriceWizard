@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "%@ ár sikeresen alkalmazva";
 "appliedPricesWithSkipped" = "%@ ár alkalmazva (%@ már beállítva, kihagyva)";
+"demoModeApplyDisabled" = "Demó mód – az alkalmazás ki van kapcsolva";
+"demoModeApplySimulated" = "Demó módban az alkalmazás szimulált.";

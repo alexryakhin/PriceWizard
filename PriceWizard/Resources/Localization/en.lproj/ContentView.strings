@@ -3,3 +3,5 @@
 "aboutTooltip" = "About Price Wizard";
 "clearCacheTooltip" = "Clear all cache and reload data";
 "logOut" = "Log Out";
+"demoModeBanner" = "Demo mode – changes are not saved to App Store Connect";
+"exitDemo" = "Exit Demo";

@@ -6,3 +6,5 @@
 "issuerIdPlaceholder" = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 "selectP8" = "Odaberi AuthKey_XXXXXXXX.p8";
 "connect" = "Spoji";
+"tryDemo" = "Isprobaj demo";
+"tryDemoDescription" = "Istražite aplikaciju s primjerima podataka (API ključ nije potreban).";

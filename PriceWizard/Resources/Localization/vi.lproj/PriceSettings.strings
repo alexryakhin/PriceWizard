@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "Đã áp dụng %@ giá thành công";
 "appliedPricesWithSkipped" = "Đã áp dụng %@ giá (%@ đã đặt, bỏ qua)";
+"demoModeApplyDisabled" = "Chế độ demo – áp dụng bị tắt";
+"demoModeApplySimulated" = "Trong chế độ demo, áp dụng được mô phỏng.";

@@ -33,3 +33,5 @@
 "ok" = "Tamam";
 "appliedPricesSuccess" = "%@ fiyat başarıyla uygulandı";
 "appliedPricesWithSkipped" = "%@ fiyat uygulandı (%@ zaten ayarlı, atlandı)";
+"demoModeApplyDisabled" = "Demo modu – uygulama devre dışı";
+"demoModeApplySimulated" = "Demo modunda uygulama simüle edilir.";

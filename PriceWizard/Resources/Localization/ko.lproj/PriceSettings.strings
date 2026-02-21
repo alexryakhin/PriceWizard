@@ -33,3 +33,5 @@
 "ok" = "확인";
 "appliedPricesSuccess" = "가격 %@개가 성공적으로 적용되었습니다";
 "appliedPricesWithSkipped" = "가격 %@개 적용 (%@개는 이미 설정됨, 건너뜀)";
+"demoModeApplyDisabled" = "데모 모드 – 적용이 비활성화됨";
+"demoModeApplySimulated" = "데모 모드에서는 적용이 시뮬레이션됩니다.";

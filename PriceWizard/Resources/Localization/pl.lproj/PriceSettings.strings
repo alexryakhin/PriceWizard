@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "Pomyślnie zastosowano %@ cen";
 "appliedPricesWithSkipped" = "Zastosowano %@ cen (%@ już ustawione, pominięto)";
+"demoModeApplyDisabled" = "Tryb demo – zastosowanie wyłączone";
+"demoModeApplySimulated" = "W trybie demo zastosowanie jest symulowane.";

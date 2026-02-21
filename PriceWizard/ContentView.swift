@@ -28,6 +28,15 @@ struct ContentView: View {
                         selectedSubscription = nil
                     }
                     .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 300)
+                    .overlay(alignment: .bottom) {
+                        if authState.isDemoMode {
+                            Text(Loc.ContentView.demoModeBanner)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .padding(8)
+                                .frame(maxWidth: .infinity)
+                        }
+                    }
                 } content: {
                     SubscriptionsDetailView(
                         authState: authState,
@@ -63,7 +72,7 @@ struct ContentView: View {
                         .help(Loc.ContentView.aboutTooltip)
                     }
                     ToolbarItem(placement: .automatic) {
-                        Button(Loc.ContentView.logOut) {
+                        Button(authState.isDemoMode ? Loc.ContentView.exitDemo : Loc.ContentView.logOut) {
                             authState.logout()
                         }
                     }

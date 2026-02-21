@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "Tillämpade %@ priser";
 "appliedPricesWithSkipped" = "Tillämpade %@ priser (%@ redan angivna, hoppades över)";
+"demoModeApplyDisabled" = "Demoläge – tillämpning inaktiverad";
+"demoModeApplySimulated" = "I demoläge simuleras tillämpningen.";

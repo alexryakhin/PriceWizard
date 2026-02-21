@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "Berjaya mengguna %@ harga";
 "appliedPricesWithSkipped" = "Digunakan %@ harga (%@ sudah ditetapkan, dilangkau)";
+"demoModeApplyDisabled" = "Mod demo – aplikasi dilumpuhkan";
+"demoModeApplySimulated" = "Dalam mod demo, aplikasi disimulasikan.";

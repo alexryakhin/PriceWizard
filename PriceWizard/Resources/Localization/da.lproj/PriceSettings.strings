@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "Anvendt %@ priser succesfuldt";
 "appliedPricesWithSkipped" = "Anvendt %@ priser (%@ allerede sat, sprunget over)";
+"demoModeApplyDisabled" = "Demo-tilstand – anvendelse er deaktiveret";
+"demoModeApplySimulated" = "I demo-tilstand simuleres anvendelsen.";

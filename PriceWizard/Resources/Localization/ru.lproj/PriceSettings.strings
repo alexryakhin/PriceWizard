@@ -33,3 +33,5 @@
 "ok" = "OK";
 "appliedPricesSuccess" = "Успешно применено %@ цен";
 "appliedPricesWithSkipped" = "Применено %@ цен (%@ уже установлено, пропущено)";
+"demoModeApplyDisabled" = "Демо-режим – применение отключено";
+"demoModeApplySimulated" = "В демо-режиме применение имитируется.";

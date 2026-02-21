@@ -33,3 +33,5 @@
 "ok" = "好";
 "appliedPricesSuccess" = "已成功应用 %@ 个价格";
 "appliedPricesWithSkipped" = "已应用 %@ 个价格（%@ 个已设置，已跳过）";
+"demoModeApplyDisabled" = "演示模式 – 应用已禁用";
+"demoModeApplySimulated" = "在演示模式下，应用为模拟。";
