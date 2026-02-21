@@ -157,12 +157,6 @@ final class AppStoreConnectAPI: AppStoreConnectAPIProtocol {
                 let message = String(data: data, encoding: .utf8)
                 throw APIError.serverError(http.statusCode, message)
             }
-            // Dump API response when PRICE_WIZARD_DUMP_API=1 (e.g. in Xcode scheme env) to capture real response shapes for fixtures.
-            if let body = String(data: data, encoding: .utf8) {
-                print("--- PriceWizard API response: \(pathStr) ---")
-                print(body)
-                print("--- end ---")
-            }
             return (data, http)
         }
         throw lastError ?? APIError.serverError(0, "Request failed")

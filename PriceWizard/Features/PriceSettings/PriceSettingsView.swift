@@ -2,60 +2,12 @@
 //  PriceSettingsView.swift
 //  PriceWizard
 //
-//  Price configuration with base price, index, and apply to App Store Connect.
+//  Price configuration UI: base price, preview table, apply to App Store Connect.
 //
 
 import SwiftUI
 
-/// Territory IDs for United States (Apple may use USA or US)
-private let usTerritoryIds = ["USA", "US"]
-
-private struct PricePointOption: Identifiable {
-    let id: String
-    let customerPrice: String
-}
-
-/// Window of US price points around the base (±20) for equalization – avoids ~800 API calls on load.
-private let equalizationWindowHalf = 20
-
-/// Returns US price points within ±50 of the base, or all if base not found. Keeps load fast.
-private func pricePointsForEqualization(
-    usPricePoints: [SubscriptionPricePointResource],
-    basePricePoint: SubscriptionPricePointResource?
-) -> [SubscriptionPricePointResource] {
-    guard let base = basePricePoint, let baseIdx = usPricePoints.firstIndex(where: { $0.id == base.id }) else {
-        return usPricePoints
-    }
-    let lo = max(0, baseIdx - equalizationWindowHalf)
-    let hi = min(usPricePoints.count - 1, baseIdx + equalizationWindowHalf)
-    return Array(usPricePoints[lo...hi])
-}
-
-/// Parse price string to numeric value for sorting (handles "4.99", "600", "1,99").
-private func priceValue(_ priceStr: String) -> Double {
-    Double(priceStr.replacingOccurrences(of: ",", with: ".")) ?? 0
-}
-
-/// True if the price ends in 9 (e.g. 3.99, 279) – psychological pricing preference.
-private func priceEndsInNine(_ price: String) -> Bool {
-    let s = price.replacingOccurrences(of: ",", with: ".").trimmingCharacters(in: .whitespaces)
-    return s.last == "9"
-}
-
-/// Compare two price options for nearest-to-target, preferring prices that end in 9 when close.
-private func isPreferredPrice(
-    _ a: PricePointOption, _ b: PricePointOption,
-    targetLocal: Double
-) -> Bool {
-    let va = Double(a.customerPrice.replacingOccurrences(of: ",", with: ".")) ?? 0
-    let vb = Double(b.customerPrice.replacingOccurrences(of: ",", with: ".")) ?? 0
-    let da = abs(va - targetLocal)
-    let db = abs(vb - targetLocal)
-    let tol = max(targetLocal * 0.005, 0.01)
-    if da < db - tol { return true }
-    if db < da - tol { return false }
-    return priceEndsInNine(a.customerPrice) && !priceEndsInNine(b.customerPrice)
-}
+// MARK: - Price Picker Sheet
 
 private struct PricePickerSheet: View {
     let territoryDisplay: String
@@ -110,77 +62,13 @@ struct PriceSettingsView: View {
     @Bindable var authState: AuthState
     let subscription: SubscriptionResource?
     var cacheClearedId: UUID
-    @State private var usPricePoints: [SubscriptionPricePointResource] = []
-    @State private var selectedBasePricePoint: SubscriptionPricePointResource?
-    @State private var equalizations: [SubscriptionPricePointResource] = []
-    @State private var territoryMap: [String: TerritoryInfo] = [:]
-    @State private var exchangeRates: [String: Double] = [:]
-    @State private var existingPrices: [SubscriptionPriceResource] = []
-    @State private var indexMode: IndexMode = .appleEqualization
-    @State private var territoryIndices: [String: Double] = [:]
-    @State private var pricePointsByTerritory: [String: [PricePointOption]] = [:]
-    @State private var selectedPricePointByTerritory: [String: String] = [:]
-    @State private var currentPriceByTerritory: [String: String] = [:]
-    @State private var isLoading = false
-    @State private var isLoadingCustomTiers = false
-    @State private var tierLoadProgress: Double = 0
-    @State private var tierLoadCurrent: Int = 0
-    @State private var tierLoadTotal: Int = 0
-    @State private var territoryIdForPriceSheet: String?
-    @State private var isLoadingPriceSheet = false
-    @State private var isApplying = false
-    @State private var preserveCurrentPriceForExisting = false
-    @State private var priceStartDate = Date()
-    @State private var applyProgress: Double = 0
-    @State private var errorMessage: String?
-    @State private var successMessage: String?
+    @State private var model: PriceSettingsState
 
-    enum IndexMode: String, CaseIterable {
-        case appleEqualization = "Apple Equalization"
-        case netflix = "Netflix"
-        case spotify = "Spotify"
-    }
-
-    private var usesCustomIndex: Bool {
-        switch indexMode {
-        case .appleEqualization: return false
-        case .netflix, .spotify: return true
-        }
-    }
-
-    /// Earliest start date among existing prices that is today or in the future (UTC). Nil if none.
-    private var nextScheduledStartDate: Date? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.timeZone = TimeZone(identifier: "UTC")
-        let todayStr = formatter.string(from: Date())
-        var earliest: Date?
-        for price in existingPrices {
-            guard let startStr = price.attributes?.startDate else { continue }
-            let trimmed = String(startStr.prefix(10))
-            guard let date = formatter.date(from: trimmed), trimmed >= todayStr else { continue }
-            if earliest == nil || date < earliest! {
-                earliest = date
-            }
-        }
-        return earliest
-    }
-
-    /// True if the selected start date is the same day (UTC) as an existing scheduled price change.
-    private var isStartDateConflictingWithScheduled: Bool {
-        guard let next = nextScheduledStartDate else { return false }
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.timeZone = TimeZone(identifier: "UTC")
-        return formatter.string(from: priceStartDate) == formatter.string(from: next)
-    }
-
-    private var canApply: Bool {
-        guard selectedBasePricePoint != nil, !isApplying else { return false }
-        guard !equalizations.isEmpty else { return false }
-        guard !isLoadingCustomTiers else { return false }
-        guard !isStartDateConflictingWithScheduled else { return false }
-        return previewRows.allSatisfy { !$0.pricePointId.isEmpty }
+    init(authState: AuthState, subscription: SubscriptionResource?, cacheClearedId: UUID) {
+        self.authState = authState
+        self.subscription = subscription
+        self.cacheClearedId = cacheClearedId
+        _model = State(initialValue: PriceSettingsState(authState: authState))
     }
 
     var body: some View {
@@ -194,65 +82,65 @@ struct PriceSettingsView: View {
             } else {
                 Form {
                     Section(Loc.PriceSettings.basePrice) {
-                        if isLoading {
+                        if model.isLoading {
                             HStack {
                                 ProgressView()
                                 Text(Loc.PriceSettings.loadingPricePoints)
                                     .foregroundStyle(.secondary)
                             }
-                        } else if usPricePoints.isEmpty {
+                        } else if model.usPricePoints.isEmpty {
                             Text(Loc.PriceSettings.noPricePointsForSubscription)
                                 .foregroundStyle(.secondary)
                         } else {
-                            Picker(Loc.PriceSettings.price, selection: $selectedBasePricePoint) {
+                            Picker(Loc.PriceSettings.price, selection: Binding(get: { model.selectedBasePricePoint }, set: { model.selectedBasePricePoint = $0 })) {
                                 Text(Loc.PriceSettings.select).tag(nil as SubscriptionPricePointResource?)
-                                ForEach(usPricePoints.sorted { priceValue($0.attributes.customerPrice ?? "") < priceValue($1.attributes.customerPrice ?? "") }, id: \.id) { pp in
+                                ForEach(model.usPricePoints.sorted { priceValue($0.attributes.customerPrice ?? "") < priceValue($1.attributes.customerPrice ?? "") }, id: \.id) { pp in
                                     Text(pp.attributes.customerPrice ?? Loc.Subscriptions.unknown).tag(pp as SubscriptionPricePointResource?)
                                 }
                             }
-                            .onChange(of: selectedBasePricePoint) { _, new in
+                            .onChange(of: model.selectedBasePricePoint) { _, new in
                                 if let id = new?.id {
-                                    Task { await loadEqualizations(pricePointId: id) }
+                                    Task { await model.loadEqualizations(pricePointId: id) }
                                 } else {
-                                    equalizations = []
-                                    territoryMap = [:]
-                                    pricePointsByTerritory = [:]
-                                    selectedPricePointByTerritory = [:]
+                                    model.equalizations = []
+                                    model.territoryMap = [:]
+                                    model.pricePointsByTerritory = [:]
+                                    model.selectedPricePointByTerritory = [:]
                                 }
                             }
                         }
                     }
 
                     Section(Loc.PriceSettings.indexMode) {
-                        Picker(Loc.PriceSettings.mode, selection: $indexMode) {
-                            ForEach(IndexMode.allCases, id: \.self) { mode in
+                        Picker(Loc.PriceSettings.mode, selection: Binding(get: { model.indexMode }, set: { model.indexMode = $0 })) {
+                            ForEach(PriceSettingsState.IndexMode.allCases, id: \.self) { mode in
                                 Text(mode.rawValue).tag(mode)
                             }
                         }
-                        .onChange(of: indexMode) { _, new in
+                        .onChange(of: model.indexMode) { _, new in
                             switch new {
                             case .netflix:
-                                territoryIndices = TerritoryIndices.indices(for: .netflix)
+                                model.territoryIndices = TerritoryIndices.indices(for: .netflix)
                             case .spotify:
-                                territoryIndices = TerritoryIndices.indices(for: .spotify)
+                                model.territoryIndices = TerritoryIndices.indices(for: .spotify)
                             case .appleEqualization:
                                 break
                             }
-                            if !territoryMap.isEmpty {
-                                Task { await resetAndReapplyPrices() }
+                            if !model.territoryMap.isEmpty {
+                                Task { await model.resetAndReapplyPrices() }
                             }
                         }
                     }
 
-                    if !equalizations.isEmpty {
+                    if !model.equalizations.isEmpty {
                         Section(Loc.PriceSettings.preview) {
-                            if isLoadingCustomTiers {
+                            if model.isLoadingCustomTiers {
                                 VStack(alignment: .leading, spacing: 6) {
                                     HStack {
-                                        ProgressView(value: tierLoadProgress, total: 1)
+                                        ProgressView(value: model.tierLoadProgress, total: 1)
                                             .frame(maxWidth: 200)
-                                        if tierLoadTotal > 0 {
-                                            Text(Loc.PriceSettings.tierProgress(String(tierLoadCurrent), String(tierLoadTotal)))
+                                        if model.tierLoadTotal > 0 {
+                                            Text(Loc.PriceSettings.tierProgress(String(model.tierLoadCurrent), String(model.tierLoadTotal)))
                                                 .font(.caption)
                                                 .foregroundStyle(.secondary)
                                                 .monospacedDigit()
@@ -264,7 +152,7 @@ struct PriceSettingsView: View {
                                 }
                                 .padding(.vertical, 4)
                             }
-                            Table(previewRows) {
+                            Table(model.previewRows) {
                                 TableColumn(Loc.PriceSettings.territory) { row in
                                     if let territory = Territory(apiCode: row.territoryIdForAPI) {
                                         HStack(spacing: 6) {
@@ -289,7 +177,7 @@ struct PriceSettingsView: View {
                                 }
                                 TableColumn(Loc.PriceSettings.newPrice) { row in
                                     Button {
-                                        territoryIdForPriceSheet = row.territoryIdForAPI
+                                        model.territoryIdForPriceSheet = row.territoryIdForAPI
                                     } label: {
                                         HStack(spacing: 2) {
                                             Text(row.price)
@@ -314,19 +202,19 @@ struct PriceSettingsView: View {
                     }
 
                     Section(Loc.PriceSettings.priceChangeOptions) {
-                        Toggle(Loc.PriceSettings.preserveCurrentPrice, isOn: $preserveCurrentPriceForExisting)
-                        DatePicker(Loc.PriceSettings.startDate, selection: $priceStartDate, displayedComponents: .date)
-                        if let next = nextScheduledStartDate {
+                        Toggle(Loc.PriceSettings.preserveCurrentPrice, isOn: Binding(get: { model.preserveCurrentPriceForExisting }, set: { model.preserveCurrentPriceForExisting = $0 }))
+                        DatePicker(Loc.PriceSettings.startDate, selection: Binding(get: { model.priceStartDate }, set: { model.priceStartDate = $0 }), displayedComponents: .date)
+                        if let next = model.nextScheduledStartDate {
                             let formatted = next.formatted(date: .abbreviated, time: .omitted)
                             Text(Loc.PriceSettings.nextScheduledChange(formatted))
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
-                        } else if !existingPrices.isEmpty {
+                        } else if !model.existingPrices.isEmpty {
                             Text(Loc.PriceSettings.noFutureScheduledChanges)
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
-                        if isStartDateConflictingWithScheduled {
+                        if model.isStartDateConflictingWithScheduled {
                             Label(Loc.PriceSettings.startDateConflict, systemImage: "exclamationmark.triangle.fill")
                                 .font(.caption)
                                 .foregroundStyle(.orange)
@@ -340,11 +228,11 @@ struct PriceSettingsView: View {
                                 .foregroundStyle(.secondary)
                         }
                         Button(Loc.PriceSettings.applyToAppStoreConnect) {
-                            Task { await applyPrices() }
+                            Task { await model.applyPrices() }
                         }
-                        .disabled(!canApply)
-                        if isApplying {
-                            ProgressView(value: applyProgress)
+                        .disabled(!model.canApply)
+                        if model.isApplying {
+                            ProgressView(value: model.applyProgress)
                         }
                     }
                 }
@@ -353,17 +241,18 @@ struct PriceSettingsView: View {
         }
         .navigationTitle(subscription?.attributes.name ?? "Price Settings")
         .task(id: "\(subscription?.id ?? "").\(cacheClearedId.uuidString)") {
-            await loadData()
+            model.subscription = subscription
+            await model.loadData()
         }
-        .alert(Loc.PriceSettings.error, isPresented: .constant(errorMessage != nil)) {
-            Button(Loc.PriceSettings.ok) { errorMessage = nil }
+        .alert(Loc.PriceSettings.error, isPresented: .constant(model.errorMessage != nil)) {
+            Button(Loc.PriceSettings.ok) { model.errorMessage = nil }
         } message: {
-            if let err = errorMessage {
+            if let err = model.errorMessage {
                 Text(err)
             }
         }
         .overlay {
-            if let success = successMessage {
+            if let success = model.successMessage {
                 Text(success)
                     .padding()
                     .background(.green.opacity(0.9))
@@ -371,30 +260,30 @@ struct PriceSettingsView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 8))
             }
         }
-        .task(id: successMessage) {
-            guard successMessage != nil else { return }
+        .task(id: model.successMessage) {
+            guard model.successMessage != nil else { return }
             try? await Task.sleep(for: .seconds(3))
-            successMessage = nil
+            model.successMessage = nil
         }
         .sheet(item: Binding(
-            get: { territoryIdForPriceSheet.map { PriceSheetItem(territoryId: $0) } },
-            set: { territoryIdForPriceSheet = $0?.territoryId }
+            get: { model.territoryIdForPriceSheet.map { PriceSheetItem(territoryId: $0) } },
+            set: { model.territoryIdForPriceSheet = $0?.territoryId }
         )) { item in
             PricePickerSheet(
                 territoryDisplay: Territory(apiCode: item.territoryId)?.localizedDisplayName ?? TerritoryNames.displayName(for: item.territoryId),
-                currency: territoryMap[item.territoryId]?.currency ?? "—",
+                currency: model.territoryMap[item.territoryId]?.currency ?? "—",
                 selection: Binding(
-                    get: { selectedPricePointByTerritory[item.territoryId] ?? "" },
+                    get: { model.selectedPricePointByTerritory[item.territoryId] ?? "" },
                     set: { new in
-                        var d = selectedPricePointByTerritory
+                        var d = model.selectedPricePointByTerritory
                         d[item.territoryId] = new
-                        selectedPricePointByTerritory = d
+                        model.selectedPricePointByTerritory = d
                     }
                 ),
-                pricePoints: pricePointsByTerritory[item.territoryId] ?? [],
-                loadPricePoints: { await loadPricePointsForTerritory(item.territoryId) },
-                isLoading: isLoadingPriceSheet,
-                onDismiss: { territoryIdForPriceSheet = nil }
+                pricePoints: model.pricePointsByTerritory[item.territoryId] ?? [],
+                loadPricePoints: { await model.loadPricePointsForTerritory(item.territoryId) },
+                isLoading: model.isLoadingPriceSheet,
+                onDismiss: { model.territoryIdForPriceSheet = nil }
             )
         }
     }
@@ -402,45 +291,6 @@ struct PriceSettingsView: View {
     private struct PriceSheetItem: Identifiable {
         let territoryId: String
         var id: String { territoryId }
-    }
-
-    private struct TerritoryInfo {
-        let id: String
-        let currency: String
-        let displayName: String
-    }
-
-    private var baseUSD: Double? {
-        guard let pp = selectedBasePricePoint, let s = pp.attributes.customerPrice else { return nil }
-        return Double(s.replacingOccurrences(of: ",", with: "."))
-    }
-
-    private var previewRows: [PreviewRow] {
-        let territoryIds = Array(territoryMap.keys)
-        return territoryIds.compactMap { tid -> PreviewRow? in
-            let info = territoryMap[tid]
-            let currency = info?.currency ?? "—"
-            let pricePointId = selectedPricePointByTerritory[tid]
-                ?? equalizations.first(where: { $0.relationships?.territory?.data?.id == tid })?.id ?? ""
-            let points = pricePointsByTerritory[tid] ?? []
-            let opt = points.first(where: { $0.id == pricePointId })
-            let eqPrice = equalizations.first(where: { $0.relationships?.territory?.data?.id == tid })?.attributes.customerPrice
-            let priceStr = opt?.customerPrice ?? eqPrice ?? "—"
-            let priceUSD = formatUSD(priceStr: priceStr, currency: currency)
-            let index = usesCustomIndex ? (territoryIndices[tid] ?? 1.0) : 1.0
-            let currentPrice = currentPriceByTerritory[tid] ?? "—"
-            return PreviewRow(
-                territoryIdForAPI: tid,
-                territoryDisplay: TerritoryNames.displayName(for: tid),
-                currentPrice: currentPrice,
-                currency: currency,
-                price: priceStr,
-                priceUSD: priceUSD,
-                pricePointId: pricePointId,
-                index: index
-            )
-        }
-        .sorted { $0.territoryDisplay.localizedStandardCompare($1.territoryDisplay) == .orderedAscending }
     }
 
     @ViewBuilder
@@ -462,359 +312,5 @@ struct PriceSettingsView: View {
                     .foregroundStyle(.red)
             }
         }
-    }
-
-    private func formatUSD(priceStr: String, currency: String) -> String {
-        guard let amount = Double(priceStr.replacingOccurrences(of: ",", with: ".")) else { return "—" }
-        guard let usd = ExchangeRateService.toUSD(amount: amount, currency: currency, rates: exchangeRates) else {
-            return currency == "USD" ? priceStr : "—"
-        }
-        return String(format: "%.2f", usd)
-    }
-
-    private struct PreviewRow: Identifiable {
-        var id: String { pricePointId.isEmpty ? territoryIdForAPI : pricePointId }
-        let territoryIdForAPI: String
-        let territoryDisplay: String
-        let currentPrice: String
-        let currency: String
-        let price: String
-        let priceUSD: String
-        let pricePointId: String
-        let index: Double
-    }
-
-    private func resetContentState() {
-        usPricePoints = []
-        selectedBasePricePoint = nil
-        equalizations = []
-        territoryMap = [:]
-        existingPrices = []
-        pricePointsByTerritory = [:]
-        selectedPricePointByTerritory = [:]
-        currentPriceByTerritory = [:]
-        territoryIdForPriceSheet = nil
-        successMessage = nil
-    }
-
-    private func loadData() async {
-        resetContentState()
-        guard let api = authState.api, let subId = subscription?.id else { return }
-        // Don't clear equalizations cache – keep per–price-point cache so switching base price reuses cached tiers.
-        isLoading = true
-        errorMessage = nil
-        do {
-            // Fetch all price points (no territory filter) - API may use USA or US for US
-            let allPoints = try await api.getSubscriptionPricePoints(subscriptionId: subId, territoryId: "USA", limit: 800)
-            // Filter for US territory (USD) – match territory id from relationships
-            let usPoints = allPoints.filter { pp in
-                guard let tid = pp.relationships?.territory?.data?.id else { return false }
-                return usTerritoryIds.contains(tid)
-            }
-            // Filter to .99 (any price) and .49 when price < 50 – reduces 800+ options. Match both "." and "," decimal.
-            let usFiltered99 = usPoints.filter { pp in
-                guard let price = pp.attributes.customerPrice else { return false }
-                let trimmed = price.trimmingCharacters(in: .whitespaces)
-                let normalized = trimmed.replacingOccurrences(of: ",", with: ".")
-                let value = Double(normalized)
-                let is99 = trimmed.hasSuffix(".99") || trimmed.hasSuffix(",99")
-                let is49Under20 = (trimmed.hasSuffix(".49") || trimmed.hasSuffix(",49")) && (value ?? 0) < 20
-                return is99 || is49Under20
-            }
-            // Fall back to all US points if filter yields none (e.g. unusual locale format)
-            usPricePoints = usFiltered99.isEmpty ? usPoints : usFiltered99
-            // If still no US points, use all points so user can still pick a base price
-            if usPricePoints.isEmpty && !allPoints.isEmpty {
-                usPricePoints = allPoints
-            }
-            let pricesResponse = try await api.getSubscriptionPricesResponse(subscriptionId: subId, limit: 200)
-            existingPrices = pricesResponse.data
-            currentPriceByTerritory = pricesResponse.currentPriceByTerritory()
-
-            let usCurrentPrice = usTerritoryIds.lazy.compactMap { currentPriceByTerritory[$0] }.first
-            let baseToSelect = usCurrentPrice.flatMap { priceStr in
-                let target = Double(priceStr.replacingOccurrences(of: ",", with: "."))
-                return usPricePoints.first(where: { pp in
-                    guard let v = Double(pp.attributes.customerPrice?.replacingOccurrences(of: ",", with: ".") ?? "") else { return false }
-                    return target != nil && abs((target ?? 0) - v) < 0.01
-                })
-            } ?? usPricePoints.first
-            selectedBasePricePoint = baseToSelect
-            if let id = baseToSelect?.id {
-                await loadEqualizations(pricePointId: id)
-            }
-        } catch {
-            errorMessage = error.localizedDescription
-        }
-        isLoading = false
-    }
-
-    private func loadEqualizations(pricePointId: String) async {
-        guard let api = authState.api else { return }
-        do {
-            let (points, territories) = try await api.getPricePointEqualizations(pricePointId: pricePointId, limit: 200)
-            guard selectedBasePricePoint?.id == pricePointId else { return }
-            equalizations = points
-            territoryMap = Dictionary(uniqueKeysWithValues: territories.map { t in
-                let name = TerritoryNames.displayName(for: t.id)
-                return (t.id, TerritoryInfo(id: t.id, currency: t.attributes.currency ?? "—", displayName: name))
-            })
-            // Equalizations API often omits the source territory (US). Ensure United States is in the list.
-            if let base = selectedBasePricePoint, !usTerritoryIds.contains(where: { territoryMap[$0] != nil }) {
-                let usId = usTerritoryIds.first!
-                territoryMap[usId] = TerritoryInfo(id: usId, currency: "USD", displayName: TerritoryNames.displayName(for: usId))
-                let usEntry = SubscriptionPricePointResource(
-                    type: "subscriptionPricePoints",
-                    id: base.id,
-                    attributes: base.attributes,
-                    relationships: SubscriptionPricePointResource.SubscriptionPricePointRelationships(
-                        territory: RelationshipData(data: ResourceIdentifier(type: "territories", id: usId))
-                    )
-                )
-                equalizations.insert(usEntry, at: 0)
-            }
-            if exchangeRates.isEmpty {
-                exchangeRates = await ExchangeRateService.fetchRatesFromUSD()
-            }
-            guard selectedBasePricePoint?.id == pricePointId else { return }
-            await resetAndReapplyPrices(basePricePointId: pricePointId)
-        } catch {
-            guard selectedBasePricePoint?.id == pricePointId else { return }
-            errorMessage = error.localizedDescription
-            equalizations = []
-            territoryMap = [:]
-        }
-    }
-
-    private func resetAndReapplyPrices(basePricePointId: String? = nil) async {
-        let expectedId = basePricePointId ?? selectedBasePricePoint?.id
-        pricePointsByTerritory = [:]
-        selectedPricePointByTerritory = [:]
-
-        guard let api = authState.api else { return }
-        let territoryIds = Array(territoryMap.keys)
-        guard !territoryIds.isEmpty else { return }
-        guard selectedBasePricePoint?.id == expectedId else { return }
-
-        if indexMode == .appleEqualization {
-            // Use equalizations immediately – base price section appears right away.
-            var selections: [String: String] = [:]
-            for pp in equalizations {
-                guard let tid = pp.relationships?.territory?.data?.id else { continue }
-                selections[tid] = pp.id
-            }
-            selectedPricePointByTerritory = selections
-            pricePointsByTerritory = Dictionary(uniqueKeysWithValues: equalizations.compactMap { pp -> (String, [PricePointOption])? in
-                guard let tid = pp.relationships?.territory?.data?.id else { return nil }
-                let opt = PricePointOption(id: pp.id, customerPrice: pp.attributes.customerPrice ?? "—")
-                return (tid, [opt])
-            })
-            // Fetch full tier options in background – updates picker when done.
-            if let baseId = expectedId {
-                Task { await loadFullTiersForAppleEqualization(basePricePointId: baseId) }
-            }
-            return
-        }
-
-        guard let base = baseUSD, base > 0 else { return }
-        guard selectedBasePricePoint?.id == expectedId else { return }
-        let pointsToEqualize = pricePointsForEqualization(
-            usPricePoints: usPricePoints,
-            basePricePoint: selectedBasePricePoint
-        )
-        tierLoadTotal = pointsToEqualize.count
-        tierLoadCurrent = 0
-        tierLoadProgress = 0
-        isLoadingCustomTiers = true
-        defer {
-            isLoadingCustomTiers = false
-            tierLoadTotal = 0
-            tierLoadCurrent = 0
-            tierLoadProgress = 0
-        }
-
-        // Use equalizations for ±50 US price points around base – avoids ~800 API calls. Cached per price point ID.
-        // Fetch all equalizations concurrently instead of sequentially.
-        var pointsByTerritory: [String: [PricePointOption]] = [:]
-        for tid in territoryIds {
-            pointsByTerritory[tid] = []
-        }
-        let totalTiers = pointsToEqualize.count
-        await withTaskGroup(of: [SubscriptionPricePointResource].self) { group in
-            for pp in pointsToEqualize {
-                group.addTask {
-                    do {
-                        let (eqPoints, _) = try await api.getPricePointEqualizations(pricePointId: pp.id, limit: 200)
-                        return eqPoints
-                    } catch {
-                        return []
-                    }
-                }
-            }
-            var completed = 0
-            for await eqPoints in group {
-                guard selectedBasePricePoint?.id == expectedId else { return }
-                for eq in eqPoints {
-                    guard let tid = eq.relationships?.territory?.data?.id else { continue }
-                    let opt = PricePointOption(id: eq.id, customerPrice: eq.attributes.customerPrice ?? "—")
-                    if pointsByTerritory[tid]?.contains(where: { $0.id == opt.id }) == false {
-                        pointsByTerritory[tid, default: []].append(opt)
-                    }
-                }
-                completed += 1
-                tierLoadCurrent = completed
-                tierLoadProgress = Double(completed) / Double(totalTiers)
-                if completed % 10 == 0 || completed == 1 {
-                    debugPrint("[PriceWizard] Loading price tiers \(completed)/\(totalTiers)")
-                }
-            }
-        }
-        pricePointsByTerritory = pointsByTerritory
-
-        var selections: [String: String] = [:]
-        for tid in territoryMap.keys {
-            let info = territoryMap[tid]
-            let currency = info?.currency ?? "USD"
-            let index = territoryIndices[tid] ?? 1.0
-            let targetUSD = base * index
-            let rate = currency == "USD" ? 1.0 : (exchangeRates[currency.uppercased()] ?? 1.0)
-            let targetLocal = targetUSD * rate
-            let points = pricePointsByTerritory[tid] ?? []
-            let nearest = points.min(by: { isPreferredPrice($0, $1, targetLocal: targetLocal) })
-            if let opt = nearest {
-                selections[tid] = opt.id
-            }
-        }
-        guard selectedBasePricePoint?.id == expectedId else { return }
-        selectedPricePointByTerritory = selections
-        debugPrint("[PriceWizard] Finished loading price tiers (\(pointsToEqualize.count) price points)")
-    }
-
-    private func loadFullTiersForAppleEqualization(basePricePointId: String) async {
-        guard indexMode == .appleEqualization, let api = authState.api else { return }
-        let territoryIds = Array(territoryMap.keys)
-        guard !territoryIds.isEmpty else { return }
-        guard selectedBasePricePoint?.id == basePricePointId else { return }
-        let pointsToEqualize = pricePointsForEqualization(usPricePoints: usPricePoints, basePricePoint: selectedBasePricePoint)
-        tierLoadTotal = pointsToEqualize.count
-        tierLoadCurrent = 0
-        tierLoadProgress = 0
-        isLoadingCustomTiers = true
-        defer {
-            isLoadingCustomTiers = false
-            tierLoadTotal = 0
-            tierLoadCurrent = 0
-            tierLoadProgress = 0
-        }
-        var pointsByTerritory: [String: [PricePointOption]] = [:]
-        for tid in territoryIds { pointsByTerritory[tid] = [] }
-        let totalTiers = pointsToEqualize.count
-        await withTaskGroup(of: [SubscriptionPricePointResource].self) { group in
-            for pp in pointsToEqualize {
-                group.addTask {
-                    do {
-                        let (eqPoints, _) = try await api.getPricePointEqualizations(pricePointId: pp.id, limit: 200)
-                        return eqPoints
-                    } catch {
-                        return []
-                    }
-                }
-            }
-            var completed = 0
-            for await eqPoints in group {
-                guard selectedBasePricePoint?.id == basePricePointId else { return }
-                for eq in eqPoints {
-                    guard let tid = eq.relationships?.territory?.data?.id else { continue }
-                    let opt = PricePointOption(id: eq.id, customerPrice: eq.attributes.customerPrice ?? "—")
-                    if pointsByTerritory[tid]?.contains(where: { $0.id == opt.id }) == false {
-                        pointsByTerritory[tid, default: []].append(opt)
-                    }
-                }
-                completed += 1
-                tierLoadCurrent = completed
-                tierLoadProgress = Double(completed) / Double(totalTiers)
-                if completed % 10 == 0 || completed == 1 {
-                    debugPrint("[PriceWizard] Loading price tiers \(completed)/\(totalTiers)")
-                }
-            }
-        }
-        guard selectedBasePricePoint?.id == basePricePointId else { return }
-        pricePointsByTerritory = pointsByTerritory
-        debugPrint("[PriceWizard] Finished loading price tiers (\(pointsToEqualize.count) price points)")
-    }
-
-    private func loadPricePointsForTerritory(_ territoryId: String) async {
-        // Do NOT fetch getSubscriptionPricePoints per territory – it returns period-agnostic tiers
-        // (e.g. monthly $24.9 max) even for yearly subscriptions. All period-correct price points
-        // come from equalizations, which are already in pricePointsByTerritory.
-        guard pricePointsByTerritory[territoryId]?.isEmpty == true else { return }
-        // If we have no points for this territory (equalizations failed or territory not covered),
-        // we cannot safely load more – getSubscriptionPricePoints would return wrong period.
-        isLoadingPriceSheet = false
-    }
-
-    private func applyPrices() async {
-        guard let api = authState.api, let subId = subscription?.id else { return }
-        isApplying = true
-        successMessage = nil
-        errorMessage = nil
-        let rows = previewRows
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.timeZone = TimeZone(identifier: "UTC")
-        let startDateStr = formatter.string(from: priceStartDate)
-        let preserve = preserveCurrentPriceForExisting ? true : nil
-
-        let rowsToApply = rows.filter { row in
-            let currentStr = currentPriceByTerritory[row.territoryIdForAPI] ?? ""
-            let newStr = row.price
-            let currentVal = Double(currentStr.replacingOccurrences(of: ",", with: "."))
-            let newVal = Double(newStr.replacingOccurrences(of: ",", with: "."))
-            let alreadySame = currentVal != nil && newVal != nil && abs((currentVal ?? 0) - (newVal ?? 0)) < 0.001
-            return !alreadySame
-        }
-
-        do {
-            if rowsToApply.isEmpty {
-                successMessage = Loc.PriceSettings.appliedPricesWithSkipped(0, rows.count)
-                for row in rows {
-                    currentPriceByTerritory[row.territoryIdForAPI] = row.price
-                }
-            } else {
-                let totalToApply = Double(rowsToApply.count)
-                var completed = 0
-                try await withThrowingTaskGroup(of: Void.self) { group in
-                    for row in rowsToApply {
-                        group.addTask {
-                            try await api.createSubscriptionPrice(
-                                subscriptionId: subId,
-                                pricePointId: row.pricePointId,
-                                territoryId: row.territoryIdForAPI,
-                                startDate: startDateStr,
-                                preserveCurrentPrice: preserve
-                            )
-                        }
-                    }
-                    for try await _ in group {
-                        completed += 1
-                        applyProgress = Double(completed) / totalToApply
-                    }
-                }
-                let appliedCount = rowsToApply.count
-                let skipped = rows.count - appliedCount
-                if skipped > 0 {
-                    successMessage = Loc.PriceSettings.appliedPricesWithSkipped(appliedCount, skipped)
-                } else {
-                    successMessage = Loc.PriceSettings.appliedPricesSuccess(rows.count)
-                }
-                for row in rows {
-                    currentPriceByTerritory[row.territoryIdForAPI] = row.price
-                }
-            }
-        } catch {
-            errorMessage = error.localizedDescription
-        }
-        isApplying = false
-        applyProgress = 0
     }
 }
