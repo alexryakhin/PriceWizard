@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "Din API-nyckel är ogiltig eller har gått ut. Logga in igen.";
+"notFound" = "Den begärda resursen hittades inte.";
+"rateLimited" = "För många förfrågningar. Vänta en stund och försök igen.";
+"serverError" = "Serverfel (%d)";
+"decodingError" = "Ogiltigt svar från servern: %@";
+"startDateMustBeFuture" = "Prisändringar måste börja ett framtida datum. Välj ett startdatum från imorgon.";

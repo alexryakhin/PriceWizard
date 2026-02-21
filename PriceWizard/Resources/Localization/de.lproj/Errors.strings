@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "Dein API-Schlüssel ist ungültig oder abgelaufen. Bitte melde dich erneut an.";
+"notFound" = "Die angeforderte Ressource wurde nicht gefunden.";
+"rateLimited" = "Zu viele Anfragen. Bitte warte einen Moment und versuche es erneut.";
+"serverError" = "Serverfehler (%d)";
+"decodingError" = "Ungültige Antwort vom Server: %@";
+"startDateMustBeFuture" = "Preisänderungen müssen an einem zukünftigen Datum beginnen. Bitte wähle ein Startdatum ab morgen.";

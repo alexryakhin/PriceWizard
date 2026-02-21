@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "Khóa API không hợp lệ hoặc đã hết hạn. Vui lòng đăng nhập lại.";
+"notFound" = "Không tìm thấy tài nguyên được yêu cầu.";
+"rateLimited" = "Quá nhiều yêu cầu. Vui lòng đợi một chút rồi thử lại.";
+"serverError" = "Lỗi máy chủ (%d)";
+"decodingError" = "Phản hồi không hợp lệ từ máy chủ: %@";
+"startDateMustBeFuture" = "Thay đổi giá phải bắt đầu vào ngày trong tương lai. Vui lòng chọn ngày bắt đầu từ ngày mai.";

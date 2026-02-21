@@ -1,0 +1,8 @@
+/* API and server errors (AppStoreConnectAPI, LocalizedError) */
+
+"unauthorized" = "Your API key is invalid or expired. Please sign in again.";
+"notFound" = "The requested resource was not found.";
+"rateLimited" = "Too many requests. Please wait a moment and try again.";
+"serverError" = "Server error (%d)";
+"decodingError" = "Invalid response from server: %@";
+"startDateMustBeFuture" = "Price changes must begin on a future date. Please choose a start date from tomorrow onward.";

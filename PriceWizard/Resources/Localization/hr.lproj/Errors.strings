@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "Tvoj API ključ nije valjan ili je istekao. Prijavi se ponovno.";
+"notFound" = "Traženi resurs nije pronađen.";
+"rateLimited" = "Previše zahtjeva. Pričekajte trenutak i pokušajte ponovno.";
+"serverError" = "Pogreška poslužitelja (%d)";
+"decodingError" = "Nevažeći odgovor poslužitelja: %@";
+"startDateMustBeFuture" = "Promjene cijena moraju početi u budućem datumu. Odaberi datum početka od sutra.";

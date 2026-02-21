@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "Kunci API tidak valid atau kedaluwarsa. Silakan masuk lagi.";
+"notFound" = "Sumber daya yang diminta tidak ditemukan.";
+"rateLimited" = "Terlalu banyak permintaan. Tunggu sebentar dan coba lagi.";
+"serverError" = "Kesalahan server (%d)";
+"decodingError" = "Respons tidak valid dari server: %@";
+"startDateMustBeFuture" = "Perubahan harga harus dimulai pada tanggal mendatang. Pilih tanggal mulai besok atau setelahnya.";

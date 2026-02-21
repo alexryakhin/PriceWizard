@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "Cheia API este invalidă sau a expirat. Conectați-vă din nou.";
+"notFound" = "Resursa solicitată nu a fost găsită.";
+"rateLimited" = "Prea multe solicitări. Așteptați puțin și încercați din nou.";
+"serverError" = "Eroare server (%d)";
+"decodingError" = "Răspuns invalid de la server: %@";
+"startDateMustBeFuture" = "Modificările de preț trebuie să înceapă într-o dată viitoare. Alegeți o dată de start de mâine.";

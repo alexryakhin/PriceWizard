@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "Je API-sleutel is ongeldig of verlopen. Log opnieuw in.";
+"notFound" = "De gevraagde bron is niet gevonden.";
+"rateLimited" = "Te veel verzoeken. Wacht even en probeer het opnieuw.";
+"serverError" = "Serverfout (%d)";
+"decodingError" = "Ongeldig antwoord van server: %@";
+"startDateMustBeFuture" = "Prijswijzigingen moeten op een toekomstige datum beginnen. Kies een startdatum vanaf morgen.";

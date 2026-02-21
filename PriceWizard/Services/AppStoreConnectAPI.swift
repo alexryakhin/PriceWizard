@@ -15,6 +15,59 @@ enum APIError: Error {
     case decodingError(Error)
 }
 
+// MARK: - App Store Connect API Error Response (openapi.oas.json ErrorResponse schema)
+private struct APIErrorResponse: Decodable {
+    let errors: [APIErrorItem]
+}
+
+private struct APIErrorItem: Decodable {
+    let code: String
+    let detail: String
+    let status: String
+    let title: String
+}
+
+extension APIError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .unauthorized:
+            return Loc.Errors.unauthorized
+        case .notFound:
+            return Loc.Errors.notFound
+        case .rateLimited:
+            return Loc.Errors.rateLimited
+        case .serverError(let statusCode, let body):
+            return Self.humanReadableMessage(statusCode: statusCode, body: body)
+        case .decodingError(let underlying):
+            return Loc.Errors.decodingError(underlying.localizedDescription)
+        }
+    }
+
+    /// Parses Apple's ErrorResponse (errors[].code, detail, status, title) and returns a user-friendly string.
+    private static func humanReadableMessage(statusCode: Int, body: String?) -> String {
+        guard let body = body,
+              let data = body.data(using: .utf8),
+              let response = try? JSONDecoder().decode(APIErrorResponse.self, from: data),
+              let first = response.errors.first else {
+            return Loc.Errors.serverError(statusCode)
+        }
+        let detailLower = first.detail.lowercased()
+        let titleLower = first.title.lowercased()
+        // Map common subscription price / start date errors to a clear message
+        if detailLower.contains("start date") || detailLower.contains("startdate") ||
+           titleLower.contains("start date") || first.code == "STATE_ERROR" {
+            if detailLower.contains("future") || detailLower.contains("today") || detailLower.contains("past") {
+                return Loc.Errors.startDateMustBeFuture
+            }
+        }
+        // Prefer detail (usually more specific); fall back to title
+        if !first.detail.isEmpty {
+            return first.detail
+        }
+        return first.title.isEmpty ? Loc.Errors.serverError(statusCode) : first.title
+    }
+}
+
 /// Protocol for the App Store Connect API so the UI can use either the real API or a mock (e.g. demo mode).
 protocol AppStoreConnectAPIProtocol: AnyObject {
     func clearAllCaches()

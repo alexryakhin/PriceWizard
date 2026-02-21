@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "La tua chiave API non è valida o è scaduta. Accedi di nuovo.";
+"notFound" = "La risorsa richiesta non è stata trovata.";
+"rateLimited" = "Troppe richieste. Attendi un momento e riprova.";
+"serverError" = "Errore del server (%d)";
+"decodingError" = "Risposta non valida dal server: %@";
+"startDateMustBeFuture" = "Le modifiche ai prezzi devono iniziare in una data futura. Scegli una data di inizio a partire da domani.";

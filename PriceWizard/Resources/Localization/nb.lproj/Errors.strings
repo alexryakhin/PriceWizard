@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "API-nøkkelen er ugyldig eller utløpt. Logg inn på nytt.";
+"notFound" = "Den forespurte ressursen ble ikke funnet.";
+"rateLimited" = "For mange forespørsler. Vent et øyeblikk og prøv igjen.";
+"serverError" = "Serverfeil (%d)";
+"decodingError" = "Ugyldig svar fra serveren: %@";
+"startDateMustBeFuture" = "Prisendringer må starte på en fremtidig dato. Velg en startdato fra i morgen.";

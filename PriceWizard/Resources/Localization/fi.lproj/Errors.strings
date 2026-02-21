@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "API-avain on virheellinen tai vanhentunut. Kirjaudu uudelleen sisään.";
+"notFound" = "Pyydettyä resurssia ei löydy.";
+"rateLimited" = "Liian monta pyyntöä. Odota hetki ja yritä uudelleen.";
+"serverError" = "Palvelinvirhe (%d)";
+"decodingError" = "Virheellinen vastaus palvelimelta: %@";
+"startDateMustBeFuture" = "Hinnanmuutoksen on alettava tulevaisuudessa. Valitse aloituspäivä huomisesta alkaen.";

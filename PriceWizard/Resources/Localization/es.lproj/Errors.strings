@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "Tu clave API no es válida o ha caducado. Inicia sesión de nuevo.";
+"notFound" = "No se encontró el recurso solicitado.";
+"rateLimited" = "Demasiadas solicitudes. Espera un momento e inténtalo de nuevo.";
+"serverError" = "Error del servidor (%d)";
+"decodingError" = "Respuesta no válida del servidor: %@";
+"startDateMustBeFuture" = "Los cambios de precio deben comenzar en una fecha futura. Elige una fecha de inicio a partir de mañana.";

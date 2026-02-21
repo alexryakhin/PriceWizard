@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "Az API-kulcs érvénytelen vagy lejárt. Kérjük, jelentkezzen be újra.";
+"notFound" = "A kért erőforrás nem található.";
+"rateLimited" = "Túl sok kérés. Várjon egy pillanatra, majd próbálja újra.";
+"serverError" = "Szerverhiba (%d)";
+"decodingError" = "Érvénytelen válasz a szervertől: %@";
+"startDateMustBeFuture" = "Az árváltozásoknak jövőbeli dátummal kell kezdődniük. Válasszon holnaptól kezdődő kezdődatumban.";

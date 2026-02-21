@@ -1,5 +1,5 @@
 // swiftlint:disable all
-// Generated using SwiftGen - https://github.com/SwiftGen/SwiftGen
+// Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
 
 import Foundation
 
@@ -43,12 +43,12 @@ internal enum Loc {
     internal static let keyIdPlaceholder = Loc.tr("Auth", "keyIdPlaceholder", fallback: "XXXXXXXXXX")
     /// Select AuthKey_XXXXXXXX.p8
     internal static let selectP8 = Loc.tr("Auth", "selectP8", fallback: "Select AuthKey_XXXXXXXX.p8")
-    /// Explore the app with sample data (no API key required).
-    internal static let tryDemoDescription = Loc.tr("Auth", "tryDemoDescription", fallback: "Explore the app with sample data (no API key required).")
     /// AuthSetupView
     internal static let title = Loc.tr("Auth", "title", fallback: "App Store Connect API")
     /// Try Demo
     internal static let tryDemo = Loc.tr("Auth", "tryDemo", fallback: "Try Demo")
+    /// Explore the app with sample data (no API key required).
+    internal static let tryDemoDescription = Loc.tr("Auth", "tryDemoDescription", fallback: "Explore the app with sample data (no API key required).")
   }
   internal enum ContentView {
     /// ContentView toolbar
@@ -62,6 +62,24 @@ internal enum Loc {
     /// Log Out
     internal static let logOut = Loc.tr("ContentView", "logOut", fallback: "Log Out")
   }
+  internal enum Errors {
+    /// Invalid response from server: %@
+    internal static func decodingError(_ p1: Any) -> String {
+      return Loc.tr("Errors", "decodingError", String(describing: p1), fallback: "Invalid response from server: %@")
+    }
+    /// The requested resource was not found.
+    internal static let notFound = Loc.tr("Errors", "notFound", fallback: "The requested resource was not found.")
+    /// Too many requests. Please wait a moment and try again.
+    internal static let rateLimited = Loc.tr("Errors", "rateLimited", fallback: "Too many requests. Please wait a moment and try again.")
+    /// Server error (%d)
+    internal static func serverError(_ p1: Int) -> String {
+      return Loc.tr("Errors", "serverError", p1, fallback: "Server error (%d)")
+    }
+    /// Price changes must begin on a future date. Please choose a start date from tomorrow onward.
+    internal static let startDateMustBeFuture = Loc.tr("Errors", "startDateMustBeFuture", fallback: "Price changes must begin on a future date. Please choose a start date from tomorrow onward.")
+    /// API and server errors (AppStoreConnectAPI, LocalizedError)
+    internal static let unauthorized = Loc.tr("Errors", "unauthorized", fallback: "Your API key is invalid or expired. Please sign in again.")
+  }
   internal enum PriceSettings {
     /// Applied %@ prices successfully
     internal static func appliedPricesSuccess(_ p1: Any) -> String {
@@ -71,10 +89,6 @@ internal enum Loc {
     internal static func appliedPricesWithSkipped(_ p1: Any, _ p2: Any) -> String {
       return Loc.tr("PriceSettings", "appliedPricesWithSkipped", String(describing: p1), String(describing: p2), fallback: "Applied %@ prices (%@ already set, skipped)")
     }
-    /// Demo mode – apply is disabled
-    internal static let demoModeApplyDisabled = Loc.tr("PriceSettings", "demoModeApplyDisabled", fallback: "Demo mode – apply is disabled")
-    /// In demo mode, apply is simulated.
-    internal static let demoModeApplySimulated = Loc.tr("PriceSettings", "demoModeApplySimulated", fallback: "In demo mode, apply is simulated.")
     /// Apply to App Store Connect
     internal static let applyToAppStoreConnect = Loc.tr("PriceSettings", "applyToAppStoreConnect", fallback: "Apply to App Store Connect")
     /// Base Price
@@ -83,6 +97,10 @@ internal enum Loc {
     internal static let currency = Loc.tr("PriceSettings", "currency", fallback: "Currency")
     /// Current price
     internal static let currentPrice = Loc.tr("PriceSettings", "currentPrice", fallback: "Current price")
+    /// Demo mode – apply is disabled
+    internal static let demoModeApplyDisabled = Loc.tr("PriceSettings", "demoModeApplyDisabled", fallback: "Demo mode – apply is disabled")
+    /// In demo mode, apply is simulated.
+    internal static let demoModeApplySimulated = Loc.tr("PriceSettings", "demoModeApplySimulated", fallback: "In demo mode, apply is simulated.")
     /// Done
     internal static let done = Loc.tr("PriceSettings", "done", fallback: "Done")
     /// Error

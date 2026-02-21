@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "Kunci API tidak sah atau telah tamat tempoh. Sila log masuk semula.";
+"notFound" = "Sumber yang diminta tidak dijumpai.";
+"rateLimited" = "Terlalu banyak permintaan. Sila tunggu sebentar dan cuba lagi.";
+"serverError" = "Ralat pelayan (%d)";
+"decodingError" = "Respons tidak sah dari pelayan: %@";
+"startDateMustBeFuture" = "Perubahan harga mesti bermula pada tarikh hadapan. Sila pilih tarikh mula dari esok.";

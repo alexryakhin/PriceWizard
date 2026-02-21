@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "A sua chave API é inválida ou expirou. Inicie sessão novamente.";
+"notFound" = "O recurso solicitado não foi encontrado.";
+"rateLimited" = "Demasiados pedidos. Aguarde um momento e tente novamente.";
+"serverError" = "Erro do servidor (%d)";
+"decodingError" = "Resposta inválida do servidor: %@";
+"startDateMustBeFuture" = "As alterações de preço devem começar numa data futura. Escolha uma data de início a partir de amanhã.";

@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "APIキーが無効または期限切れです。再度サインインしてください。";
+"notFound" = "要求されたリソースが見つかりません。";
+"rateLimited" = "リクエストが多すぎます。しばらく待ってから再試行してください。";
+"serverError" = "サーバーエラー（%d）";
+"decodingError" = "サーバーからの応答が無効です：%@";
+"startDateMustBeFuture" = "価格変更は将来の日付から開始する必要があります。明日以降の開始日を選択してください。";

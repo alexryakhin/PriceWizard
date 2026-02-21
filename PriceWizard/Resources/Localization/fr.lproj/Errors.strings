@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "Votre clé API est invalide ou expirée. Veuillez vous reconnecter.";
+"notFound" = "La ressource demandée est introuvable.";
+"rateLimited" = "Trop de requêtes. Veuillez patienter puis réessayer.";
+"serverError" = "Erreur serveur (%d)";
+"decodingError" = "Réponse invalide du serveur : %@";
+"startDateMustBeFuture" = "Les changements de prix doivent commencer à une date future. Choisissez une date de début à partir de demain.";

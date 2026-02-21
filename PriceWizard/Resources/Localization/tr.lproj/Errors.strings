@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "API anahtarınız geçersiz veya süresi dolmuş. Lütfen tekrar giriş yapın.";
+"notFound" = "İstenen kaynak bulunamadı.";
+"rateLimited" = "Çok fazla istek. Lütfen kısa süre bekleyip tekrar deneyin.";
+"serverError" = "Sunucu hatası (%d)";
+"decodingError" = "Sunucudan geçersiz yanıt: %@";
+"startDateMustBeFuture" = "Fiyat değişiklikleri gelecekte bir tarihte başlamalıdır. Lütfen yarından itibaren bir başlangıç tarihi seçin.";

@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "您的 API 密钥无效或已过期，请重新登录。";
+"notFound" = "未找到所请求的资源。";
+"rateLimited" = "请求过多，请稍后再试。";
+"serverError" = "服务器错误（%d）";
+"decodingError" = "服务器返回无效响应：%@";
+"startDateMustBeFuture" = "价格变更必须从未来日期开始。请选择从明天起的开始日期。";

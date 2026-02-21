@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "Váš API klíč je neplatný nebo vypršel. Přihlaste se znovu.";
+"notFound" = "Požadovaný zdroj nebyl nalezen.";
+"rateLimited" = "Příliš mnoho požadavků. Chvíli počkejte a zkuste to znovu.";
+"serverError" = "Chyba serveru (%d)";
+"decodingError" = "Neplatná odpověď ze serveru: %@";
+"startDateMustBeFuture" = "Změny cen musí začínat v budoucím datu. Zvolte datum začátku od zítřka.";

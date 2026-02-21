@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "Twój klucz API jest nieprawidłowy lub wygasł. Zaloguj się ponownie.";
+"notFound" = "Nie znaleziono żądanego zasobu.";
+"rateLimited" = "Zbyt wiele żądań. Poczekaj chwilę i spróbuj ponownie.";
+"serverError" = "Błąd serwera (%d)";
+"decodingError" = "Nieprawidłowa odpowiedź z serwera: %@";
+"startDateMustBeFuture" = "Zmiany cen muszą zaczynać się od przyszłej daty. Wybierz datę początkową od jutra.";

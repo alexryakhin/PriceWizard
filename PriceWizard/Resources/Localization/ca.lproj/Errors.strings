@@ -1,0 +1,8 @@
+/* API and server errors */
+
+"unauthorized" = "La clau API no és vàlida o ha caducat. Inicia la sessió de nou.";
+"notFound" = "El recurs sol·licitat no s'ha trobat.";
+"rateLimited" = "Massa peticions. Espera un moment i torna-ho a provar.";
+"serverError" = "Error del servidor (%d)";
+"decodingError" = "Resposta no vàlida del servidor: %@";
+"startDateMustBeFuture" = "Els canvis de preu han de començar en una data futura. Tria una data d'inici a partir de demà.";
