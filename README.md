@@ -2,6 +2,8 @@
 
 An iOS and Mac app to set **App Store subscription prices** for all territories from one screen - no more updating 175 countries by hand in App Store Connect.
 
+**[Download on the App Store](https://apps.apple.com/app/id6759319356)**
+
 ---
 
 ## Requirements
@@ -35,6 +37,12 @@ PriceWizard will ask for **Key ID**, **Issuer ID**, and the **.p8 file** when yo
 ## Privacy
 
 We don’t collect or receive your data. Your API key stays in your Mac’s Keychain. The app talks only to Apple’s API and to a public exchange-rate service for USD conversion.
+
+---
+
+## Website / SEO
+
+The site includes `robots.txt`, `sitemap.xml`, canonical URLs, Open Graph and Twitter Card meta tags, and JSON-LD (homepage). The live URL is **https://alexryakhin.github.io/PriceWizard**. If you change domain or path, search for that URL and replace it in `robots.txt`, `sitemap.xml`, and each HTML file (canonical, og:url, og:image, twitter:image, and the ld+json script on the homepage).
 
 ---
 

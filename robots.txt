@@ -1,0 +1,5 @@
+# PriceWizard – https://alexryakhin.github.io/PriceWizard
+User-agent: *
+Allow: /
+
+Sitemap: https://alexryakhin.github.io/PriceWizard/sitemap.xml

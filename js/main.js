@@ -44,14 +44,15 @@
     });
   });
 
-  // Optional: log for download CTA (replace with real link when you have a build)
+  // Track clicks on the App Store download button in Google Analytics 4
   var downloadCta = document.getElementById('download-cta');
   if (downloadCta) {
-    downloadCta.addEventListener('click', function (e) {
-      if (this.getAttribute('href') === 'https://github.com') {
-        e.preventDefault();
-        // When you have a real URL, update index.html and remove this block
-        this.textContent = 'Coming soon';
+    downloadCta.addEventListener('click', function () {
+      if (typeof gtag === 'function') {
+        gtag('event', 'download_click', {
+          event_category: 'engagement',
+          event_label: 'App Store Download Button'
+        });
       }
     });
   }
