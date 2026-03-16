@@ -49,6 +49,16 @@
   }
 }
 
+/* Problem section: 3 cards centered on large screens */
+@media (min-width: 1024px) {
+  .problem .feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .requirement-list {
   max-width: 36rem;
   margin: 0 auto var(--space-6);

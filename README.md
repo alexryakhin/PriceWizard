@@ -1,14 +1,25 @@
 # PriceWizard
 
-An iOS and Mac app to set **App Store subscription prices** for all territories from one screen - no more updating 175 countries by hand in App Store Connect.
+Localize your App Store subscription prices by purchasing power and update 175+ countries from one safe bulk apply – no more clicking through App Store Connect by hand.
 
 **[Download on the App Store](https://apps.apple.com/app/id6759319356)**
 
 ---
 
+## What PriceWizard does
+
+- **Connects to App Store Connect** with your API key and talks directly to Apple’s API.  
+- **Lets you pick a US base price** and preview the resulting price in every territory (local currency + USD).  
+- **Applies Apple-, Netflix-, or Spotify-style regional pricing** based on purchasing power, with the option to override per territory.  
+- **Updates prices safely in one go** – skipping territories that already match your target price and avoiding dates that already have a scheduled price change.  
+
+Use it to run pricing experiments, make your app more affordable in lower-income countries, and stop undercharging in high-income ones, without fighting App Store Connect.
+
+---
+
 ## Requirements
 
-- **iOS 17** or later
+- **iOS 17** or later  
 - **macOS 15** or later  
 - **App Store Connect API key** (Key ID, Issuer ID, and `.p8` file) with **App Manager** or **Admin** access  
 
@@ -25,12 +36,22 @@ PriceWizard will ask for **Key ID**, **Issuer ID**, and the **.p8 file** when yo
 
 ---
 
-## What it does
+## How PriceWizard decides prices
 
-- **Connect** with your App Store Connect API key.  
-- **Pick a US base price** and see a **preview** of the new price in every territory (local currency + USD).  
-- **Choose a mode:** Apple Equalization, Netflix-style, or Spotify-style regional pricing; override per territory if needed.  
-- **Apply** all changes in one go. The app skips territories that already have the target price and won’t apply on a date that already has a scheduled price change.  
+At a high level:
+
+- You select a **US base price** for your subscription.  
+- You choose a **pricing mode**:
+  - **Apple Equalization** – follow Apple’s own regional equalization logic.  
+  - **Netflix-style** – tilt more toward affordability in lower-income countries.  
+  - **Spotify-style** – a balanced PPP-inspired profile commonly used by subscription apps.  
+- PriceWizard computes suggested prices per territory, shows you the matrix, and lets you **override any country** before applying.
+
+When you hit apply:
+
+- Territories that already have the target price are **skipped**.  
+- Dates that already have a scheduled price change are **left untouched**.  
+- Only the prices you actually intend to change are updated.
 
 ---
 
