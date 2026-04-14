@@ -12,19 +12,19 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PriceWizard Privacy Policy - We don’t collect your data. Your API key stays in your Mac’s Keychain.">
+  <meta name="description" content="PriceWizard Privacy Policy - App data stays on your device. API key in Keychain. Third parties: Apple, RevenueCat, optional Firebase and translation.">
   <title>Privacy Policy - PriceWizard</title>
   <link rel="canonical" href="https://alexryakhin.github.io/PriceWizard/privacy.html">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://alexryakhin.github.io/PriceWizard/privacy.html">
   <meta property="og:title" content="Privacy Policy - PriceWizard">
-  <meta property="og:description" content="We don't collect your data. Your API key stays in your Mac's Keychain.">
+  <meta property="og:description" content="App credentials stay on your device. This site may use Google Analytics for aggregate traffic.">
   <meta property="og:image" content="https://alexryakhin.github.io/PriceWizard/assets/screenshot-mac-os.png">
   <meta property="og:site_name" content="PriceWizard">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Privacy Policy - PriceWizard">
-  <meta name="twitter:description" content="We don't collect your data. Your API key stays in your Mac's Keychain.">
+  <meta name="twitter:description" content="App credentials stay on your device. This site may use Google Analytics for aggregate traffic.">
   <meta name="twitter:image" content="https://alexryakhin.github.io/PriceWizard/assets/screenshot-mac-os.png">
   <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,34 +58,41 @@
     <div class="container">
       <header class="page-header">
         <h1 class="page-title">Privacy Policy</h1>
-        <p class="page-lead">Last updated: February 2026</p>
+        <p class="page-lead">Last updated: April 2026</p>
       </header>
 
       <div class="prose">
         <section class="prose-section">
           <h2>Introduction</h2>
-          <p>PriceWizard (“the app”) is an iOS and macOS application that helps you manage App Store Connect subscription prices across territories. This policy describes how we handle information in relation to the app and this website.</p>
+          <p>PriceWizard (“the app”) is an iOS and macOS application that helps you manage App Store Connect subscription and in-app purchase prices across territories, and edit localized display names and descriptions for those products. This policy describes how we handle information in relation to the app and this website.</p>
         </section>
 
         <section class="prose-section">
-          <h2>Data we don’t collect</h2>
-          <p>We do not collect, store, or receive any personal data or usage data from you. We don’t use analytics, tracking, or cookies for the purpose of identifying users. This website may be hosted by a provider that collects standard server logs (e.g. IP, request time); we don’t use those for anything beyond basic operation.</p>
+          <h2>Data we don’t collect (app)</h2>
+          <p>We do not operate a backend that stores your App Store Connect data, your credentials, or the text you edit in the app. The app does not send that information to us.</p>
+        </section>
+
+        <section class="prose-section">
+          <h2>This website</h2>
+          <p>This marketing site loads <strong>Google Analytics</strong> (gtag.js), which may use cookies or similar technologies and process technical data (such as approximate location and device information) as described in <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google’s privacy policy</a>. We use it only for aggregate traffic insights, not to identify individual visitors. GitHub Pages may also collect standard server logs; see <a href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub’s privacy statement</a>.</p>
         </section>
 
         <section class="prose-section">
           <h2>Data on your device</h2>
-          <p>When you use the app, your App Store Connect API credentials (Key ID, Issuer ID, and .p8 private key) are stored only in your Mac’s Keychain. We never transmit or have access to these credentials. All data the app uses (app list, subscriptions, prices) is fetched from Apple’s API on your machine and is not sent to us.</p>
+          <p>When you use the app, your App Store Connect API credentials (Key ID, Issuer ID, and .p8 private key) are stored only in your device’s Keychain (iOS or Mac). We never transmit or have access to these credentials. Product lists, prices, and localization text are fetched from Apple’s API on your device and are not sent to us.</p>
         </section>
 
         <section class="prose-section" id="third-party">
           <h2>Third-party services</h2>
           <p>The app communicates only with:</p>
           <ul>
-            <li><strong>Apple’s App Store Connect API</strong> - to read and update your subscription and price data, using your credentials.</li>
+            <li><strong>Apple’s App Store Connect API</strong> - to read and update subscription and in-app purchase prices and localized display names and descriptions, using your credentials.</li>
             <li><strong>RevenueCat</strong> - to validate your in-app purchase and manage your entitlement to unlimited use. RevenueCat acts as a processor on our behalf; payment is always handled by Apple. See <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">RevenueCat’s privacy policy</a> for their practices.</li>
             <li><strong>A public exchange-rate service</strong> - to convert prices to USD for preview. We do not send any personal or account data to this service.</li>
+            <li><strong>Firebase (Google)</strong> - the app may use Firebase Remote Config to fetch non-sensitive configuration (for example, which App Store locales to show). Google may process limited technical data as described in <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase’s documentation</a> and Google’s policies.</li>
+            <li><strong>Google Translate</strong> (optional) - if you choose machine translation, the app sends the strings you are translating from your device to Google’s translation service. Do not use this feature for highly sensitive content if that concerns you.</li>
           </ul>
-          <p>This website may load fonts from Google Fonts; see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google’s privacy policy</a> for their practices.</p>
+          <p>This website loads fonts from Google Fonts; see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google’s privacy policy</a> for their practices.</p>
         </section>
 
         <section class="prose-section">

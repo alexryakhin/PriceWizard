@@ -12,22 +12,22 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PriceWizard - Localize App Store subscription prices by purchasing power, with pro-level safety and control. One screen to update 175+ countries in minutes.">
-  <title>PriceWizard - PPP-based subscription pricing for App Store Connect</title>
+  <meta name="description" content="PriceWizard - PPP-aware subscription and in-app purchase pricing for App Store Connect, plus bulk localization of display names and descriptions. One screen to update 175+ territories in minutes.">
+  <title>PriceWizard - Subscription &amp; IAP pricing and localizations for App Store Connect</title>
   <link rel="canonical" href="https://alexryakhin.github.io/PriceWizard/">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://alexryakhin.github.io/PriceWizard/sitemap.xml">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://alexryakhin.github.io/PriceWizard/">
-  <meta property="og:title" content="PriceWizard - PPP-based subscription pricing for App Store Connect">
-  <meta property="og:description" content="Localize App Store subscription prices by purchasing power and update 175+ countries from one safe bulk apply.">
+  <meta property="og:title" content="PriceWizard - Subscription &amp; IAP pricing and localizations for App Store Connect">
+  <meta property="og:description" content="PPP-aware subscription and in-app purchase prices, plus metadata localizations. Update 175+ territories from one safe bulk apply.">
   <meta property="og:image" content="https://alexryakhin.github.io/PriceWizard/assets/screenshot-mac-os.png">
   <meta property="og:site_name" content="PriceWizard">
   <meta property="og:locale" content="en_US">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PriceWizard - PPP-based subscription pricing for App Store Connect">
-  <meta name="twitter:description" content="Localize App Store subscription prices by purchasing power and update 175+ countries from one safe bulk apply.">
+  <meta name="twitter:title" content="PriceWizard - Subscription &amp; IAP pricing and localizations for App Store Connect">
+  <meta name="twitter:description" content="PPP-aware subscription and in-app purchase prices, plus metadata localizations. Update 175+ territories from one safe bulk apply.">
   <meta name="twitter:image" content="https://alexryakhin.github.io/PriceWizard/assets/screenshot-mac-os.png">
   <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +41,7 @@
     "name": "PriceWizard",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "iOS 17+, macOS 15+",
-    "description": "Localize App Store subscription prices by purchasing power and update 175+ countries from one safe bulk apply in App Store Connect.",
+    "description": "PPP-aware subscription and in-app purchase pricing for App Store Connect, plus bulk editing of subscription and IAP display names and descriptions per locale.",
     "offers": {
       "@type": "Offer",
       "price": "14.99",
@@ -77,15 +77,15 @@
   <main>
     <section class="hero">
       <div class="container hero-inner">
-        <div class="hero-badge">macOS &amp; iOS · PPP-aware pricing · One-time purchase</div>
-        <h1 class="hero-title">Localize App Store subscription prices by purchasing power</h1>
-        <p class="hero-lead">Stop guessing and stop clicking through 175 territories. Connect your App Store Connect API key, pick a US base price, apply Apple-, Netflix-, or Spotify-style regional pricing, and safely update every country from one screen.</p>
+        <div class="hero-badge">macOS &amp; iOS · Subscriptions &amp; IAP · PPP-aware pricing · One-time purchase</div>
+        <h1 class="hero-title">Subscription &amp; in-app purchase prices and localizations, from one screen</h1>
+        <p class="hero-lead">Stop guessing and stop clicking through 175 territories. Connect your App Store Connect API key, set regional prices for subscriptions and in-app purchases with Apple-, Netflix-, or Spotify-style PPP, and bulk-edit localized display names and descriptions before you save safely to App Store Connect.</p>
         <div class="hero-actions">
           <a href="https://apps.apple.com/app/id6759319356" class="btn btn-primary" id="download-cta" target="_blank" rel="noopener noreferrer">Download from App Store</a>
           <a href="#problem" class="btn btn-ghost">See why this matters</a>
         </div>
         <div class="hero-visual">
-          <img src="assets/screenshot-mac-os.png" alt="PriceWizard app window showing subscription prices by territory" class="hero-screenshot">
+          <img src="assets/screenshot-mac-os.png" alt="PriceWizard app window showing regional prices and localization tools" class="hero-screenshot">
         </div>
       </div>
     </section>
@@ -116,13 +116,13 @@
 
     <section class="section features" id="features">
       <div class="container">
-        <h2 class="section-title">PriceWizard solves this with PPP-aware bulk pricing</h2>
-        <p class="privacy-lead" style="margin-bottom: 2rem;">Go from hours in App Store Connect to one safe bulk apply, while matching prices to local purchasing power instead of a flat number.</p>
+        <h2 class="section-title">PriceWizard solves this with PPP-aware bulk pricing and metadata tools</h2>
+        <p class="privacy-lead" style="margin-bottom: 2rem;">Go from hours in App Store Connect to one safe bulk apply for prices, while matching purchasing power instead of a flat number. Edit subscription and in-app purchase localizations without juggling spreadsheets.</p>
         <ul class="feature-grid">
           <li class="feature-card">
             <span class="feature-icon" aria-hidden="true">🔑</span>
             <h3>Set up once, stay secure</h3>
-            <p>Your API key lives only in your Mac’s Keychain. We never see it. Connect once and you’re done.</p>
+            <p>Your API key lives only in your device’s Keychain (iOS or Mac). We never see it. Connect once and you’re done.</p>
           </li>
           <li class="feature-card">
             <span class="feature-icon" aria-hidden="true">💰</span>
@@ -139,6 +139,11 @@
             <h3>Minutes, not hours</h3>
             <p>One click applies the right price everywhere. The app skips what’s already correct and avoids conflicting dates, so experiments stay safe.</p>
           </li>
+          <li class="feature-card">
+            <span class="feature-icon" aria-hidden="true">🌐</span>
+            <h3>Subscription &amp; IAP metadata</h3>
+            <p>Bulk-edit localized display names and descriptions for subscriptions and in-app purchases, optionally machine-translate from your source language, and save to App Store Connect in parallel.</p>
+          </li>
         </ul>
       </div>
     </section>
@@ -151,7 +156,7 @@
           <li class="feature-card">
             <span class="feature-icon" aria-hidden="true">1</span>
             <h3>Connect App Store Connect</h3>
-            <p>Use your App Store Connect API key (Key ID, Issuer ID, and .p8 file). PriceWizard stores it only in your Mac’s Keychain and talks directly to Apple.</p>
+            <p>Use your App Store Connect API key (Key ID, Issuer ID, and .p8 file). PriceWizard stores it only in your device’s Keychain and talks directly to Apple.</p>
           </li>
           <li class="feature-card">
             <span class="feature-icon" aria-hidden="true">2</span>
@@ -187,14 +192,14 @@
     <section class="section pricing" id="pricing">
       <div class="container">
         <h2 class="section-title">Price</h2>
-        <p class="privacy-lead">Try PriceWizard for free: you get <strong>5 free applies</strong> before payment is required. After that, a <strong>one-time, lifetime in-app purchase</strong> unlocks unlimited use (<strong>$14.99</strong> in the US; prices may vary by country). No subscription. See <a href="terms.html">Terms of Use</a> for details.</p>
+        <p class="privacy-lead">Try PriceWizard for free: you get <strong>5 free App Store Connect actions</strong> (price applies and metadata saves count toward the same limit) before payment is required. After that, a <strong>one-time, lifetime in-app purchase</strong> unlocks unlimited use (<strong>$14.99</strong> in the US; prices may vary by country). No subscription. See <a href="terms.html">Terms of Use</a> for details.</p>
       </div>
     </section>
 
     <section class="section privacy" id="privacy">
       <div class="container">
         <h2 class="section-title">Privacy</h2>
-        <p class="privacy-lead">We don’t collect or receive your data. Your API key stays in your Mac’s Keychain. The app talks only to Apple’s API, <a href="privacy.html#third-party">RevenueCat</a> (for in-app purchase entitlements), and a public exchange-rate service for USD conversion. See our <a href="privacy.html">Privacy Policy</a> for details.</p>
+        <p class="privacy-lead">We don’t collect or receive your data. Your API key stays in your device’s Keychain. The app talks to Apple’s API, <a href="privacy.html#third-party">RevenueCat</a> (purchase entitlements), optional services for exchange rates and remote configuration, and—if you use machine translation—Google’s public translate endpoint from your device. See our <a href="privacy.html">Privacy Policy</a> for details.</p>
       </div>
     </section>
   </main>

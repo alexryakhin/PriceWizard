@@ -57,6 +57,14 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  /* Five benefit cards: 3 + 2 instead of 4 + 1 */
+  .features .feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .requirement-list {
