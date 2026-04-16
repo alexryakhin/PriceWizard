@@ -1,6 +1,6 @@
 # PriceWizard
 
-Set PPP-aware prices for App Store **subscriptions and in-app purchases**, bulk-edit **localized display names and descriptions**, and apply everything from one screen—without clicking through App Store Connect territory by territory.
+Set PPP-aware prices for App Store **subscriptions and in-app purchases**, bulk-edit **localized display names and descriptions**, and apply everything from one screen — without clicking through App Store Connect territory by territory.
 
 **[Download on the App Store](https://apps.apple.com/app/id6759319356)**
 
@@ -14,7 +14,7 @@ Set PPP-aware prices for App Store **subscriptions and in-app purchases**, bulk-
 - **Updates prices safely in one go** – skipping territories that already match your target price and avoiding dates that already have a scheduled price change.  
 - **Edits subscription and IAP metadata per locale** – display names and descriptions, with optional machine translation before you save to App Store Connect.  
 
-Use it to run pricing experiments, keep product copy consistent across locales, and tune affordability by market—without fighting App Store Connect.
+Use it to run pricing experiments, keep product copy consistent across locales, and tune affordability by market — without fighting App Store Connect.
 
 ---
 
@@ -58,7 +58,7 @@ When you hit apply:
 
 ## Privacy
 
-We don’t operate a backend that stores your App Store data. Your API key stays in your device’s Keychain. The app talks to Apple’s API, RevenueCat (purchase validation), optional Firebase Remote Config, a public exchange-rate service for USD preview, and—if you use machine translation—Google’s translation service from your device. The static marketing pages in this folder load Google Analytics; see `privacy.html`.
+We don’t operate a backend that stores your App Store data. Your API key stays in your device’s Keychain. The app talks to Apple’s API, RevenueCat (purchase validation), optional Firebase Remote Config, a public exchange-rate service for USD preview, and — if you use machine translation — Google’s translation service from your device. The static marketing pages in this folder load Google Analytics; see `privacy.html`.
 
 ---
 

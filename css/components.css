@@ -242,6 +242,76 @@
   filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.4));
 }
 
+/* Screenshots section */
+.screens-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  align-items: center;
+}
+
+.screens-scroller-block {
+  width: 100%;
+  max-width: none;
+}
+
+.screens-label {
+  text-align: center;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-6);
+}
+
+.screens-scroller {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  /* Let the scroll area use the full container width (not clipped by padding). */
+  margin-left: calc(-1 * var(--container-padding));
+  margin-right: calc(-1 * var(--container-padding));
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.screens-scroller-inner {
+  display: flex;
+  gap: var(--space-6);
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-bottom: var(--space-2);
+  width: max-content;
+  margin: 0 auto;
+}
+
+.screenshot-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.35));
+  background: var(--color-bg-card);
+}
+
+.screenshot-image--mac {
+  width: auto;
+  max-width: 42rem;
+}
+
+.screenshot-image--phone {
+  width: auto;
+  max-width: 22rem;
+
+  /* Plain iOS screenshots: no border, shadow, or rounding. */
+  border: none;
+  border-radius: 0;
+  filter: none;
+  background: transparent;
+}
+
 /* Feature cards */
 .feature-card {
   background: var(--color-bg-card);
