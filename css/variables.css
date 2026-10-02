@@ -1,63 +1,55 @@
 /**
- * Design tokens - colors, typography, spacing
+ * Design tokens. Matches the App Store screenshots: cool gray canvas, ink headlines,
+ * the app icon's blue gradient for accents. Light by default, dark when the system is dark.
  */
 
 :root {
-  /* Colors - dark theme, accent from app Assets.xcassets AccentColor.colorset (Display P3 0.211 0.476 0.959 → #3679f5) */
-  --color-bg: #0c0f14;
-  --color-bg-elevated: #13171f;
-  --color-bg-card: #181d28;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-text: #e6e9ef;
-  --color-text-muted: #8b92a3;
-  --color-accent: #3679f5;
-  --color-accent-hover: #5a8cf7;
-  --color-accent-muted: rgba(54, 121, 245, 0.2);
+  --color-bg: #F4F5F8;
+  --color-bg-deep: #E7EAF0;
+  --color-surface: #FFFFFF;
+  --color-border: rgba(12, 20, 36, 0.08);
+  --color-text: #0C1424;
+  --color-text-muted: #5B6475;
+  --color-ink: #0C1424;
+  --color-on-ink: #FFFFFF;
+  --color-accent: #1A72FA;
+  --color-accent-2: #0BC0FB;
+  --color-accent-soft: rgba(26, 114, 250, 0.12);
+  --color-green: #22B357;
+  --gradient-accent: linear-gradient(135deg, var(--color-accent-2), var(--color-accent));
+  --glow: radial-gradient(900px 600px at 70% 0%, rgba(26, 114, 250, 0.16), rgba(26, 114, 250, 0) 70%);
+  --shadow-card: 0 1px 2px rgba(12, 20, 36, 0.04), 0 12px 32px rgba(12, 20, 36, 0.08);
+  --shadow-shot: 0 30px 70px rgba(12, 20, 36, 0.18);
 
-  /* Typography */
-  --font-heading: "Outfit", system-ui, sans-serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 2rem;
-  --text-4xl: 2.5rem;
-  --text-5xl: 3.5rem;
-
-  --line-tight: 1.2;
-  --line-normal: 1.5;
-  --line-relaxed: 1.65;
-
-  /* Spacing */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
-  --space-24: 6rem;
-
-  /* Layout */
   --container-max: 72rem;
-  --container-padding: var(--space-6);
-  --header-height: 4rem;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
+  --container-padding: 1rem;
+  --header-height: 3.75rem;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
 }
 
 @media (min-width: 768px) {
-  :root {
-    --container-padding: var(--space-8);
+  :root { --container-padding: 2rem; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #0B0F17;
+    --color-bg-deep: #070A10;
+    --color-surface: #141A24;
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-text: #E9EDF4;
+    --color-text-muted: #98A1B2;
+    --color-ink: #E9EDF4;
+    --color-on-ink: #0B0F17;
+    --color-accent-soft: rgba(26, 114, 250, 0.2);
+    --glow: radial-gradient(900px 600px at 70% 0%, rgba(26, 114, 250, 0.22), rgba(26, 114, 250, 0) 70%);
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.35);
+    --shadow-shot: 0 30px 70px rgba(0, 0, 0, 0.5);
   }
 }

@@ -1,65 +1,26 @@
-/**
- * Base styles - reset, typography defaults
- */
+*, *::before, *::after { box-sizing: border-box; }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  font-size: 17px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  line-height: var(--line-normal);
+  margin: 0;
+  background: var(--color-bg);
   color: var(--color-text);
-  background-color: var(--color-bg);
-  min-height: 100vh;
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
-}
+h1, h2, h3 { font-family: var(--font-display); color: var(--color-text); margin: 0; letter-spacing: -0.02em; line-height: 1.12; }
+p { margin: 0; }
+a { color: var(--color-accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; display: block; }
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; border-radius: 6px; }
 
-input, button, textarea, select {
-  font: inherit;
-  color: inherit;
-}
-
-a {
-  color: var(--color-accent);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--color-accent-hover);
-  text-decoration: underline;
-}
-
-h1, h2, h3, h4 {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  line-height: var(--line-tight);
-}
-
-ul, ol {
-  list-style: none;
-}
-
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
 }

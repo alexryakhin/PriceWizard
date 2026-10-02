@@ -1,121 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js): aggregate website traffic only, see privacy.html#website -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-VMS0CVNJ70"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-VMS0CVNJ70');
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="apple-itunes-app" content="app-id=6759319356">
-  <meta name="description" content="PriceWizard Support - Subscription and IAP pricing, metadata localization, API key setup, and contact.">
-  <title>Support - PriceWizard</title>
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Get help with Price Wizard: creating an App Store Connect API key, common errors, intro offers, CSV import and the Mac MCP server.">
+  <title>Support · Price Wizard</title>
   <link rel="canonical" href="https://alexryakhin.github.io/PriceWizard/support.html">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://alexryakhin.github.io/PriceWizard/support.html">
-  <meta property="og:title" content="Support - PriceWizard">
-  <meta property="og:description" content="Subscription and IAP pricing, metadata localization, API key setup, requirements, and contact.">
-  <meta property="og:image" content="https://alexryakhin.github.io/PriceWizard/assets/screenshot-main.jpg">
-  <meta property="og:site_name" content="PriceWizard">
-  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Support · Price Wizard">
+  <meta property="og:description" content="Get help with Price Wizard: creating an App Store Connect API key, common errors, intro offers, CSV import and the Mac MCP server.">
+  <meta property="og:image" content="https://alexryakhin.github.io/PriceWizard/assets/og-image.jpg">
+  <meta property="og:site_name" content="Price Wizard">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Support - PriceWizard">
-  <meta name="twitter:description" content="Subscription and IAP pricing, metadata localization, API key setup, requirements, and contact.">
-  <meta name="twitter:image" content="https://alexryakhin.github.io/PriceWizard/assets/screenshot-main.jpg">
+  <meta name="twitter:title" content="Support · Price Wizard">
+  <meta name="twitter:description" content="Get help with Price Wizard: creating an App Store Connect API key, common errors, intro offers, CSV import and the Mac MCP server.">
+  <meta name="twitter:image" content="https://alexryakhin.github.io/PriceWizard/assets/og-image.jpg">
   <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+  <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="logo">
-        <img src="favicon/favicon.svg" alt="" class="logo-icon" width="28" height="28">
-        <span>PriceWizard</span>
-      </a>
+      <a href="index.html" class="logo"><img src="assets/app-icon.png" alt="" width="30" height="30"><span>Price Wizard</span></a>
       <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
       </button>
       <nav class="nav" id="site-nav">
-        <a href="index.html#features">Benefits</a>
-        <a href="index.html#requirements">Requirements</a>
-        <a href="support.html">Support</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="support.html" aria-current="page">Support</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
+        <a href="https://apps.apple.com/app/id6759319356" class="btn btn-primary btn-small download-cta" target="_blank" rel="noopener noreferrer">Download</a>
       </nav>
     </div>
   </header>
 
-  <main class="page-main">
-    <div class="container">
-      <header class="page-header">
-        <h1 class="page-title">Support</h1>
-        <p class="page-lead">Get help with PriceWizard</p>
-      </header>
+  <main class="container">
+    <article class="doc">
+      <h1>Support</h1>
+      <p class="updated">Questions, bugs or ideas: <a href="mailto:bonney977@gmail.com">bonney977@gmail.com</a>. Include your device, OS and app version.</p>
 
-      <div class="prose">
-        <section class="prose-section">
-          <h2>Getting your API key</h2>
-          <p>PriceWizard uses the App Store Connect API. You need a key with <strong>App Manager</strong> or <strong>Admin</strong> access.</p>
-          <ol>
-            <li>Open <a href="https://appstoreconnect.apple.com" target="_blank" rel="noopener noreferrer">App Store Connect</a> → <strong>Users and Access</strong> → <strong>Integrations</strong> → <strong>App Store Connect API</strong>.</li>
-            <li>Create a key (or use an existing one).</li>
-            <li>Download the <strong>.p8</strong> file once - Apple won’t show it again.</li>
-            <li>Note the <strong>Key ID</strong> and <strong>Issuer ID</strong> on the same page.</li>
-          </ol>
-          <p>Enter these in PriceWizard when connecting. Your credentials stay in your device’s Keychain (iOS or Mac).</p>
-        </section>
+      <h2 id="api-key">Create an App Store Connect API key</h2>
+      <ol>
+        <li>Open <a href="https://appstoreconnect.apple.com/access/integrations/api" target="_blank" rel="noopener noreferrer">App Store Connect → Users and Access → Integrations → App Store Connect API</a>.</li>
+        <li>Create a <strong>Team Key</strong> with the <strong>App Manager</strong> or <strong>Admin</strong> role.</li>
+        <li>Download the <strong>.p8</strong> file. Apple lets you download it only once.</li>
+        <li>Copy the <strong>Key ID</strong> and the <strong>Issuer ID</strong> from the same page.</li>
+        <li>In Price Wizard, enter both IDs and choose the .p8 file. The key is saved in your Keychain.</li>
+      </ol>
+      <p>Just looking? Tap <strong>Try Demo</strong> on the connect screen to explore with sample data.</p>
 
-        <section class="prose-section">
-          <h2>Subscriptions, in-app purchases, and localizations</h2>
-          <p>PriceWizard can compute PPP-aware prices for <strong>auto-renewable subscriptions</strong> and <strong>in-app purchases</strong> (consumables, non-consumables, and non-renewing subscriptions), depending on what App Store Connect exposes for your account. You can also bulk-edit <strong>localized display names and descriptions</strong> for those products and save them to App Store Connect. Optional machine translation sends only the strings you translate to Google’s translation service from your device.</p>
-        </section>
+      <h2>Common issues</h2>
+      <h3>“Invalid API key” or the connection fails</h3>
+      <p>Check the Key ID and Issuer ID, and that the .p8 file is complete (from <code>-----BEGIN PRIVATE KEY-----</code> to <code>-----END PRIVATE KEY-----</code>). Make sure the key hasn’t been revoked.</p>
+      <h3>403 “Forbidden” errors</h3>
+      <p>The key needs the App Manager or Admin role. Developer or Marketing keys can’t change prices, offers or product metadata.</p>
+      <h3>“Must be on or after …” when applying subscription prices</h3>
+      <p>App Store Connect only accepts price changes a couple of days ahead (Pacific Time). Price Wizard moves the start date to the earliest day Apple accepts; tap <strong>Retry Failed Territories</strong>. Subscriptions that were never approved apply right away instead.</p>
+      <h3>Some territories failed</h3>
+      <p>The rest still went through. Tap <strong>Retry Failed Territories</strong>; each failure shows Apple’s reason. Running the same apply again also finishes the job: territories that already match are skipped.</p>
+      <h3>Prices didn’t change in some countries</h3>
+      <p>Countries already at the target price are skipped, and a manual price you set stays until you reset it (swipe or right-click the row).</p>
 
-        <section class="prose-section">
-          <h2>Requirements</h2>
-          <ul>
-            <li><strong>iOS 17</strong> or later</li>
-            <li><strong>macOS 15</strong> or later</li>
-            <li><strong>App Store Connect API key</strong> with Key ID, Issuer ID, and .p8 file</li>
-          </ul>
-        </section>
+      <h2>Introductory offers</h2>
+      <p>Open a subscription, then <strong>⋯ → Introductory Offers</strong>. Pick Free Trial, Pay as You Go or Pay Up Front, the territories, and optional dates. Creating an offer replaces any existing offer in those territories. Apple allows one introductory offer per territory at a time.</p>
 
-        <section class="prose-section">
-          <h2>Common issues</h2>
-          <dl>
-            <dt>“Invalid API key” or connection fails</dt>
-            <dd>Check that your Key ID, Issuer ID, and .p8 content are correct. The .p8 file should include the full PEM block (including <code>-----BEGIN PRIVATE KEY-----</code> and <code>-----END PRIVATE KEY-----</code>). Ensure the key has not been revoked in App Store Connect.</dd>
+      <h2>CSV and copying prices</h2>
+      <ul>
+        <li><strong>Export</strong> writes Territory, Code, Currency, Current price, New price, New price (USD) and Change %.</li>
+        <li><strong>Import</strong> needs a territory column (code like DEU or DE, or the country name) and a price column in local currency. Commas, semicolons or tabs all work, as do decimal commas.</li>
+        <li><strong>Copy Prices From</strong> loads another product’s current prices, from any of your apps.</li>
+        <li>Imported and copied prices snap to the nearest valid App Store price and show up as manual prices you can review before applying.</li>
+      </ul>
 
-            <dt>“Access denied” or 403 errors</dt>
-            <dd>Your API key needs <strong>App Manager</strong> or <strong>Admin</strong> role. Users with only Developer or Marketing access typically cannot change subscription or in-app purchase prices or product metadata.</dd>
+      <h2>Mac: MCP server for AI tools</h2>
+      <p>Open <strong>About → MCP Server</strong>, turn it on and copy the config snippet for Cursor, Claude Code or VS Code. The server listens on 127.0.0.1 only and needs the token shown there. AI tools can prepare prices, offers and localizations; applying always needs your click in Price Wizard.</p>
 
-            <dt>Prices don’t apply</dt>
-            <dd>PriceWizard skips territories that already have the target price. It will not apply on a date that already has a scheduled price change. Check for conflicts in App Store Connect.</dd>
-          </dl>
-        </section>
+      <h2>Purchases</h2>
+      <p>To unlock on a new device, use <strong>Restore Purchases</strong> on the paywall (also in Settings on iPhone and iPad). Refunds are handled by Apple at <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer">reportaproblem.apple.com</a>.</p>
 
-        <section class="prose-section">
-          <h2>Contact</h2>
-          <p>For questions, bugs, or feature requests, email <a href="mailto:bonney977@gmail.com">bonney977@gmail.com</a>.</p>
-        </section>
-      </div>
-
-      <p class="back-link"><a href="index.html">← Back to PriceWizard</a></p>
-    </div>
+      <h2>Requirements</h2>
+      <ul>
+        <li>iOS / iPadOS 17 or later, or macOS 15 or later</li>
+        <li>An App Store Connect API key with App Manager or Admin access</li>
+      </ul>
+      <a class="back" href="index.html">← Back to Price Wizard</a>
+    </article>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p class="copyright">© 2026 Alexander Riakhin. All rights reserved.</p>
+      <p>© 2026 Alexander Riakhin · Price Wizard for iPhone, iPad and Mac</p>
       <div class="footer-links">
         <a href="mailto:bonney977@gmail.com">Email</a>
         <a href="https://buymeacoffee.com/xander1100001" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
