@@ -105,3 +105,11 @@
 .doc th { font-weight: 700; }
 .doc .table-scroll { overflow-x: auto; }
 .back { display: inline-block; margin-top: 3rem; font-weight: 600; }
+
+/* "Made with itself" */
+.dogfood { display: flex; gap: 2rem; align-items: center; max-width: 52rem; margin: 0 auto; padding: 2rem 2.25rem; border-radius: var(--radius-lg); background: var(--color-surface); box-shadow: var(--shadow-card); }
+.dogfood-icon, .dogfood-icon img { flex: 0 0 auto; width: 96px; height: 96px; }
+.dogfood-icon { filter: drop-shadow(0 12px 20px rgba(26, 114, 250, 0.25)); }
+.dogfood h2 { font-size: clamp(1.6rem, 3.2vw, 2.1rem); font-weight: 800; }
+.dogfood p { margin-top: 0.75rem; color: var(--color-text-muted); }
+@media (max-width: 640px) { .dogfood { flex-direction: column; text-align: center; padding: 1.75rem 1.25rem; } }
