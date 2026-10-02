@@ -11,7 +11,7 @@
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: var(--header-height); }
 .logo { display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-display); font-weight: 700; font-size: 1.125rem; color: var(--color-text); }
 .logo:hover { text-decoration: none; }
-.logo img { width: 30px; height: 30px; border-radius: 7px; }
+.logo img { width: 30px; height: 30px; }
 .nav { display: flex; align-items: center; gap: 1.5rem; }
 .nav a { color: var(--color-text-muted); font-size: 0.9375rem; font-weight: 500; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--color-text); text-decoration: none; }
