@@ -1,5 +1,5 @@
 /**
- * Price Wizard website: mobile menu, screenshot tabs, download click tracking.
+ * Price Wizard website: mobile menu and download click tracking.
  */
 (function () {
   'use strict';
@@ -18,18 +18,6 @@
     nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
   }
-
-  // Screenshot tabs (iPhone / Mac)
-  var tabs = document.querySelectorAll('.tab');
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      tabs.forEach(function (t) {
-        var selected = t === tab;
-        t.setAttribute('aria-selected', selected);
-        document.getElementById(t.getAttribute('aria-controls')).hidden = !selected;
-      });
-    });
-  });
 
   // App Store clicks in Google Analytics
   document.querySelectorAll('.download-cta').forEach(function (link) {
